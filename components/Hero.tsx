@@ -41,7 +41,7 @@ export default function Hero() {
           transition={{ duration: 0.6 }}
           className="text-sm md:text-base tracking-[0.3em] uppercase mb-4 text-white/80"
         >
-          Okinawa Private SUP Tour
+          サップ＆カヤック＆シュノーケルツアー専門店
         </motion.p>
 
         <motion.h1

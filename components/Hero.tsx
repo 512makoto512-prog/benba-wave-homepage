@@ -30,8 +30,8 @@ export default function Hero() {
           transition={{ duration: 0.6 }}
           className="flex justify-center mb-4"
         >
-          <div className="w-40 h-40 rounded-full overflow-hidden flex items-center justify-center">
-            <Image src="/logo.png" alt="BENBA WAVE OKINAWA" width={220} height={220} className="scale-[0.72] origin-center" />
+          <div className="w-56 h-56 rounded-full overflow-hidden flex items-center justify-center">
+            <Image src="/logo.png" alt="BENBA WAVE OKINAWA" width={340} height={340} className="scale-[1.45] origin-center" />
           </div>
         </motion.div>
 

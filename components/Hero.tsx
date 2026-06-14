@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import Image from "next/image";
 
 export default function Hero() {
   return (
@@ -23,6 +24,15 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 text-center text-white px-4">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+          className="flex justify-center mb-4"
+        >
+          <Image src="/logo.png" alt="BENBA WAVE OKINAWA" width={120} height={120} className="rounded-full shadow-2xl" />
+        </motion.div>
+
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

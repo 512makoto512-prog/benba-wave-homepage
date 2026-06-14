@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Menu, X, Globe } from "lucide-react";
+import Image from "next/image";
 
 const navLinks = [
   { label: "About", href: "#concept" },
@@ -18,8 +19,9 @@ export default function Header() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a href="/" className="text-xl font-black tracking-widest text-ocean">
-            BENBA WAVE OKINAWA
+          <a href="/" className="flex items-center gap-2">
+            <Image src="/logo.png" alt="BENBA WAVE OKINAWA" width={48} height={48} className="rounded-full" />
+            <span className="text-sm font-black tracking-widest text-ocean hidden sm:block">BENBA WAVE OKINAWA</span>
           </a>
 
           {/* Desktop Nav */}

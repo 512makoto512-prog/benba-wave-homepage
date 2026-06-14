@@ -47,7 +47,7 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="text-2xl md:text-4xl font-light tracking-widest mb-2 text-white/90"
         >
-          best memories
+          一組限定ツアー
         </motion.p>
 
         <motion.p

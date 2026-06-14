@@ -66,7 +66,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-base md:text-lg mb-10 text-white/75 font-light"
+          className="text-xl md:text-2xl mb-10 text-white/75 font-black tracking-tight"
         >
           沖縄の美しい海で、あなただけの特別な時間を
         </motion.p>

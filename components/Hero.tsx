@@ -31,7 +31,7 @@ export default function Hero() {
           className="flex justify-center mb-4"
         >
           <div className="w-72 h-72 rounded-full overflow-hidden flex items-center justify-center">
-            <Image src="/logo.png" alt="BENBA WAVE OKINAWA" width={300} height={300} className="scale-[1.12] origin-center" />
+            <Image src="/logo.png" alt="BENBA WAVE OKINAWA" width={300} height={300} className="scale-[1.17] origin-center" />
           </div>
         </motion.div>
 

@@ -445,13 +445,15 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   font-size: .9rem; font-weight: 700; color: var(--ocean-deep);
   margin-bottom: 12px;
 }
-.guide-sns-links { display: flex; gap: 12px; flex-wrap: wrap; }
+.guide-sns-links { display: flex; gap: 10px; flex-wrap: wrap; }
 .guide-sns-btn {
-  display: inline-flex; align-items: center; gap: 7px;
-  padding: 10px 20px; border-radius: 999px;
-  font-size: .9rem; font-weight: 700;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 0 18px;
+  height: 46px;
+  border-radius: 999px;
+  font-size: .85rem; font-weight: 700;
   text-decoration: none;
-  min-height: 44px;
+  white-space: nowrap;
   transition: opacity var(--transition);
 }
 .guide-sns-btn:hover { opacity: .82; }
@@ -460,7 +462,15 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   color: #fff;
 }
 .guide-sns-tiktok { background: #000; color: #fff; }
-.guide-sns-icon { width: 18px; height: 18px; flex-shrink: 0; }
+.guide-sns-icon {
+  width: 18px !important;
+  height: 18px !important;
+  min-width: 18px;
+  max-width: 18px;
+  flex-shrink: 0;
+  display: block;
+}
+.guide-sns-handle { opacity: .85; font-weight: 600; }
 
 /* LINEモーダル */
 .line-modal { position: fixed; inset: 0; z-index: 9000; display: flex; align-items: center; justify-content: center; }

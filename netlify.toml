@@ -1,6 +1,10 @@
 [build]
   publish = "site"
-  # 静的HTMLのため build コマンド不要
+  command = ""
+
+[build.environment]
+  NETLIFY_NEXT_PLUGIN_SKIP = "true"
+  NEXT_DISABLE_NETLIFY_PLUGIN = "true"
 
 [[redirects]]
   from = "/*"

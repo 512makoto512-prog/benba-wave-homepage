@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 ページが見つかりません | BEMBA</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .not-found {
+      min-height: 100svh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 40px 20px;
+      background: linear-gradient(160deg, var(--ocean-deep), var(--ocean-mid));
+      color: var(--white);
+    }
+    .not-found img { width: 100px; height: 100px; border-radius: 50%; margin-bottom: 24px; }
+    .not-found h1 { font-size: 5rem; font-weight: 900; opacity: .4; margin-bottom: 8px; }
+    .not-found p { font-size: 1rem; opacity: .8; margin-bottom: 32px; }
+  </style>
+</head>
+<body>
+  <div class="not-found">
+    <img src="images/logo-bemba.webp" alt="BEMBAロゴ" loading="eager">
+    <h1>404</h1>
+    <p>ページが見つかりません。<br>お探しのページは移動または削除された可能性があります。</p>
+    <a href="/" class="btn btn-outline">トップページへ戻る</a>
+  </div>
+</body>
+</html>

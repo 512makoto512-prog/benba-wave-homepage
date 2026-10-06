@@ -31,6 +31,47 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* --- LINE PC モーダル --- */
+  const lineModal = document.getElementById('line-modal');
+  if (lineModal) {
+    const overlay = lineModal.querySelector('.line-modal-overlay');
+    const closeBtn = lineModal.querySelector('.line-modal-close');
+
+    const isDesktop = () => window.matchMedia('(min-width: 768px)').matches;
+
+    const openModal = () => {
+      lineModal.hidden = false;
+      document.body.style.overflow = 'hidden';
+      closeBtn.focus();
+    };
+    const closeModal = () => {
+      lineModal.hidden = true;
+      document.body.style.overflow = '';
+    };
+
+    document.querySelectorAll('a[href="https://lin.ee/ohC64EDT"]').forEach(a => {
+      a.addEventListener('click', e => {
+        if (isDesktop()) {
+          e.preventDefault();
+          openModal();
+        }
+      });
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && !lineModal.hidden) closeModal();
+      if (e.key === 'Tab' && !lineModal.hidden) {
+        const focusable = lineModal.querySelectorAll('button, a, [tabindex]');
+        const first = focusable[0], last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    });
+  }
+
   /* --- ヘッダー スクロール影 --- */
   const header = document.getElementById('site-header');
   if (header) {

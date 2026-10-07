@@ -112,6 +112,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   letter-spacing: .05em;
 }
 .logo img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+.logo-yomi { font-size: .65em; font-weight: 700; letter-spacing: .02em; opacity: .75; }
 .nav-list {
   display: none;
   flex-direction: column;

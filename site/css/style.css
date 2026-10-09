@@ -662,6 +662,8 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 .contact-val { font-size: 1rem; font-weight: 700; color: var(--ocean-deep); }
 .contact-val a { color: inherit; }
 .contact-val a:hover { text-decoration: underline; }
+.contact-note { font-size: .72rem; color: var(--text-sub); margin-top: 3px; }
+.contact-item--call .contact-val a { color: var(--line-green); }
 
 /* ---------- Footer ---------- */
 footer {

@@ -665,6 +665,67 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 .contact-note { font-size: .72rem; color: var(--text-sub); margin-top: 3px; }
 .contact-item--call .contact-val a { color: var(--line-green); }
 
+/* ---------- Safety 改善 ---------- */
+.safety-groups {
+  display: flex; flex-direction: column; gap: 28px;
+}
+.safety-group-title {
+  font-size: .72rem; font-weight: 700; letter-spacing: .12em;
+  color: rgba(255,255,255,.5);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(255,255,255,.15);
+}
+.safety-row {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;
+}
+@media (min-width: 600px) { .safety-row { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 900px) { .safety-row { grid-template-columns: repeat(4, 1fr); } }
+.safety-item {
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: var(--radius);
+  padding: 18px 14px;
+  text-align: center;
+  font-size: .83rem;
+  line-height: 1.5;
+  color: rgba(255,255,255,.92);
+}
+.safety-item--highlight {
+  background: rgba(255,255,255,.18);
+  border-color: rgba(255,255,255,.4);
+  font-weight: 700;
+}
+.safety-item .icon { font-size: 1.6rem; margin-bottom: 8px; display: block; }
+
+/* ---------- FAQ 改善 ---------- */
+.faq-q-text::before {
+  content: "Q.";
+  font-size: .75rem;
+  font-weight: 900;
+  color: var(--ocean-mid);
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+.faq-q-text {
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+}
+.faq-q { gap: 16px; }
+.faq-a {
+  border-top: 1px solid var(--border);
+}
+.faq-a-inner {
+  display: flex; gap: 10px; align-items: baseline;
+}
+.faq-a-inner::before {
+  content: "A.";
+  font-size: .75rem; font-weight: 900;
+  color: var(--ocean); flex-shrink: 0;
+}
+
 /* ---------- Footer ---------- */
 footer {
   background: var(--ocean-deep); color: rgba(255,255,255,.7);

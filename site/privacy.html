@@ -3,56 +3,259 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>プライバシーポリシー | BEMBA</title>
-  <link rel="stylesheet" href="css/style.css">
+  <title>プライバシーポリシー | BEMBA（ベンバ）</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
   <style>
-    .privacy-wrap { max-width: 720px; margin-inline: auto; padding: 120px 20px 80px; }
-    .privacy-wrap h1 { font-size: 1.8rem; font-weight: 900; color: var(--ocean-deep); margin-bottom: 32px; }
-    .privacy-wrap h2 { font-size: 1.1rem; font-weight: 700; color: var(--ocean-deep); margin: 32px 0 12px; }
-    .privacy-wrap p, .privacy-wrap li { font-size: .9rem; color: var(--text-sub); line-height: 1.85; }
-    .privacy-wrap ul { padding-left: 1.2em; }
-    .privacy-wrap ul li { list-style: disc; margin-bottom: 4px; }
-    .back-link { display: inline-block; margin-top: 48px; color: var(--ocean); font-weight: 700; text-decoration: underline; }
+    :root {
+      --navy:   #0D2B3E;
+      --ocean:  #1A6B9A;
+      --sand:   #F6F3ED;
+      --white:  #FFFFFF;
+      --text:   #1A1A1A;
+      --sub:    #4A5761;
+      --border: #DDD8CF;
+      --green:  #06C755;
+      --header: 64px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Noto Sans JP', sans-serif; color: var(--text); background: var(--white); line-height: 1.7; }
+
+    /* Header */
+    #site-header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); height: var(--header); display: flex; align-items: center; }
+    .header-inner { max-width: 1080px; margin-inline: auto; padding-inline: 24px; width: 100%; display: flex; align-items: center; gap: 20px; }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--navy); font-weight: 900; font-size: 1.05rem; letter-spacing: .06em; }
+    .logo-yomi { font-size: .65rem; font-weight: 400; color: var(--sub); }
+    .lang-link { margin-left: auto; font-size: .8rem; color: var(--ocean); text-decoration: underline; }
+
+    /* Main */
+    .privacy-wrap { max-width: 720px; margin-inline: auto; padding: 64px 24px 100px; }
+    .privacy-wrap h1 { font-size: 1.7rem; font-weight: 900; color: var(--navy); margin-bottom: 8px; }
+    .privacy-eyebrow { font-size: .78rem; color: var(--sub); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 4px; }
+    .privacy-date { font-size: .8rem; color: var(--sub); margin-bottom: 48px; }
+
+    .section { margin-bottom: 48px; }
+    .section h2 { font-size: 1rem; font-weight: 700; color: var(--navy); border-left: 3px solid var(--ocean); padding-left: 10px; margin-bottom: 14px; }
+    .section p, .section li { font-size: .88rem; color: var(--sub); line-height: 1.9; }
+    .section ul { padding-left: 1.4em; margin-top: 8px; }
+    .section ul li { list-style: disc; margin-bottom: 4px; }
+    .section .note { font-size: .78rem; color: var(--sub); background: var(--sand); border-radius: 4px; padding: 10px 14px; margin-top: 12px; }
+    .section .note::before { content: "※ "; }
+
+    .sub-head { font-size: .82rem; font-weight: 700; color: var(--navy); margin: 16px 0 6px; }
+    .ext-link { color: var(--ocean); word-break: break-all; }
+
+    .divider { border: none; border-top: 1px solid var(--border); margin: 0 0 48px; }
+
+    .back-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 48px; color: var(--ocean); font-size: .88rem; font-weight: 700; text-decoration: underline; }
+
+    /* Footer */
+    footer { background: var(--navy); color: rgba(255,255,255,.7); text-align: center; padding: 32px 20px; font-size: .78rem; }
+    footer a { color: rgba(255,255,255,.7); text-decoration: underline; }
   </style>
 </head>
 <body>
+
 <header id="site-header">
-  <div class="container header-inner">
-    <a href="/" class="logo" aria-label="BEMBA トップへ">
-      <img src="images/logo-bemba.webp" alt="BEMBAロゴ" width="40" height="40" loading="eager">
+  <div class="header-inner">
+    <a href="index.html" class="logo" aria-label="BEMBA トップへ">
+      <img src="images/logo-bemba-oval.png" alt="BEMBAロゴ" width="40" height="40" loading="eager">
       <span>BEMBA<small class="logo-yomi">（ベンバ）</small></span>
     </a>
+    <a href="privacy-en.html" class="lang-link">English</a>
   </div>
 </header>
-<main>
-  <div class="privacy-wrap">
-    <h1>プライバシーポリシー</h1>
 
-    <h2>個人情報の取得と利用目的</h2>
-    <p>BEMBAは、お客様からご提供いただいた個人情報（氏名、連絡先等）を以下の目的のみに使用します。</p>
+<main>
+<div class="privacy-wrap">
+
+  <p class="privacy-eyebrow">Privacy Policy</p>
+  <h1>プライバシーポリシー</h1>
+  <p class="privacy-date">制定日：2026年11月1日</p>
+
+  <!-- 1 -->
+  <div class="section">
+    <h2>1. 取得する個人情報の種類</h2>
+    <p>BEMBA（以下「当店」）は、以下の方法でお客様の個人情報を取得します。</p>
+
+    <p class="sub-head">■ Googleフォーム（予約申込）を通じて取得する情報</p>
     <ul>
-      <li>ご予約の確認・ご連絡</li>
-      <li>お問い合わせへの回答</li>
-      <li>サービス提供に必要な情報の送付</li>
+      <li>氏名</li>
+      <li>連絡先（電話番号またはメールアドレス等）</li>
+      <li>参加人数・参加者の年齢構成</li>
+      <li>ご希望のツアー・日程</li>
     </ul>
 
-    <h2>個人情報の第三者提供</h2>
-    <p>BEMBAは、法令に基づく場合を除き、お客様の同意なく第三者に個人情報を提供しません。</p>
+    <p class="sub-head">■ 公式LINE・メールを通じて取得する情報</p>
+    <ul>
+      <li>お問い合わせ内容・予約に関するやり取り</li>
+      <li>上記に準じた予約情報</li>
+    </ul>
 
-    <h2>個人情報の管理</h2>
-    <p>BEMBAは、お客様の個人情報を適切に管理し、漏洩・滅失・毀損の防止に努めます。</p>
+    <p class="sub-head">■ ツアー当日、紙の参加申込書を通じて取得する情報</p>
+    <ul>
+      <li>参加者全員の氏名・年齢</li>
+      <li>緊急連絡先</li>
+      <li>健康状態・参加可否に関わる申告事項</li>
+    </ul>
+    <p class="note">健康状態等、要配慮個人情報に該当する情報の取得については、申込書上または口頭で同意を確認した上で取得します。</p>
+  </div>
+  <hr class="divider">
 
-    <h2>お問い合わせ</h2>
+  <!-- 2 -->
+  <div class="section">
+    <h2>2. 利用目的</h2>
+    <p>取得した個人情報は、以下の目的にのみ使用します。</p>
+    <ul>
+      <li>ご予約の受付・確認・変更・キャンセルの連絡</li>
+      <li>ツアー当日の催行連絡・集合場所の案内</li>
+      <li>お問い合わせへの回答</li>
+      <li>ツアーの安全管理上必要な参加者情報の把握</li>
+      <li>緊急時の対応</li>
+      <li>法令に基づく対応が必要な場合</li>
+    </ul>
+    <p class="note">取得した個人情報を、上記以外の目的（マーケティング・販売促進等）に利用することはありません。</p>
+  </div>
+  <hr class="divider">
+
+  <!-- 3 -->
+  <div class="section">
+    <h2>3. 安全管理措置</h2>
+    <p>当店は、お客様の個人情報を以下の方法で管理しています。</p>
+    <p class="sub-head">■ 紙の参加申込書</p>
+    <ul>
+      <li>事務所内のファイルに施錠保管</li>
+      <li>代表者のみがアクセス可能な状態で管理</li>
+    </ul>
+    <p class="sub-head">■ 電子データ（Googleフォーム・LINE等）</p>
+    <ul>
+      <li>各サービスが提供するセキュリティ機能を利用して管理</li>
+      <li>当店アカウントへの不正アクセス防止のため、パスワード管理を徹底</li>
+    </ul>
+    <p class="note">Googleフォーム・LINEのサーバー側のセキュリティについては、各サービス提供者のポリシーが適用されます。</p>
+  </div>
+  <hr class="divider">
+
+  <!-- 4 -->
+  <div class="section">
+    <h2>4. 第三者提供と外部サービスの利用</h2>
+    <p>当店は、以下の場合を除き、お客様の同意なく個人情報を第三者に提供しません。</p>
+    <ul>
+      <li>法令に基づく開示要求がある場合</li>
+      <li>人の生命・身体・財産の保護のために緊急に必要な場合</li>
+    </ul>
+
+    <p class="sub-head">■ 利用している外部サービス</p>
+    <p>当店は以下の外部サービスを通じてお客様の情報を取り扱っています。各サービスの利用にあたっては、それぞれのプライバシーポリシーが適用されます。</p>
+    <ul>
+      <li><strong>Google LLC（Googleフォーム）</strong>：予約申込フォームに使用。入力情報はGoogleのサーバーに保存されます。<br>
+        → <a href="https://policies.google.com/privacy" class="ext-link" target="_blank" rel="noopener">Google プライバシーポリシー</a></li>
+      <li><strong>LINE株式会社（公式LINE）</strong>：予約・お問い合わせ対応に使用。<br>
+        → <a href="https://line.me/ja/terms/policy/" class="ext-link" target="_blank" rel="noopener">LINEプライバシーポリシー</a></li>
+      <li><strong>Google LLC（Google Fonts）</strong>：サイトのフォント表示に使用。フォント読み込み時にIPアドレス等の情報がGoogleへ送信される場合があります。<br>
+        → <a href="https://policies.google.com/privacy" class="ext-link" target="_blank" rel="noopener">Google プライバシーポリシー</a></li>
+    </ul>
+  </div>
+  <hr class="divider">
+
+  <!-- 5 -->
+  <div class="section">
+    <h2>5. 保管期間と削除</h2>
+
+    <p class="sub-head">■ 紙の参加申込書</p>
+    <ul>
+      <li>ツアー終了後1年間、事務所にて保管</li>
+      <li>保管期間終了後、シュレッダー等により適切な方法で廃棄</li>
+    </ul>
+
+    <p class="sub-head">■ Googleフォームの予約情報（電子データ）</p>
+    <ul>
+      <li>ツアー終了後1年間を目安に保管</li>
+      <li>保管期間経過後、当店管理のGoogleフォームデータを削除</li>
+    </ul>
+    <p class="note">Googleのシステム上のバックアップデータ等については、当店による完全な削除を保証できない場合があります。</p>
+
+    <p class="sub-head">■ LINEのトーク履歴</p>
+    <ul>
+      <li>予約・問い合わせ対応に必要な範囲でLINEアプリ上に保存</li>
+    </ul>
+    <p class="note">LINEのサービス側での保存期間・管理については当店では保証できません。LINEのポリシーに従います。</p>
+
+    <p class="sub-head">■ ツアー中に撮影した写真・動画データ</p>
+    <ul>
+      <li>お客様へのデータ引き渡し後、90日間を目安に当店管理の保存データを削除</li>
+    </ul>
+    <p class="note">クラウドサービスや端末のバックアップ領域については、サービス側の仕様により完全な削除を保証できない場合があります。</p>
+  </div>
+  <hr class="divider">
+
+  <!-- 6 -->
+  <div class="section">
+    <h2>6. 写真・動画データの取り扱い</h2>
+    <p>ツアー中に当店スタッフが撮影した写真・動画データは、ツアー料金に含まれる形でお客様にお渡しします。</p>
+
+    <p class="sub-head">■ SNS・ウェブサイトへの掲載について</p>
+    <ul>
+      <li>当店のSNS・ウェブサイトへの掲載は、お客様から事前に明確な同意を得た場合のみ行います</li>
+      <li>同意がない場合、撮影データを当店が外部へ公開することはありません</li>
+      <li>未成年者の写真・動画については、保護者の同意も別途確認します</li>
+    </ul>
+    <p class="note">同意のご確認はツアー申込時または当日に行います。いったん同意された場合でも、後日取り消しをご希望の場合は下記の問い合わせ窓口までご連絡ください。</p>
+  </div>
+  <hr class="divider">
+
+  <!-- 7 -->
+  <div class="section">
+    <h2>7. Cookieの利用状況</h2>
+    <p>現在、当店のウェブサイトでは独自のCookieやアクセス解析ツール（Google Analytics等）を導入していません。</p>
+    <p>ただし、サイト上のリンク先（Googleフォーム・公式LINE・Google Maps等）を利用された際は、各サービスのCookieおよびデータ収集ポリシーが適用されます。</p>
+  </div>
+  <hr class="divider">
+
+  <!-- 8 -->
+  <div class="section">
+    <h2>8. 個人情報の開示・訂正・削除・利用停止の請求</h2>
+    <p>お客様は、当店が保有するご自身の個人情報について、以下の請求を行う権利を有します。</p>
+    <ul>
+      <li>利用目的の通知</li>
+      <li>開示</li>
+      <li>訂正・追加・削除</li>
+      <li>利用停止・消去</li>
+      <li>第三者提供の停止</li>
+    </ul>
+    <p style="margin-top:12px;">ご請求は下記の問い合わせ窓口までメールにてご連絡ください。ご本人確認の上、合理的な期間内に対応いたします。</p>
+    <p class="note">Googleフォーム・LINE等の外部サービス上のデータについては、各サービスの機能・ポリシーの範囲内での対応となります。</p>
+  </div>
+  <hr class="divider">
+
+  <!-- 9 -->
+  <div class="section">
+    <h2>9. 問い合わせ窓口</h2>
     <p>個人情報の取り扱いに関するお問い合わせは下記までご連絡ください。</p>
-    <p>
-      BEMBA 代表：高良 真<br>
+    <p style="margin-top:14px;">
+      <strong>BEMBA（ベンバ）</strong><br>
+      代表：高良 真<br>
       メール：<a href="mailto:bemba.okinawa@gmail.com" style="color:var(--ocean);">bemba.okinawa@gmail.com</a>
     </p>
-
-    <p style="margin-top:32px; font-size:.78rem; color:var(--text-sub);">制定日：2026年11月1日</p>
-
-    <a href="/" class="back-link">← トップページへ戻る</a>
+    <p class="note">メールの場合、件名に「個人情報に関するお問い合わせ」とご記入ください。通常3〜5営業日以内に返信いたします。</p>
   </div>
+  <hr class="divider">
+
+  <!-- 10 -->
+  <div class="section">
+    <h2>10. ポリシーの改定</h2>
+    <p>本ポリシーは、法令の改正・運営方針の変更等により改定する場合があります。改定後のポリシーは本ページへの掲載をもって効力を生じます。重要な変更を行う場合は、サイト上でお知らせします。</p>
+    <p style="margin-top:12px; font-size:.82rem; color:var(--sub);">制定日：2026年11月1日　／　最終改定日：—</p>
+  </div>
+
+  <a href="index.html" class="back-link">← トップページへ戻る</a>
+</div>
 </main>
+
+<footer>
+  <p>&copy; 2026 BEMBA. All rights reserved.</p>
+</footer>
+
 </body>
 </html>

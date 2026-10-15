@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ご利用案内・FAQ — BEMBA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:   #0D2B3E;
+  --ocean:  #1A6B9A;
+  --sky:    #7EC8E3;
+  --sand:   #F6F3ED;
+  --white:  #FFFFFF;
+  --text:   #1A1A1A;
+  --sub:    #4A5761;
+  --border: #DDD9D0;
+  --green:  #06C755;
+  --header: 64px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif; background: var(--white); color: var(--text); line-height: 1.8; font-weight: 400; -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+.preview-bar { position: static; background: rgba(13,43,62,.95); color: rgba(255,255,255,.88); font-size: .72rem; text-align: center; padding: 8px 16px; letter-spacing: .04em; }
+header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: var(--header); background: rgba(255,255,255,.97); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); display: flex; align-items: center; }
+.header-inner { max-width: 1080px; margin-inline: auto; padding-inline: 24px; width: 100%; display: flex; align-items: center; gap: 20px; }
+.logo-link { display: flex; align-items: center; gap: 10px; }
+.logo-link img { width: 36px; height: 36px; object-fit: contain; }
+.logo-link span { font-size: .9rem; font-weight: 700; color: var(--navy); letter-spacing: .1em; }
+nav.nav-pc { margin-left: auto; display: flex; align-items: center; gap: 24px; }
+nav.nav-pc a { font-size: .82rem; font-weight: 500; color: var(--sub); letter-spacing: .04em; transition: color .15s; }
+nav.nav-pc a:hover { color: var(--navy); }
+nav.nav-pc a.active { color: var(--ocean); font-weight: 700; }
+.nav-cta { background: var(--ocean); color: var(--white) !important; padding: 8px 18px; border-radius: 3px; font-size: .8rem; font-weight: 700; letter-spacing: .04em; transition: opacity .15s; }
+.nav-cta:hover { opacity: .88; }
+.lang-sw { position: relative; }
+.lang-btn { display: flex; align-items: center; gap: 5px; background: none; border: 1px solid var(--border); border-radius: 3px; padding: 5px 9px; cursor: pointer; font-size: .74rem; font-weight: 500; color: var(--sub); letter-spacing: .04em; white-space: nowrap; }
+.lang-btn:hover { border-color: var(--ocean); color: var(--navy); }
+.lang-drop { display: none; position: absolute; top: calc(100% + 6px); right: 0; background: var(--white); border: 1px solid var(--border); border-radius: 4px; box-shadow: 0 8px 24px rgba(0,0,0,.1); min-width: 140px; z-index: 200; overflow: hidden; }
+.lang-drop.open { display: block; }
+.lang-drop a { display: flex; align-items: center; gap: 8px; padding: 11px 16px; font-size: .82rem; color: var(--text); border-bottom: 1px solid var(--border); }
+.lang-drop a:last-child { border-bottom: none; }
+.lang-drop a:hover { background: var(--sand); }
+.lang-drop a.active { color: var(--ocean); font-weight: 700; }
+.hamburger { display: none; margin-left: auto; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 8px; }
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; }
+nav.nav-sp { display: none; position: fixed; inset: 0; z-index: 99; background: rgba(255,255,255,.98); flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
+nav.nav-sp.open { display: flex; }
+nav.nav-sp a { font-size: 1.1rem; font-weight: 700; color: var(--navy); letter-spacing: .06em; }
+@media (max-width: 768px) { nav.nav-pc { display: none; } .hamburger { display: flex; } }
+.breadcrumb { background: var(--sand); padding: 4px 0; border-bottom: 1px solid var(--border); }
+.breadcrumb-inner { max-width: 1080px; margin-inline: auto; padding-inline: 24px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: .78rem; color: var(--sub); }
+.breadcrumb-inner a { color: var(--ocean); display: inline-flex; align-items: center; min-height: 44px; padding-inline: 4px; }
+.breadcrumb-inner span { color: var(--sub); }
+.breadcrumb-inner > :last-child { color: var(--text); }
+.page-hero { margin-top: 0; position: relative; overflow: hidden; padding: 80px 24px 72px; text-align: center; }
+.page-hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 55%; }
+.page-hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(13,43,62,.82) 0%, rgba(26,107,154,.72) 100%); }
+.page-hero-content { position: relative; z-index: 1; }
+.page-hero-eyebrow { font-size: .8rem; letter-spacing: .2em; color: rgba(255,255,255,.6); text-transform: uppercase; margin-bottom: 12px; }
+.page-hero-title { font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 700; color: #fff; letter-spacing: .06em; }
+.page-hero-sub { font-size: .9rem; color: rgba(255,255,255,.75); margin-top: 12px; }
+.sec { padding: 64px 24px; }
+.sec:nth-child(even) { background: var(--sand); }
+.container { max-width: 800px; margin-inline: auto; }
+.sec-eyebrow { font-size: .75rem; letter-spacing: .2em; text-transform: uppercase; color: var(--ocean); font-weight: 700; margin-bottom: 8px; }
+.sec-title { font-size: clamp(1.3rem, 3vw, 1.7rem); font-weight: 700; color: var(--navy); margin-bottom: 24px; line-height: 1.4; }
+
+/* INFO BLOCKS */
+.info-sec { border-left: 3px solid var(--ocean); padding-left: 20px; margin-bottom: 36px; }
+.info-sec-title { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 12px; }
+.info-sec p { font-size: .9rem; color: var(--sub); line-height: 2; }
+.info-sec p + p { margin-top: 8px; }
+.info-list { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+.info-list li { font-size: .88rem; color: var(--sub); display: flex; align-items: baseline; gap: 8px; line-height: 1.9; }
+.info-list li::before { content: "・"; color: var(--ocean); flex-shrink: 0; }
+
+/* FAQ */
+.faq-list { display: flex; flex-direction: column; gap: 2px; }
+.faq-item { border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+.faq-q { width: 100%; text-align: left; background: var(--white); border: none; padding: 18px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: .92rem; font-weight: 700; color: var(--navy); line-height: 1.6; }
+.faq-q:hover { background: var(--sand); }
+.faq-q .arrow { flex-shrink: 0; font-size: .7rem; color: var(--ocean); transition: transform .2s; }
+.faq-item.open .arrow { transform: rotate(180deg); }
+.faq-a { display: none; padding: 0 20px 18px; font-size: .88rem; color: var(--sub); line-height: 2; background: var(--white); }
+.faq-item.open .faq-a { display: block; }
+
+/* CANCEL TABLE */
+.cancel-table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: .88rem; }
+.cancel-table th { background: var(--navy); color: #fff; padding: 10px 14px; text-align: left; font-weight: 500; }
+.cancel-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--sub); vertical-align: top; line-height: 1.8; }
+.cancel-table tr:last-child td { border-bottom: none; }
+
+/* BOOKING CTA */
+.booking-cta { background: var(--navy); padding: 56px 24px; text-align: center; }
+.booking-cta-title { font-size: clamp(1.2rem, 3vw, 1.6rem); font-weight: 700; color: #fff; margin-bottom: 8px; }
+.booking-cta-sub { font-size: .88rem; color: rgba(255,255,255,.7); margin-bottom: 32px; }
+.booking-btns { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-bottom: 20px; }
+.btn-line { background: var(--green); color: var(--white); padding: 15px 36px; border-radius: 3px; font-size: .9rem; font-weight: 700; letter-spacing: .04em; display: inline-flex; align-items: center; gap: 7px; transition: opacity .15s; }
+.btn-line:hover { opacity: .88; }
+.btn-form { border: 1.5px solid rgba(255,255,255,.6); color: #fff; padding: 15px 36px; border-radius: 3px; font-size: .9rem; font-weight: 500; letter-spacing: .04em; transition: border-color .15s; }
+.btn-form:hover { border-color: rgba(255,255,255,.7); }
+@media (max-width: 600px) { .booking-btns { flex-direction: column; align-items: stretch; } .btn-line, .btn-form { justify-content: center; text-align: center; min-height: 52px; } .cancel-table { font-size: .8rem; } .cancel-table th, .cancel-table td { padding: 8px 10px; } }
+.booking-note { font-size: .74rem; color: rgba(255,255,255,.5); line-height: 2; }
+footer { background: #071422; padding: 32px 24px; text-align: center; }
+.foot-inner { max-width: 640px; margin-inline: auto; }
+.foot-logo { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 12px; }
+.foot-logo img { width: 28px; height: 28px; object-fit: contain; opacity: .7; }
+.foot-logo span { font-size: .85rem; font-weight: 700; color: rgba(255,255,255,.75); letter-spacing: .1em; }
+.foot-links { display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: center; margin-bottom: 14px; }
+.foot-links a { font-size: .8rem; line-height: 1.8; color: #C9D3DE; }
+.foot-links a:hover { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+.foot-copy { font-size: .8125rem; line-height: 1.8; color: #A9B6C4; letter-spacing: .06em; }
+</style>
+</head>
+<body>
+
+<div class="preview-bar">🔧 プレビュー — 本番公開前のデザイン確認用ファイルです</div>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo-link">
+      <img src="images/logo-bemba-oval.png" alt="BEMBA logo" width="36" height="36">
+      <span>BEMBA（ベンバ）</span>
+    </a>
+    <nav class="nav-pc" aria-label="メインナビゲーション">
+      <a href="index.html#tours">ツアー</a>
+      <a href="about.html">BEMBAについて</a>
+      <a href="guide.html" class="active">ご利用案内</a>
+      <div class="lang-sw" id="lang-sw">
+        <button class="lang-btn" id="lang-toggle" aria-haspopup="true" aria-expanded="false" aria-label="言語切替">
+          🌐 JA
+        </button>
+        <div class="lang-drop" id="lang-drop">
+          <a href="#" class="active">🇯🇵 日本語</a>
+          <a href="guide-en.html">🇺🇸 English</a>
+        </div>
+      </div>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdqf3kmFzZnffRVf_NnlmSQ536_gymBiTUo3nAIwn_LCsQ8hA/viewform" target="_blank" rel="noopener" class="nav-cta">ご予約</a>
+    </nav>
+    <button class="hamburger" id="menu-btn" aria-label="メニューを開く" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<nav class="nav-sp" id="nav-sp" aria-label="スマートフォンナビゲーション">
+  <a href="index.html#tours">ツアー</a>
+  <a href="about.html">BEMBAについて</a>
+  <a href="guide.html">ご利用案内</a>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSdqf3kmFzZnffRVf_NnlmSQ536_gymBiTUo3nAIwn_LCsQ8hA/viewform" target="_blank" rel="noopener">ご予約</a>
+</nav>
+
+<nav class="breadcrumb" style="margin-top:var(--header);" aria-label="パンくず">
+  <div class="breadcrumb-inner">
+    <a href="index.html">TOP</a>
+    <span>›</span>
+    <span>ご利用案内・FAQ</span>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <img src="images/kayak-island2.webp" alt="BEMBA カヤックツアー 沖縄の海" class="page-hero-img" width="1024" height="768">
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <p class="page-hero-eyebrow">Guide &amp; FAQ</p>
+    <h1 class="page-hero-title">ご利用案内・よくある質問</h1>
+    <p class="page-hero-sub">ご参加前に確認しておきたいことをまとめました。</p>
+  </div>
+</section>
+
+<!-- 予約方法 -->
+<section class="sec">
+  <div class="container">
+    <p class="sec-eyebrow">Booking</p>
+    <h2 class="sec-title">予約方法</h2>
+    <div class="info-sec">
+      <h3 class="info-sec-title">Google予約フォームからお申し込みください</h3>
+      <p>ご予約はGoogle予約フォームからお申し込みください。フォーム送信だけでは予約確定ではありません。内容を確認後、BEMBAからご連絡します。</p>
+      <p>ご質問や事前のご相談は、BEMBA公式LINEへお気軽にどうぞ。LINEでのご相談が最もスムーズです。</p>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:8px;">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdqf3kmFzZnffRVf_NnlmSQ536_gymBiTUo3nAIwn_LCsQ8hA/viewform" target="_blank" rel="noopener" style="background:var(--ocean);color:#fff;padding:12px 28px;border-radius:3px;font-size:.88rem;font-weight:700;">📋 予約フォームへ</a>
+      <a href="https://lin.ee/ohC64EDT" target="_blank" rel="noopener" style="background:#06C755;color:#fff;padding:12px 28px;border-radius:3px;font-size:.88rem;font-weight:700;">💬 LINEで相談する</a>
+    </div>
+  </div>
+</section>
+
+<!-- 集合場所・開催エリア -->
+<section class="sec">
+  <div class="container">
+    <p class="sec-eyebrow">Meeting Point</p>
+    <h2 class="sec-title">集合場所・開催エリア</h2>
+    <div class="info-sec">
+      <h3 class="info-sec-title">恩納村・金武町を中心に開催</h3>
+      <p>当日の海況によって開催場所が変わることがあります。基本は前日までにご案内しますので、ご安心ください。当日判断が必要な場合は、催行1時間前までにお知らせします。</p>
+      <p>直接ビーチに現地集合・現地解散となります。詳細な集合場所はご予約確定後にお知らせします。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 服装・持ち物 -->
+<section class="sec">
+  <div class="container">
+    <p class="sec-eyebrow">What to Bring</p>
+    <h2 class="sec-title">服装・持ち物</h2>
+    <div class="info-sec">
+      <h3 class="info-sec-title">持ち物</h3>
+      <ul class="info-list">
+        <li>着替え</li>
+        <li>タオル</li>
+        <li>サンダル</li>
+        <li>飲み物</li>
+        <li>必要に応じてウェットスーツ貸出あり（事前にLINEでご確認ください）</li>
+      </ul>
+    </div>
+    <div class="info-sec">
+      <h3 class="info-sec-title">服装</h3>
+      <p>水着またはラッシュガードを着用してお越しください。ツアー中は濡れることがあります。</p>
+    </div>
+    <div class="info-sec">
+      <h3 class="info-sec-title">設備について</h3>
+      <ul class="info-list">
+        <li>更衣室・シャワー設備は基本的にありません</li>
+        <li>トイレは近隣の公共施設等をご案内します</li>
+        <li>ご不明な点は事前にLINEでご相談ください</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 支払い方法 -->
+<section class="sec">
+  <div class="container">
+    <p class="sec-eyebrow">Payment</p>
+    <h2 class="sec-title">お支払い方法</h2>
+    <div class="info-sec">
+      <h3 class="info-sec-title">現地・当日決済</h3>
+      <ul class="info-list">
+        <li>現金</li>
+        <li>クレジットカード</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 子ども・乳幼児 -->
+<section class="sec">
+  <div class="container">
+    <p class="sec-eyebrow">Kids &amp; Infants</p>
+    <h2 class="sec-title">子ども・乳幼児の参加条件</h2>
+    <div class="info-sec">
+      <h3 class="info-sec-title">子ども料金（18歳以下 ＝ 子ども / 19歳以上 ＝ 大人）</h3>
+      <ul class="info-list">
+        <li>SUP・通常カヤック・SUP＋シュノーケリング・カヤック＋シュノーケリング：1組3名まで無料。4名目以降は1名5,000円</li>
+        <li>シュノーケリング：1人目から1名5,000円</li>
+        <li>クリアカヤック：大人2名＋5歳以下1名の例外3名乗艇が認められる場合、子どもは無料</li>
+        <li>無料のお子さまも定員・安全管理上の参加人数に含まれます</li>
+      </ul>
+    </div>
+    <div class="info-sec">
+      <h3 class="info-sec-title">乳幼児の参加について（シーカヤック）</h3>
+      <ul class="info-list">
+        <li>1歳以上2歳未満：保護者同艇必須。身体に適合するライフジャケットをお客様ご自身でご準備・ご持参ください</li>
+        <li>1歳未満：参加可否は事前にLINEでご相談ください</li>
+        <li>年齢に関わらず、体格・健康状態・器材・当日の海況を確認し、ガイドが安全に参加できると判断した場合のみご参加いただけます</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 開催判断・キャンセル -->
+<section class="sec">
+  <div class="container">
+    <p class="sec-eyebrow">Cancellation</p>
+    <h2 class="sec-title">開催判断・キャンセルについて</h2>
+    <div class="info-sec">
+      <h3 class="info-sec-title">開催判断</h3>
+      <ul class="info-list">
+        <li>基本は前日に判断します</li>
+        <li>降雨のみの場合は原則催行</li>
+        <li>台風・災害・急激な天候・海況悪化等では中止する場合があります</li>
+        <li>やむを得ない場合は当日催行1時間前までに最終判断する場合があります</li>
+      </ul>
+    </div>
+    <div class="info-sec">
+      <h3 class="info-sec-title">キャンセル料</h3>
+      <table class="cancel-table">
+        <thead>
+          <tr><th>タイミング</th><th>キャンセル料</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>前日のお客様都合によるキャンセル</td><td>ツアー料金の100%</td></tr>
+          <tr><td>当日のお客様都合によるキャンセル</td><td>原則ツアー料金の100%</td></tr>
+          <tr><td>BEMBAからの開催場所・日程変更によりキャンセルされる場合</td><td>キャンセル料なし</td></tr>
+          <tr><td>ツアー開始後、天候・海況悪化で開始30分未満に中止</td><td>全額返金</td></tr>
+          <tr><td>ツアー開始後、30分以上経過して中止</td><td>返金なし</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:.82rem;color:var(--sub);margin-top:12px;">ご予定が変わった場合は、分かった時点でできるだけ早めにご連絡ください。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 写真・動画 -->
+<section class="sec">
+  <div class="container">
+    <p class="sec-eyebrow">Photos &amp; Video</p>
+    <h2 class="sec-title">写真・動画データの受け渡し</h2>
+    <div class="info-sec">
+      <h3 class="info-sec-title">料金に含まれます</h3>
+      <p>ツアー中にガイドが撮影した写真・動画データは料金に含まれます。受け渡し方法の詳細は、ご予約確定後にご案内します。</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec">
+  <div class="container">
+    <p class="sec-eyebrow">FAQ</p>
+    <h2 class="sec-title">よくある質問</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">初心者でも参加できますか？<span class="arrow">▼</span></button>
+        <div class="faq-a">はい、大丈夫です！ご希望のツアーや不安な点は、事前にLINEでお気軽にご相談ください。当日も参加者のペースに合わせてご案内します。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">泳ぎが苦手でも参加できますか？<span class="arrow">▼</span></button>
+        <div class="faq-a">泳ぎが苦手な方でも、まずはLINEでご相談ください。参加者の状況を確認した上で、安全にご案内できるかどうかをお伝えします。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">雨でも開催しますか？<span class="arrow">▼</span></button>
+        <div class="faq-a">雨のみであれば原則催行しています。台風や急激な天候・海況悪化の場合は中止になることがあります。基本は前日までにご連絡します。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">集合場所はどこですか？<span class="arrow">▼</span></button>
+        <div class="faq-a">催行場所は基本的に恩納村瀬良垣エリアですが、当日の天候や海況によって変更する場合があります。集合場所は原則として前日までにご案内します。やむを得ず当日判断が必要な場合は、ツアー開始1時間前までにお知らせします。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">更衣室やシャワーはありますか？<span class="arrow">▼</span></button>
+        <div class="faq-a">基本的にありません。直接ビーチ集合・解散となります。水着やラッシュガードを着用してお越しいただき、着替えとタオルをご持参いただくとスムーズです。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">支払い方法は？<span class="arrow">▼</span></button>
+        <div class="faq-a">現地・当日決済となります。現金・クレジットカードに対応しています。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">写真・動画はもらえますか？<span class="arrow">▼</span></button>
+        <div class="faq-a">はい、ガイドが撮影した写真・動画データはすべてツアー料金に含まれています。受け渡し方法の詳細はご予約確定後にご案内します。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">グループ全員が沖縄県民でなくても県民割は使えますか？<span class="arrow">▼</span></button>
+        <div class="faq-a">大人2名以上参加で、グループ内に沖縄県在住者が1名以上いれば適用されます。その県在住者が子ども（18歳以下）でも適用されます。割引は大人全員に適用され、子ども料金は対象外です。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING CTA -->
+<section class="booking-cta">
+  <h2 class="booking-cta-title">ご予約・ご相談はこちらから</h2>
+  <p class="booking-cta-sub">ご不明な点はまずLINEでお気軽にどうぞ。</p>
+  <div class="booking-btns">
+    <a href="https://lin.ee/ohC64EDT" target="_blank" rel="noopener" class="btn-line">💬 LINEで相談する</a>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdqf3kmFzZnffRVf_NnlmSQ536_gymBiTUo3nAIwn_LCsQ8hA/viewform" target="_blank" rel="noopener" class="btn-form">📋 予約フォームへ</a>
+  </div>
+  <p class="booking-note">フォーム送信のみでは予約確定ではありません。BEMBAより折り返しご連絡します。</p>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <div class="foot-logo">
+      <img src="images/logo-bemba-oval.png" alt="BEMBA logo" width="28" height="28">
+      <span>BEMBA（ベンバ）</span>
+    </div>
+    <nav class="foot-links" aria-label="フッターナビゲーション">
+      <a href="index.html">ホーム</a>
+      <a href="index.html#tours">ツアー一覧</a>
+      <a href="about.html">BEMBAについて</a>
+      <a href="guide.html">ご利用案内</a>
+      <a href="guide-en.html">English</a>
+      <a href="https://lin.ee/ohC64EDT" target="_blank" rel="noopener">LINE</a>
+    </nav>
+    <p class="foot-copy">© 2026 BEMBA. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+const _mb = document.getElementById('menu-btn');
+const _ns = document.getElementById('nav-sp');
+_mb?.addEventListener('click', () => { const open = _ns.classList.toggle('open'); _mb.setAttribute('aria-expanded', open); });
+const _lt = document.getElementById('lang-toggle');
+const _ld = document.getElementById('lang-drop');
+_lt?.addEventListener('click', () => { const open = _ld.classList.toggle('open'); _lt.setAttribute('aria-expanded', open); });
+document.addEventListener('click', e => { if (!e.target.closest('#lang-sw')) _ld?.classList.remove('open'); });
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.toggle('open');
+    btn.setAttribute('aria-expanded', isOpen);
+  });
+});
+</script>
+</body>
+</html>

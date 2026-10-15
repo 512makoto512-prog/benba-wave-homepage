@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BEMBA — Fully Private Marine Tours in Okinawa</title>
+<meta name="description" content="BEMBA offers fully private marine tours in Okinawa — SUP, kayak, snorkeling, and more. One group at a time, fully exclusive.">
+<link rel="alternate" hreflang="ja" href="https://bemba-okinawa.netlify.app/">
+<link rel="alternate" hreflang="en" href="https://bemba-okinawa.netlify.app/en/">
+<link rel="alternate" hreflang="x-default" href="https://bemba-okinawa.netlify.app/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:   #0D2B3E;
+  --ocean:  #1A6B9A;
+  --sky:    #7EC8E3;
+  --sand:   #F6F3ED;
+  --white:  #FFFFFF;
+  --text:   #1A1A1A;
+  --sub:    #4A5A68;
+  --border: #DDD9D0;
+  --green:  #06C755;
+  --header: 64px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans JP', -apple-system, 'Segoe UI', sans-serif;
+  background: var(--white); color: var(--text);
+  line-height: 1.75; -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+
+/* Preview bar */
+.preview-bar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+  background: rgba(13,43,62,.95); color: rgba(255,255,255,.9);
+  font-size: .72rem; text-align: center; padding: 8px 16px; letter-spacing: .04em;
+}
+
+/* Header */
+#hdr {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: var(--header);
+  background: rgba(255,255,255,.96);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.hdr-inner {
+  max-width: 1080px; margin-inline: auto; padding-inline: 24px;
+  height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.logo {
+  display: flex; align-items: center; gap: 10px;
+  font-size: .95rem; font-weight: 700; color: var(--navy);
+  letter-spacing: .06em; flex-shrink: 0;
+}
+.logo img { width: 36px; height: 36px; object-fit: contain; }
+
+/* PC nav */
+.nav-pc { display: none; gap: 28px; align-items: center; }
+@media (min-width: 768px) { .nav-pc { display: flex; } }
+.nav-pc a { font-size: .82rem; color: var(--sub); letter-spacing: .04em; white-space: nowrap; transition: color .15s; }
+.nav-pc a:hover { color: var(--navy); }
+.nav-cta {
+  background: var(--navy); color: var(--white) !important;
+  padding: 9px 22px; border-radius: 3px;
+  font-size: .82rem !important; font-weight: 700 !important; letter-spacing: .04em;
+  transition: opacity .15s !important;
+}
+.nav-cta:hover { opacity: .85; }
+
+/* Language switcher */
+.lang-sw { position: relative; flex-shrink: 0; }
+.lang-btn {
+  display: flex; align-items: center; gap: 5px; background: none;
+  border: 1px solid var(--border); border-radius: 3px; padding: 5px 9px;
+  cursor: pointer; font-size: .74rem; font-weight: 500; color: var(--sub);
+  letter-spacing: .04em; white-space: nowrap; transition: border-color .15s, color .15s;
+}
+.lang-btn:hover { border-color: var(--ocean); color: var(--navy); }
+.lang-drop {
+  display: none; position: absolute; top: calc(100% + 6px); right: 0;
+  background: var(--white); border: 1px solid var(--border); border-radius: 4px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.1); min-width: 150px; z-index: 200; overflow: hidden;
+}
+.lang-drop.open { display: block; }
+.lang-drop a {
+  display: flex; align-items: center; gap: 8px;
+  padding: 11px 16px; font-size: .82rem; color: var(--text);
+  border-bottom: 1px solid var(--border); transition: background .12s;
+}
+.lang-drop a:last-child { border-bottom: none; }
+.lang-drop a:hover { background: var(--sand); }
+.lang-drop a.active { color: var(--ocean); font-weight: 700; }
+
+/* Hamburger */
+.hamburger {
+  display: flex; flex-direction: column; justify-content: center; gap: 5px;
+  width: 28px; height: 28px; background: none; border: none; cursor: pointer; flex-shrink: 0;
+}
+.hamburger span { display: block; height: 1.5px; background: var(--navy); border-radius: 1px; }
+@media (min-width: 768px) { .hamburger { display: none; } }
+
+/* Mobile nav */
+.nav-sp {
+  display: none; position: fixed; top: var(--header); left: 0; right: 0;
+  background: var(--white); border-top: 1px solid var(--border);
+  padding: 16px 24px 24px; z-index: 99; box-shadow: 0 8px 24px rgba(0,0,0,.08);
+}
+.nav-sp.open { display: block; }
+.nav-sp-lang {
+  display: flex; gap: 8px; padding: 12px 0 8px;
+  border-bottom: 1px solid var(--border); flex-wrap: wrap; margin-bottom: 4px;
+}
+.nav-sp-lang a { font-size: .74rem; color: var(--sub); padding: 4px 10px; background: var(--sand); border-radius: 2px; }
+.nav-sp-lang a.active { background: var(--navy); color: var(--white); font-weight: 700; }
+.nav-sp > a {
+  display: block; padding: 13px 0; font-size: .92rem;
+  color: var(--text); border-bottom: 1px solid var(--border);
+}
+.nav-sp > a:last-child {
+  border: none; margin-top: 8px; background: var(--navy); color: var(--white);
+  text-align: center; border-radius: 3px; padding: 13px; font-weight: 700;
+}
+
+/* Hero */
+#hero { height: 100svh; position: relative; overflow: hidden; background: #2B6CB0; }
+.hero-photo {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: center 20%;
+}
+@media (max-width: 767px) { .hero-photo { object-position: 42% 8%; } }
+.hero-content {
+  position: absolute; z-index: 2; color: var(--white);
+  top: calc(var(--header) + 20px); left: 56px; max-width: 480px;
+}
+@media (max-width: 1100px) { .hero-content { left: 36px; max-width: 420px; } }
+@media (max-width: 767px) {
+  .hero-content { left: 0; right: 0; padding-inline: 28px; max-width: none; text-align: center; }
+}
+.hero-logo-wrap { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+@media (max-width: 767px) { .hero-logo-wrap { justify-content: center; margin-bottom: 16px; } }
+.hero-logo { width: 40px; height: 40px; object-fit: contain; flex-shrink: 0; }
+.hero-logo-name { font-size: 1rem; font-weight: 700; letter-spacing: .18em; }
+.hero-copy {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 400; font-size: clamp(2rem, 4.2vw, 3rem);
+  line-height: 1.25; letter-spacing: .02em; margin-bottom: 14px;
+}
+@media (max-width: 767px) { .hero-copy { font-size: clamp(1.9rem, 8vw, 2.4rem); } }
+.hero-service { font-size: .78rem; font-weight: 300; letter-spacing: .1em; color: rgba(255,255,255,.9); margin-bottom: 28px; }
+.hero-btns { display: flex; flex-wrap: wrap; gap: 10px; }
+@media (max-width: 767px) { .hero-btns { justify-content: center; } }
+.btn-tour {
+  background: var(--white); color: var(--navy); padding: 11px 24px; border-radius: 3px;
+  font-size: .82rem; font-weight: 700; letter-spacing: .04em; transition: opacity .15s;
+}
+.btn-tour:hover { opacity: .88; }
+.btn-book {
+  border: 1.5px solid rgba(255,255,255,.75); color: var(--white);
+  padding: 11px 24px; border-radius: 3px;
+  font-size: .82rem; font-weight: 300; letter-spacing: .04em; transition: border-color .15s;
+}
+.btn-book:hover { border-color: rgba(255,255,255,1); }
+.hero-wave { position: absolute; bottom: 0; left: 0; right: 0; height: 72px; z-index: 2; }
+.hero-wave svg { width: 100%; height: 100%; }
+
+/* Tours */
+#tours { background: var(--sand); padding: 80px 0; }
+.container { max-width: 1080px; margin-inline: auto; padding-inline: 24px; }
+.sec-header { margin-bottom: 48px; }
+.sec-label {
+  display: block; font-size: .68rem; font-weight: 500;
+  letter-spacing: .2em; text-transform: uppercase; color: var(--ocean); margin-bottom: 10px;
+}
+.sec-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 400; color: var(--navy); letter-spacing: .02em; margin-bottom: 8px;
+}
+.sec-lead { font-size: .95rem; color: var(--navy); font-weight: 400; line-height: 1.8; }
+
+.tours-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+@media (max-width: 900px) { .tours-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; } }
+@media (max-width: 540px) { .tours-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; } }
+
+.tour-card {
+  background: var(--white); border-radius: 4px; overflow: hidden;
+  transition: transform .2s, box-shadow .2s; cursor: pointer;
+}
+.tour-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(13,43,62,.13); }
+.tour-photo { aspect-ratio: 16 / 9; overflow: hidden; position: relative; background: #0A3A5C; }
+.tour-photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .35s ease; }
+.tour-card:hover .tour-photo img { transform: scale(1.04); }
+.tour-photo-inner {
+  width: 100%; height: 100%; position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.tour-photo-inner::after {
+  content: attr(data-label);
+  font-size: .62rem; color: rgba(255,255,255,.5);
+  letter-spacing: .08em; text-align: center; padding: 0 12px;
+}
+.t-drone       { background: linear-gradient(160deg, #071C2E 0%, #1A5A80 100%); }
+.t-placeholder { background: linear-gradient(160deg, #0A2F45 0%, #1A6B9A 60%, #7EC8E3 100%); }
+.tour-foot { padding: 14px 16px 16px; border-top: 1px solid var(--border); }
+.tour-name { font-size: .9rem; font-weight: 500; color: var(--navy); margin-bottom: 6px; letter-spacing: .02em; line-height: 1.4; }
+.tour-link { display: inline-flex; align-items: center; gap: 4px; font-size: .74rem; color: var(--ocean); letter-spacing: .04em; transition: gap .15s; }
+.tour-link:hover { gap: 8px; }
+.tour-card-wide { grid-column: 1 / -1; }
+.tour-card-wide .tour-photo { aspect-ratio: 16/8; }
+@media (max-width: 540px) { .tour-card-wide .tour-photo { aspect-ratio: 4/3; } }
+
+/* Booking */
+#booking { background: var(--navy); padding: 80px 0 72px; }
+.booking-inner { max-width: 560px; margin-inline: auto; text-align: center; padding-inline: 24px; }
+.booking-label {
+  display: block; font-size: .68rem; font-weight: 500;
+  letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.45); margin-bottom: 10px;
+}
+.booking-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 400; color: var(--white); letter-spacing: .02em; margin-bottom: 14px;
+}
+.booking-sub { font-size: .85rem; color: rgba(255,255,255,.7); font-weight: 300; line-height: 1.9; margin-bottom: 10px; }
+.booking-note-sm { font-size: .76rem; color: rgba(255,255,255,.45); font-weight: 300; margin-bottom: 32px; line-height: 1.8; }
+.booking-btns { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-bottom: 24px; }
+.btn-line {
+  background: var(--green); color: var(--white); padding: 14px 32px; border-radius: 3px;
+  font-size: .9rem; font-weight: 700; letter-spacing: .04em;
+  display: inline-flex; align-items: center; gap: 7px; transition: opacity .15s;
+}
+.btn-line:hover { opacity: .88; }
+.btn-email {
+  border: 1.5px solid rgba(255,255,255,.3); color: rgba(255,255,255,.8);
+  padding: 14px 32px; border-radius: 3px;
+  font-size: .9rem; font-weight: 300; letter-spacing: .04em; transition: border-color .15s;
+}
+.btn-email:hover { border-color: rgba(255,255,255,.7); }
+.booking-footer {
+  font-size: .74rem; color: rgba(255,255,255,.4);
+  line-height: 2; border-top: 1px solid rgba(255,255,255,.08); padding-top: 20px;
+}
+
+/* Footer */
+footer { background: #071422; padding: 32px 24px; text-align: center; }
+.foot-inner { max-width: 640px; margin-inline: auto; }
+.foot-logo { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 12px; }
+.foot-logo img { width: 28px; height: 28px; object-fit: contain; opacity: .7; }
+.foot-logo span { font-size: .85rem; font-weight: 700; color: rgba(255,255,255,.45); letter-spacing: .12em; }
+.foot-lang { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 14px; }
+.foot-lang a { font-size: .68rem; color: rgba(255,255,255,.3); padding: 3px 8px; border: 1px solid rgba(255,255,255,.1); border-radius: 2px; }
+.foot-lang a.active { color: rgba(255,255,255,.6); border-color: rgba(255,255,255,.25); }
+.foot-links { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-bottom: 14px; }
+.foot-links a { font-size: .72rem; color: rgba(255,255,255,.3); }
+.foot-copy { font-size: .68rem; color: rgba(255,255,255,.2); letter-spacing: .06em; }
+</style>
+</head>
+<body>
+
+
+
+<!-- HEADER -->
+<header id="hdr">
+  <div class="hdr-inner">
+    <a href="index-en.html" class="logo" aria-label="BEMBA Home">
+      <img src="images/logo-bemba-oval.png" alt="BEMBA logo" width="36" height="36">
+      <span>BEMBA</span>
+    </a>
+    <nav class="nav-pc" aria-label="Main navigation">
+      <a href="#tours">Tours</a>
+      <a href="about-en.html">About</a>
+      <a href="guide-en.html">Guide &amp; FAQ</a>
+      <div class="lang-sw" id="lang-sw">
+        <button class="lang-btn" id="lang-toggle" aria-haspopup="true" aria-expanded="false" aria-label="Switch language">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          EN
+        </button>
+        <div class="lang-drop" id="lang-drop">
+          <a href="index.html">🇯🇵 日本語</a>
+          <a href="index-en.html" class="active">🇺🇸 English</a>
+        </div>
+      </div>
+      <a href="#booking" class="nav-cta">Book Now</a>
+    </nav>
+    <button class="hamburger" id="menu-btn" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile nav -->
+<nav class="nav-sp" id="nav-sp" aria-label="Mobile navigation">
+  <div class="nav-sp-lang">
+    <a href="index.html">🇯🇵 日本語</a>
+    <a href="index-en.html" class="active">🇺🇸 English</a>
+  </div>
+  <a href="#tours">Tours</a>
+  <a href="about-en.html">About</a>
+  <a href="guide-en.html">Guide &amp; FAQ</a>
+  <a href="#booking">Book Now</a>
+</nav>
+
+<main>
+
+<!-- HERO -->
+<section id="hero" aria-label="Main visual">
+  <img
+    src="images/hero-bg.webp"
+    alt="Crystal-clear ocean in Okinawa"
+    class="hero-photo"
+    width="1024" height="768"
+    loading="eager" fetchpriority="high"
+  >
+  <div class="hero-content">
+    <div class="hero-logo-wrap">
+      <img src="images/logo-bemba-oval.png" alt="BEMBA logo" class="hero-logo" width="40" height="40">
+      <span class="hero-logo-name">BEMBA</span>
+    </div>
+    <h1 class="hero-copy">Okinawa's Ocean,<br>Yours to Explore.</h1>
+    <p class="hero-service">Fully Private Marine Tours — One Group at a Time</p>
+    <div class="hero-btns">
+      <a href="#tours" class="btn-tour">See Our Tours</a>
+      <a href="#booking" class="btn-book">Book &amp; Contact</a>
+    </div>
+  </div>
+  <div class="hero-wave" aria-hidden="true">
+    <svg viewBox="0 0 1440 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,52 C240,12 480,68 720,40 C960,12 1200,60 1440,36 L1440,72 L0,72 Z" fill="#F6F3ED"/>
+    </svg>
+  </div>
+</section>
+
+<!-- TOURS -->
+<section id="tours" aria-label="Tour lineup">
+  <div class="container">
+    <div class="sec-header">
+      <span class="sec-label">Tours</span>
+      <h2 class="sec-title">Seven Ways to Experience Okinawa's Ocean</h2>
+      <p class="sec-lead">Every tour is fully private — your group, your guide, the ocean all to yourselves. Photos &amp; video included.</p>
+    </div>
+
+    <div class="tours-grid">
+
+      <!-- SUP -->
+      <div class="tour-card">
+        <div class="tour-photo">
+          <img src="images/guide-photo.webp" alt="Guide standing on a SUP board" width="734" height="979" loading="lazy" style="object-position:center 15%">
+        </div>
+        <div class="tour-foot">
+          <h3 class="tour-name">Stand-Up Paddleboarding</h3>
+          <a href="sup-en.html" class="tour-link">See details →</a>
+        </div>
+      </div>
+
+      <!-- Sea Kayak -->
+      <div class="tour-card">
+        <div class="tour-photo">
+          <img src="images/kayak-island1.webp" alt="Sea kayaking near a coral reef island" width="1024" height="768" loading="lazy">
+        </div>
+        <div class="tour-foot">
+          <h3 class="tour-name">Sea Kayaking</h3>
+          <a href="kayak-en.html" class="tour-link">See details →</a>
+        </div>
+      </div>
+
+      <!-- Clear Kayak -->
+      <div class="tour-card">
+        <div class="tour-photo">
+          <img src="images/clear-kayak.webp" alt="Couple in a transparent clear kayak" width="503" height="1024" loading="lazy" style="object-position:center 42%">
+        </div>
+        <div class="tour-foot">
+          <h3 class="tour-name">Clear Kayak</h3>
+          <a href="clear-kayak-en.html" class="tour-link">See details →</a>
+        </div>
+      </div>
+
+      <!-- Snorkeling -->
+      <div class="tour-card">
+        <div class="tour-photo">
+          <img src="images/snorkel.webp" alt="Snorkeling in Okinawa's ocean" width="1024" height="768" loading="lazy">
+        </div>
+        <div class="tour-foot">
+          <h3 class="tour-name">Snorkeling</h3>
+          <a href="snorkel-en.html" class="tour-link">See details →</a>
+        </div>
+      </div>
+
+      <!-- SUP + Snorkeling -->
+      <div class="tour-card">
+        <div class="tour-photo">
+          <img src="images/sup-snorkel.webp" alt="Person standing on SUP board above snorkeler underwater" width="507" height="1024" loading="lazy" style="object-position:center 20%">
+        </div>
+        <div class="tour-foot">
+          <h3 class="tour-name">SUP + Snorkeling</h3>
+          <a href="sup-snorkel-en.html" class="tour-link">See details →</a>
+        </div>
+      </div>
+
+      <!-- Kayak + Snorkeling -->
+      <div class="tour-card">
+        <div class="tour-photo">
+          <img src="images/kayak-island2.webp" alt="Two kayaks on the open ocean" width="1024" height="768" loading="lazy">
+        </div>
+        <div class="tour-foot">
+          <h3 class="tour-name">Kayak + Snorkeling</h3>
+          <a href="kayak-snorkel-en.html" class="tour-link">See details →</a>
+        </div>
+      </div>
+
+      <!-- Beach Drone Photography -->
+      <div class="tour-card tour-card-wide">
+        <div class="tour-photo">
+          <img src="images/drone-beach.webp" alt="Aerial view of Okinawa's beach and ocean" width="501" height="1024" loading="lazy" style="object-position:center 35%">
+        </div>
+        <div class="tour-foot">
+          <h3 class="tour-name">Beach Drone Photography</h3>
+          <a href="drone-en.html" class="tour-link">See details →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SPECIAL MENU -->
+<style>
+.spc-grid-en { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; }
+@media (max-width:640px) { .spc-grid-en { grid-template-columns:1fr; } }
+.spc-card-en { background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.10); border-radius:6px; overflow:hidden; display:flex; flex-direction:column; }
+.spc-card-photo-en { width:100%; aspect-ratio:16/9; overflow:hidden; }
+.spc-card-photo-en img { width:100%; height:100%; object-fit:cover; object-position:center 65%; display:block; }
+.spc-card-photo-en--sunrise { background:linear-gradient(135deg,#3D1A00,#C47020); }
+.spc-card-photo-en--sunset  { background:linear-gradient(135deg,#04111E,#7A2040); }
+.spc-card-body-en { padding:24px 24px 28px; flex:1; display:flex; flex-direction:column; }
+.spc-tag-sr-en { display:inline-flex;align-items:center;gap:5px;background:rgba(212,137,74,.18);border:1px solid rgba(212,137,74,.4);color:#E8B060;font-size:.68rem;font-weight:700;letter-spacing:.14em;padding:4px 10px;border-radius:3px;margin-bottom:14px; }
+.spc-tag-ss-en { display:inline-flex;align-items:center;gap:5px;background:rgba(107,120,200,.18);border:1px solid rgba(107,120,200,.4);color:#A0AEED;font-size:.68rem;font-weight:700;letter-spacing:.14em;padding:4px 10px;border-radius:3px;margin-bottom:14px; }
+.spc-title-en { font-size:1.3rem; font-weight:600; color:#fff; margin-bottom:4px; line-height:1.3; }
+.spc-sub-en { font-size:.74rem; color:rgba(255,255,255,.42); letter-spacing:.08em; margin-bottom:14px; }
+.spc-meta-en { font-size:.8rem; color:rgba(255,255,255,.6); line-height:1.9; margin-bottom:14px; }
+.spc-price-en { font-size:.78rem; color:rgba(255,255,255,.55); line-height:1.85; margin-bottom:14px; padding:12px 14px; background:rgba(255,255,255,.04); border-radius:4px; }
+.spc-price-en strong { color:rgba(255,255,255,.85); }
+.spc-time-en { font-size:.78rem; color:rgba(255,255,255,.5); padding:10px 14px; background:rgba(255,255,255,.03); border-left:3px solid rgba(201,168,76,.4); margin-bottom:18px; line-height:1.8; }
+.spc-btns-en { margin-top:auto; display:flex; flex-direction:column; gap:10px; }
+.spc-btn-line-en { display:flex;align-items:center;justify-content:center;gap:7px;background:#06C755;color:#fff;padding:13px 20px;border-radius:4px;font-size:.84rem;font-weight:700;letter-spacing:.04em; }
+.spc-btn-detail-en { display:flex;align-items:center;justify-content:center;gap:6px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.15);padding:11px 20px;border-radius:4px;font-size:.82rem;font-weight:500;letter-spacing:.04em;transition:background .15s; }
+.spc-btn-detail-en:hover { background:rgba(255,255,255,.12); }
+</style>
+<section aria-label="Special Tours" style="background:#04111E;padding:80px 0;position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 20% 50%,rgba(180,130,30,.12) 0%,transparent 70%),radial-gradient(ellipse 60% 50% at 80% 50%,rgba(26,107,154,.10) 0%,transparent 70%);pointer-events:none;"></div>
+  <div class="container" style="position:relative;">
+    <div class="sec-header" style="margin-bottom:40px;">
+      <span class="sec-label" style="color:#C9A84C;">Special Menu</span>
+      <h2 class="sec-title" style="color:#fff;">Sunrise &amp; Sunset Tours</h2>
+      <p class="sec-lead" style="color:rgba(255,255,255,.65);">Private ocean experiences timed to Okinawa's most breathtaking light. Choose SUP or kayak. Start times arranged by date, season, and conditions.</p>
+    </div>
+    <div class="spc-grid-en">
+
+      <!-- Sunrise -->
+      <article class="spc-card-en">
+        <div class="spc-card-photo-en spc-card-photo-en--sunrise">
+          <img src="images/sunrise-sup.webp" alt="Two guests on SUP boards on Okinawa's calm morning sea at sunrise, wearing lifejackets" loading="lazy">
+        </div>
+        <div class="spc-card-body-en">
+          <span class="spc-tag-sr-en">🌅 Sunrise</span>
+          <h3 class="spc-title-en">Sunrise Tour</h3>
+          <p class="spc-sub-en">サンライズツアー</p>
+          <p class="spc-meta-en">
+            🕐 Experience approx. 120 min ／ Total approx. 180 min<br>
+            👥 Fully private — your group only<br>
+            🏄 SUP (ages 10+) or Kayak (ages 5+)
+          </p>
+          <div class="spc-price-en">
+            <strong>1 adult: ¥16,000</strong>　2–3 adults: ¥13,000/person　4+ adults: ¥11,000/person<br>
+            <span style="font-size:.74rem;">Up to 3 children (18 &amp; under) free per adult ／ Okinawa resident discount available</span>
+          </div>
+          <div class="spc-time-en">⏰ Start time by consultation — arranged by date, sunrise time, weather &amp; sea conditions</div>
+          <div class="spc-btns-en">
+            <a href="https://lin.ee/ohC64EDT" target="_blank" rel="noopener noreferrer" class="spc-btn-line-en">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.03 2 11c0 3.07 1.64 5.78 4.18 7.5L5 22l4.25-2.24C10.44 20.24 11.21 20.4 12 20.4c5.52 0 10-4.03 10-9s-4.48-9-10-9z"/></svg>
+              Chat on LINE
+            </a>
+            <a href="special-menu-en.html" class="spc-btn-detail-en">
+              View details →
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Sunset -->
+      <article class="spc-card-en">
+        <div class="spc-card-photo-en spc-card-photo-en--sunset">
+          <img src="images/sunset-kayak.webp" alt="Guests kayaking on Okinawa's ocean at sunset, wearing lifejackets" loading="lazy">
+        </div>
+        <div class="spc-card-body-en">
+          <span class="spc-tag-ss-en">🌇 Sunset</span>
+          <h3 class="spc-title-en">Sunset Tour</h3>
+          <p class="spc-sub-en">サンセットツアー</p>
+          <p class="spc-meta-en">
+            🕐 Experience approx. 120 min ／ Total approx. 180 min<br>
+            👥 Fully private — your group only<br>
+            🏄 SUP (ages 10+) or Kayak (ages 5+)
+          </p>
+          <div class="spc-price-en">
+            <strong>1 adult: ¥16,000</strong>　2–3 adults: ¥13,000/person　4+ adults: ¥11,000/person<br>
+            <span style="font-size:.74rem;">Up to 3 children (18 &amp; under) free per adult ／ Okinawa resident discount available</span>
+          </div>
+          <div class="spc-time-en">⏰ Start time by consultation — arranged by date, sunset time, weather &amp; sea conditions</div>
+          <div class="spc-btns-en">
+            <a href="https://lin.ee/ohC64EDT" target="_blank" rel="noopener noreferrer" class="spc-btn-line-en">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.03 2 11c0 3.07 1.64 5.78 4.18 7.5L5 22l4.25-2.24C10.44 20.24 11.21 20.4 12 20.4c5.52 0 10-4.03 10-9s-4.48-9-10-9z"/></svg>
+              Chat on LINE
+            </a>
+            <a href="special-menu-en.html" class="spc-btn-detail-en">
+              View details →
+            </a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking" aria-label="Book your tour">
+  <div class="booking-inner">
+    <span class="booking-label">Reservation &amp; Contact</span>
+    <h2 class="booking-title">Book Your Tour</h2>
+    <p class="booking-sub">
+      Fill in the booking form or message us on LINE — feel free to write in English.<br>
+      Tell us your tour, preferred date, and group size.
+    </p>
+    <p class="booking-note-sm">We use translation apps and will guide you through the booking process.</p>
+    <div class="booking-btns">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSf0P_825mY5j3x9UxUeuRWD2Tj17UdquTOCDbmxp2jqGLvv4g/viewform" target="_blank" rel="noopener noreferrer" class="btn-line">
+        Book Now
+      </a>
+      <a href="https://lin.ee/ohC64EDT" target="_blank" rel="noopener noreferrer" class="btn-email">
+        💬 Message us on LINE
+      </a>
+    </div>
+    <p class="booking-footer">
+      Bookings open from November 1, 2026<br>
+      bemba.okinawa@gmail.com
+    </p>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-logo">
+      <img src="images/logo-bemba-oval.png" alt="BEMBA logo" width="28" height="28">
+      <span>BEMBA</span>
+    </div>
+    <div class="foot-lang" aria-label="Language">
+      <a href="index.html">🇯🇵 日本語</a>
+      <a href="index-en.html" class="active">🇺🇸 English</a>
+    </div>
+    <div class="foot-links">
+      <a href="#tours">Tours</a>
+      <a href="#booking">Book Now</a>
+    </div>
+    <p class="foot-copy">© 2026 BEMBA — Private Marine Tours, Okinawa</p>
+  </div>
+</footer>
+
+<script>
+// Language dropdown
+const langToggle = document.getElementById('lang-toggle');
+const langDrop = document.getElementById('lang-drop');
+const langSw = document.getElementById('lang-sw');
+langToggle.addEventListener('click', e => {
+  e.stopPropagation();
+  const open = langDrop.classList.toggle('open');
+  langToggle.setAttribute('aria-expanded', open);
+});
+document.addEventListener('click', e => {
+  if (!langSw.contains(e.target)) {
+    langDrop.classList.remove('open');
+    langToggle.setAttribute('aria-expanded', false);
+  }
+});
+
+// Hamburger
+const btn = document.getElementById('menu-btn');
+const navSp = document.getElementById('nav-sp');
+btn.addEventListener('click', () => {
+  const open = navSp.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open);
+});
+navSp.querySelectorAll('a:not(.nav-sp-lang a)').forEach(a => {
+  a.addEventListener('click', () => {
+    navSp.classList.remove('open');
+    btn.setAttribute('aria-expanded', false);
+  });
+});
+</script>
+</body>
+</html>

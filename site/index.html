@@ -1,859 +1,783 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BEMBA｜沖縄の貸切SUP・カヤック・シュノーケリング｜恩納村・金武町</title>
-  <meta name="description" content="1組限定・完全貸切の沖縄マリンツアー。SUP・カヤック・クリアカヤック・シュノーケリングを恩納村・金武町・名護エリアでご案内。写真・動画込み。家族・カップルに。">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BEMBA（ベンバ）— 沖縄・恩納村の完全貸切マリンツアー</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===================================================
+   BEMBA（ベンバ）— 沖縄・恩納村の完全貸切マリンツアー
+   ※このファイルはデザイン確認用。本番ファイルではありません。
+   =================================================== */
 
-  <!-- OGP -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="BEMBA｜沖縄の貸切SUP・カヤック・シュノーケリング｜恩納村・金武町">
-  <meta property="og:description" content="1組限定・完全貸切の沖縄マリンツアー。写真・動画撮影込み。SUP・カヤック・シュノーケリング。">
-  <meta property="og:url" content="https://bemba-okinawa.netlify.app/">
-  <meta property="og:image" content="https://bemba-okinawa.netlify.app/images/hero-bg.webp">
-  <meta property="og:image:width" content="1024">
-  <meta property="og:image:height" content="768">
-  <meta property="og:locale" content="ja_JP">
-  <meta name="twitter:card" content="summary_large_image">
+:root {
+  --navy:   #0D2B3E;
+  --ocean:  #2A9D8F;
+  --sky:    #7EC8E3;
+  --sand:   #F5F0E8;
+  --white:  #FDFAF7;
+  --text:   #1A1A1A;
+  --sub:    #5A6B78;
+  --border: #DDD8CF;
+  --gold:   #C9954C;
+  --header: 64px;
+}
 
-  <!-- Google Search Console -->
-  <meta name="google-site-verification" content="o-PYITUF_5ebdEniPjjfEn9xTHlLO__GEy1n3gneX-A">
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;
+  background: var(--white);
+  color: var(--text);
+  line-height: 1.75;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
 
-  <!-- Canonical -->
-  <link rel="canonical" href="https://bemba-okinawa.netlify.app/">
+/* ── PREVIEW NOTICE BAR ── */
+.preview-bar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+  background: rgba(13,43,62,.95);
+  color: rgba(255,255,255,.9);
+  font-size: .72rem; text-align: center;
+  padding: 8px 16px;
+  letter-spacing: .04em;
+}
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;900&display=swap" rel="stylesheet">
+/* ── HEADER ── */
+#hdr {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: var(--header);
+  background: rgba(255,255,255,.96);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  transition: background .2s;
+}
+.hdr-inner {
+  max-width: 1080px; margin-inline: auto;
+  padding-inline: 24px;
+  height: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.logo {
+  display: flex; align-items: center; gap: 10px;
+  font-size: .95rem; font-weight: 700;
+  color: var(--navy); letter-spacing: .06em;
+}
+.logo img {
+  height: 40px; width: auto;
+  object-fit: contain;
+}
+.logo-yomi { font-size: .6em; font-weight: 400; color: var(--sub); margin-left: 2px; }
 
-  <!-- Preload LCP image -->
-  <link rel="preload" as="image" href="images/hero-bg.webp">
+/* ── LANGUAGE SWITCHER ── */
+.lang-sw { position: relative; }
+.lang-btn {
+  display: flex; align-items: center; gap: 5px;
+  background: none; border: 1px solid var(--border);
+  border-radius: 3px; padding: 5px 9px; cursor: pointer;
+  font-size: .74rem; font-weight: 500; color: var(--sub);
+  letter-spacing: .04em; white-space: nowrap;
+  transition: border-color .15s, color .15s;
+}
+.lang-btn:hover { border-color: var(--ocean); color: var(--navy); }
+.lang-drop {
+  display: none; position: absolute; top: calc(100% + 6px); right: 0;
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 4px; box-shadow: 0 8px 24px rgba(0,0,0,.1);
+  min-width: 150px; z-index: 200; overflow: hidden;
+}
+.lang-drop.open { display: block; }
+.lang-drop a {
+  display: flex; align-items: center; gap: 8px;
+  padding: 11px 16px; font-size: .82rem; color: var(--text);
+  border-bottom: 1px solid var(--border); transition: background .12s;
+}
+.lang-drop a:last-child { border-bottom: none; }
+.lang-drop a:hover { background: var(--sand); }
+.lang-drop a.active { color: var(--ocean); font-weight: 700; }
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="css/style.css">
+/* PC nav */
+.nav-pc {
+  display: none;
+  gap: 28px; align-items: center;
+}
+@media (min-width: 768px) { .nav-pc { display: flex; } }
+.nav-pc a {
+  font-size: .82rem; font-weight: 400;
+  color: var(--sub); letter-spacing: .04em;
+  transition: color .15s;
+}
+.nav-pc a:hover { color: var(--navy); }
+.nav-cta {
+  background: var(--ocean); color: var(--white) !important;
+  padding: 9px 22px; border-radius: 3px;
+  font-size: .82rem !important; font-weight: 700 !important;
+  letter-spacing: .04em;
+  transition: opacity .15s !important;
+}
+.nav-cta:hover { opacity: .85; }
 
-  <!-- JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "BEMBA",
-    "alternateName": "BEMBA（ベンバ）",
-    "description": "沖縄・恩納村・金武町を中心に1組限定・完全貸切でSUP・カヤック・シュノーケリングをご案内するマリンツアー事業者。",
-    "url": "https://bemba-okinawa.netlify.app/",
-    "logo": "https://bemba-okinawa.netlify.app/images/logo-bemba.webp",
-    "image": "https://bemba-okinawa.netlify.app/images/logo-bemba.webp",
-    "email": "bemba.okinawa@gmail.com",
-    "areaServed": "沖縄県（恩納村・金武町・名護市）",
-    "sameAs": [
-      "https://www.instagram.com/bemba_okinawa/",
-      "https://www.tiktok.com/@bemba_okinawa"
-    ]
+/* hamburger */
+.hamburger {
+  display: flex; flex-direction: column;
+  justify-content: center; gap: 5px;
+  width: 28px; height: 28px;
+  background: none; border: none; cursor: pointer;
+}
+.hamburger span {
+  display: block; height: 1.5px;
+  background: var(--navy); border-radius: 1px;
+  transition: .2s;
+}
+@media (min-width: 768px) { .hamburger { display: none; } }
+
+/* mobile nav */
+.nav-sp {
+  display: none;
+  position: fixed; top: var(--header); left: 0; right: 0;
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  padding: 16px 24px 24px;
+  z-index: 99;
+  box-shadow: 0 8px 24px rgba(0,0,0,.08);
+}
+.nav-sp.open { display: block; }
+.nav-sp a {
+  display: block; padding: 13px 0;
+  font-size: .92rem; color: var(--text);
+  border-bottom: 1px solid var(--border);
+  font-weight: 400;
+}
+.nav-sp a:last-child {
+  border: none; margin-top: 8px;
+  background: var(--ocean); color: var(--white);
+  text-align: center; border-radius: 3px;
+  padding: 13px; font-weight: 700;
+}
+
+/* ── HERO ── */
+/*
+  写真構図：上部40%＝青空（余白）、下部60%＝透明な海＋カヤック人物
+  方針：空のエリアにテキストを配置。オーバーレイなし。人物・海を隠さない。
+  PC: object-position でより多くの空を上部に表示 → テキストを上部左寄せ
+  SP: 縦長クロップ対応 → テキスト上部中央寄せ
+*/
+#hero {
+  height: 100svh;
+  position: relative;
+  overflow: hidden;
+  background: #2B6CB0; /* 写真読み込み前のフォールバック */
+}
+.hero-photo {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  /* 空を上部に、人物・海を下部に配置 */
+  object-position: center 20%;
+}
+/* SP: 縦長クロップ - 空の割合を最大化 */
+@media (max-width: 767px) {
+  .hero-photo { object-position: 42% 8%; }
+}
+
+/* オーバーレイなし。写真の自然な明度のみで文字を支える。 */
+
+/*
+  テキストブロック：写真の空エリア（ヘッダー直下）に絶対配置
+  PC: 左寄せ。空は写真上部40%にあるため、ヘッダー+20pxから開始
+  SP: 中央寄せ。object-positionで空を最大化
+*/
+.hero-content {
+  position: absolute;
+  z-index: 2;
+  color: var(--white);
+  top: calc(var(--header) + 20px);
+  left: 56px;
+  max-width: 460px;
+}
+@media (max-width: 1100px) {
+  .hero-content { left: 36px; max-width: 400px; }
+}
+@media (max-width: 767px) {
+  .hero-content {
+    top: calc(var(--header) + 20px);
+    left: 0; right: 0;
+    padding-inline: 28px;
+    max-width: none;
+    text-align: center;
   }
-  </script>
+}
+
+/* ロゴ＋BEMBA */
+.hero-logo-wrap {
+  display: flex; align-items: center;
+  gap: 10px; margin-bottom: 20px;
+}
+@media (max-width: 767px) {
+  .hero-logo-wrap { justify-content: center; margin-bottom: 16px; }
+}
+.hero-logo {
+  height: 52px; width: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,.25));
+}
+.hero-logo-name {
+  font-size: 1rem; font-weight: 700;
+  letter-spacing: .18em;
+}
+
+/* キャッチコピー */
+.hero-copy {
+  font-family: 'Noto Serif JP', 'Hiragino Mincho ProN', serif;
+  font-weight: 400;
+  font-size: clamp(1.7rem, 3.8vw, 2.6rem);
+  line-height: 1.4;
+  letter-spacing: .06em;
+  margin-bottom: 12px;
+}
+@media (max-width: 767px) {
+  .hero-copy { font-size: clamp(1.55rem, 7.5vw, 2rem); }
+}
+
+/* サービスラベル */
+.hero-service {
+  font-size: .78rem;
+  font-weight: 300;
+  letter-spacing: .12em;
+  color: rgba(255,255,255,.9);
+  margin-bottom: 24px;
+}
+
+/* ボタン */
+.hero-btns {
+  display: flex; flex-wrap: wrap;
+  gap: 10px;
+}
+@media (max-width: 767px) {
+  .hero-btns { justify-content: center; }
+}
+.btn-tour {
+  background: var(--white); color: var(--navy);
+  padding: 11px 24px; border-radius: 3px;
+  font-size: .82rem; font-weight: 700;
+  letter-spacing: .04em;
+  transition: opacity .15s;
+}
+.btn-tour:hover { opacity: .88; }
+.btn-book {
+  background: transparent;
+  border: 1.5px solid rgba(255,255,255,.75);
+  color: var(--white);
+  padding: 11px 24px; border-radius: 3px;
+  font-size: .82rem; font-weight: 300;
+  letter-spacing: .04em;
+  transition: border-color .15s;
+}
+.btn-book:hover { border-color: rgba(255,255,255,1); }
+
+/* wave */
+.hero-wave {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 72px; z-index: 2;
+}
+.hero-wave svg { width: 100%; height: 100%; }
+
+/* ── TOURS ── */
+#tours {
+  background: var(--sand);
+  padding: 80px 0;
+}
+.container {
+  max-width: 1080px; margin-inline: auto;
+  padding-inline: 24px;
+}
+.sec-header {
+  margin-bottom: 48px;
+}
+.sec-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: .68rem; font-weight: 500;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--ocean); margin-bottom: 12px;
+}
+.sec-label::before {
+  content: '';
+  display: inline-block; width: 24px; height: 1.5px;
+  background: var(--ocean); border-radius: 1px;
+  flex-shrink: 0;
+}
+.sec-title {
+  font-family: 'Noto Serif JP', serif;
+  font-weight: 600;
+  font-size: clamp(1.4rem, 3.5vw, 1.9rem);
+  color: var(--navy); letter-spacing: .04em;
+  margin-bottom: 8px;
+}
+.sec-lead {
+  font-size: .95rem; color: var(--navy);
+  font-weight: 400; letter-spacing: .03em; line-height: 1.8;
+}
+
+/* tour grid: 3 cols → 2 → 1 */
+.tours-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+@media (max-width: 900px) {
+  .tours-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+}
+@media (max-width: 540px) {
+  .tours-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+}
+
+/* カード：写真主役・フラットシンプル */
+.tour-card {
+  background: var(--white);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform .2s, box-shadow .2s;
+  cursor: pointer;
+}
+.tour-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(13,43,62,.13);
+}
+
+/* 写真エリア：16:9 */
+.tour-photo {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  position: relative;
+  background: #0A3A5C;
+}
+.tour-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .35s ease;
+}
+.tour-card:hover .tour-photo img { transform: scale(1.04); }
+/* 仮画像フォールバック（写真なしの場合） */
+.tour-photo-inner {
+  width: 100%; height: 100%;
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.tour-photo-inner::after {
+  content: attr(data-label);
+  font-size: .65rem; font-weight: 400;
+  color: rgba(255,255,255,.45);
+  letter-spacing: .12em;
+  white-space: nowrap;
+}
+/* 仮画像グラデーション */
+.t-drone       { background: linear-gradient(160deg, #071C2E 0%, #1A5A80 100%); }
+.t-placeholder { background: linear-gradient(160deg, #0A2F45 0%, #1A6B9A 60%, #7EC8E3 100%); }
+
+/* カード下部：ツアー名＋リンク */
+.tour-foot {
+  padding: 14px 16px 16px;
+  border-top: 2px solid var(--border);
+  transition: border-color .2s;
+}
+.tour-card:hover .tour-foot {
+  border-top-color: var(--ocean);
+}
+.tour-name {
+  font-size: .9rem; font-weight: 500;
+  color: var(--navy); margin-bottom: 6px;
+  letter-spacing: .02em;
+  line-height: 1.4;
+}
+.tour-link {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: .74rem; color: var(--ocean);
+  font-weight: 400; letter-spacing: .04em;
+  transition: gap .15s;
+}
+.tour-link:hover { gap: 8px; }
+
+/* ドローン空撮：最下段フル幅 */
+.tour-card-wide {
+  grid-column: 1 / -1;
+}
+.tour-card-wide .tour-photo {
+  aspect-ratio: 16/8;
+}
+@media (max-width: 540px) {
+  .tour-card-wide .tour-photo { aspect-ratio: 4/3; }
+}
+
+/* ── BOOKING ── */
+#booking {
+  background: var(--navy);
+  padding: 80px 0 72px;
+}
+.booking-inner {
+  max-width: 640px; margin-inline: auto;
+  text-align: center; padding-inline: 24px;
+}
+.booking-label {
+  display: block;
+  font-size: .68rem; font-weight: 500;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: rgba(255,255,255,.45); margin-bottom: 10px;
+}
+.booking-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(1.3rem, 3.5vw, 1.7rem);
+  font-weight: 600; color: var(--white);
+  letter-spacing: .04em; margin-bottom: 14px;
+}
+.booking-sub {
+  font-size: .84rem; color: rgba(255,255,255,.6);
+  font-weight: 300; line-height: 1.9;
+  margin-bottom: 36px;
+}
+.booking-btns {
+  display: flex; flex-wrap: wrap;
+  gap: 12px; justify-content: center;
+  margin-bottom: 32px;
+}
+.btn-line {
+  background: #06C755; color: var(--white);
+  padding: 14px 32px; border-radius: 3px;
+  font-size: .9rem; font-weight: 700;
+  letter-spacing: .04em;
+  display: flex; align-items: center; gap: 7px;
+  transition: opacity .15s;
+}
+.btn-line:hover { opacity: .88; }
+.btn-form {
+  border: 1.5px solid rgba(255,255,255,.3);
+  color: rgba(255,255,255,.8);
+  padding: 14px 32px; border-radius: 3px;
+  font-size: .9rem; font-weight: 300;
+  letter-spacing: .04em;
+  transition: border-color .15s;
+}
+.btn-form:hover { border-color: rgba(255,255,255,.7); }
+.booking-note {
+  font-size: .74rem; color: rgba(255,255,255,.35);
+  line-height: 2;
+  border-top: 1px solid rgba(255,255,255,.08);
+  padding-top: 20px;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: #071422;
+  padding: 32px 24px;
+  text-align: center;
+}
+.foot-inner { max-width: 640px; margin-inline: auto; }
+.foot-logo {
+  display: flex; align-items: center; justify-content: center;
+  gap: 10px; margin-bottom: 12px;
+}
+.foot-logo img { height: 32px; width: auto; object-fit: contain; opacity: .75; }
+.foot-logo span { font-size: .85rem; font-weight: 700; color: rgba(255,255,255,.55); letter-spacing: .1em; }
+.foot-links { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-bottom: 16px; }
+.foot-links a { font-size: .72rem; color: rgba(255,255,255,.35); }
+.foot-copy { font-size: .68rem; color: rgba(255,255,255,.25); letter-spacing: .06em; }
+</style>
 </head>
 <body>
 
+<!-- PREVIEW NOTICE -->
+
+
 <!-- ========== HEADER ========== -->
-<header id="site-header">
-  <div class="container header-inner">
-    <a href="/" class="logo" aria-label="BEMBA トップへ">
-      <img src="images/logo-bemba.webp" alt="BEMBAロゴ" width="40" height="40" loading="eager">
-      <span>BEMBA<small class="logo-yomi">（ベンバ）</small></span>
+<header id="hdr">
+  <div class="hdr-inner">
+    <a href="/" class="logo" aria-label="BEMBAトップへ">
+      <img src="images/logo-bemba-oval.png" alt="BEMBAロゴ" width="40" height="40">
+      <span>BEMBA<span class="logo-yomi">（ベンバ）</span></span>
     </a>
-    <button class="hamburger" id="menu-toggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="nav-list">
+    <nav class="nav-pc" aria-label="メインナビゲーション">
+      <a href="#tours">ツアー</a>
+      <a href="about.html">BEMBAについて</a>
+      <a href="guide.html">ご利用案内</a>
+      <!-- 言語切替 -->
+      <div class="lang-sw" id="lang-sw">
+        <button class="lang-btn" id="lang-toggle" aria-haspopup="true" aria-expanded="false">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          日本語
+        </button>
+        <div class="lang-drop" id="lang-drop">
+          <a href="index.html" class="active">🇯🇵 日本語</a>
+          <a href="index-en.html">🇺🇸 English</a>
+        </div>
+      </div>
+      <a href="#booking" class="nav-cta">ご予約</a>
+    </nav>
+    <button class="hamburger" id="menu-btn" aria-label="メニューを開く" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
-    <nav aria-label="メインナビゲーション">
-      <ul class="nav-list" id="nav-list">
-        <li><a href="#features">BEMBAの特徴</a></li>
-        <li><a href="#tours">ツアー・料金</a></li>
-        <li><a href="#guide">ガイド紹介</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="#booking" class="nav-cta-link">予約する</a></li>
-      </ul>
-    </nav>
   </div>
 </header>
+<nav class="nav-sp" id="nav-sp" aria-label="スマートフォンナビゲーション">
+  <a href="#tours">ツアー</a>
+  <a href="about.html">BEMBAについて</a>
+  <a href="guide.html">ご利用案内</a>
+  <a href="#booking">ご予約</a>
+</nav>
 
 <main>
 
 <!-- ========== HERO ========== -->
-<section id="hero" aria-label="ファーストビュー">
+<section id="hero" aria-label="メインビジュアル">
   <img
     src="images/hero-bg.webp"
-    alt="沖縄の透明な海の上でカヤックを楽しむ様子"
-    class="hero-bg-img"
+    alt="沖縄の透明な海"
+    class="hero-photo"
     width="1024" height="768"
     loading="eager"
     fetchpriority="high"
   >
   <div class="hero-content">
-    <img
-      src="images/logo-bemba.webp"
-      alt="BEMBAロゴ"
-      class="hero-logo"
-      width="160" height="160"
-      loading="eager"
-    >
-    <p class="hero-tagline">SUP / KAYAK / SNORKEL / produced by 沖縄の次男</p>
-    <h1 class="hero-brand">BEMBA</h1>
-    <p class="hero-sub">沖縄の貸切マリンツアー｜SUP・カヤック・シュノーケリング</p>
-    <div class="hero-badges" aria-label="BEMBAの特典">
-      <span class="hero-badge">👶 18歳以下 3名まで無料</span>
-      <span class="hero-badge">🌺 沖縄県民割 大人2,000円OFF</span>
+    <div class="hero-logo-wrap">
+      <img src="images/logo-bemba-oval.png" alt="BEMBAロゴ" class="hero-logo" width="52" height="52">
+      <span class="hero-logo-name">BEMBA</span>
     </div>
-<p class="hero-desc">
-      沖縄の海を、家族・カップル・仲間だけでゆっくり楽しむ。<br>
-      SUP・カヤック・シュノーケリングを、写真・動画撮影込みでご案内します。
-    </p>
-    <div class="hero-cta">
-      <a href="#tours" class="btn btn-outline">ツアー・料金を見る</a>
-      <a href="#booking" class="btn btn-primary">予約する</a>
+    <h1 class="hero-copy">沖縄の海を、<br>さらに自由に。</h1>
+    <p class="hero-service">1組限定・完全貸切の沖縄マリンツアー</p>
+    <div class="hero-btns">
+      <a href="#tours" class="btn-tour">ツアーを見る</a>
+      <a href="#booking" class="btn-book">ご予約・お問い合わせ</a>
     </div>
-    <p class="hero-opening">2026.11.1 START</p>
   </div>
-  <div class="scroll-hint" aria-hidden="true">SCROLL</div>
+
   <div class="hero-wave" aria-hidden="true">
-    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#ffffff"/>
+    <svg viewBox="0 0 1440 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,52 C240,12 480,68 720,40 C960,12 1200,60 1440,36 L1440,72 L0,72 Z" fill="#F5F0E8"/>
     </svg>
   </div>
 </section>
 
-<!-- ========== BEMBAの特徴 ========== -->
-<section id="features" class="section">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-label">Features</span>
-      <h2 class="section-title">BEMBAの特徴</h2>
-      <p class="section-lead">他のツアーとここが違います</p>
-    </div>
-    <div class="features-grid">
-
-      <div class="feature-card">
-        <p class="feature-num">01</p>
-        <h3 class="feature-title">1組限定・完全貸切</h3>
-        <p class="feature-body">すべてのツアーは1組限定。他のお客様と一緒にならず、ご家族・カップル・友人同士のペースで沖縄の海を楽しめます。</p>
+<!-- ========== TOURS ========== -->
+<section id="tours" aria-label="ツアー紹介">
+  <div style="background:var(--sand); padding:80px 0;">
+    <div class="container">
+      <div class="sec-header">
+        <span class="sec-label">Tours</span>
+        <h2 class="sec-title">沖縄の海を楽しむ、7つのツアー</h2>
+        <p class="sec-lead">全ツアー1組限定・完全貸切。写真・動画撮影込み。</p>
       </div>
 
-      <div class="feature-card">
-        <p class="feature-num">02</p>
-        <h3 class="feature-title">ゆっくり楽しめる体験時間</h3>
-        <p class="feature-body">SUP・カヤック・クリアカヤックは体験120分、シュノーケリングは体験90分、セットツアーは体験150分。短時間で急いで終わるツアーではなく、海を楽しむ時間を大切にしています。</p>
-      </div>
+      <div class="tours-grid">
 
-      <div class="feature-card">
-        <p class="feature-num">03</p>
-        <h3 class="feature-title">写真・動画データ込み</h3>
-        <p class="feature-body">ツアー中にガイドが撮影した写真・動画データは料金に含まれます。大切な思い出をしっかり残せます。</p>
-      </div>
+        <!-- SUP -->
+        <div class="tour-card">
+          <div class="tour-photo">
+            <img src="images/guide-photo.webp" alt="SUPボードの上に立つガイド" width="734" height="979" loading="lazy" style="object-position:center 15%">
+          </div>
+          <div class="tour-foot">
+            <h3 class="tour-name">SUP</h3>
+            <a href="sup.html" class="tour-link">詳細を見る <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
 
-      <div class="feature-card">
-        <p class="feature-num">04</p>
-        <h3 class="feature-title">家族にやさしい子ども料金</h3>
-        <p class="feature-body">SUP・通常カヤック・セットツアーは、18歳以下のお子さまが1組3名まで無料。ご家族での参加もお得です。詳細は<a href="#kids" style="color:var(--ocean);text-decoration:underline;">子ども料金欄</a>をご確認ください。</p>
-      </div>
+        <!-- シーカヤック -->
+        <div class="tour-card">
+          <div class="tour-photo">
+            <img src="images/kayak-island1.webp" alt="珊瑚礁の島でシーカヤック" width="1024" height="768" loading="lazy">
+          </div>
+          <div class="tour-foot">
+            <h3 class="tour-name">シーカヤック</h3>
+            <a href="kayak.html" class="tour-link">詳細を見る <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
 
-      <div class="feature-card">
-        <p class="feature-num">05</p>
-        <h3 class="feature-title">安全を最優先</h3>
-        <p class="feature-body">代表ガイドの消防・水難救助・マリンガイド経験を背景に、天候・海況・参加者の状態を確認しながら開催します。初めての方やお子様連れの方も安心してご参加いただけるよう、丁寧にご案内します。</p>
-      </div>
+        <!-- クリアカヤック -->
+        <div class="tour-card">
+          <div class="tour-photo">
+            <img src="images/clear-kayak.webp" alt="透明なクリアカヤックに乗るカップル" width="503" height="1024" loading="lazy" style="object-position:center 42%">
+          </div>
+          <div class="tour-foot">
+            <h3 class="tour-name">クリアカヤック</h3>
+            <a href="clear-kayak.html" class="tour-link">詳細を見る <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
 
+        <!-- シュノーケリング -->
+        <div class="tour-card">
+          <div class="tour-photo">
+            <img src="images/snorkel.webp" alt="沖縄の海でシュノーケリング" width="1024" height="768" loading="lazy">
+          </div>
+          <div class="tour-foot">
+            <h3 class="tour-name">シュノーケリング</h3>
+            <a href="snorkel.html" class="tour-link">詳細を見る <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+
+        <!-- SUP＋シュノーケリング -->
+        <div class="tour-card">
+          <div class="tour-photo">
+            <img src="images/sup-snorkel.webp" alt="SUPボードの上に立つ人と水中でシュノーケリング" width="507" height="1024" loading="lazy" style="object-position:center 20%">
+          </div>
+          <div class="tour-foot">
+            <h3 class="tour-name">SUP＋シュノーケリング</h3>
+            <a href="sup-snorkel.html" class="tour-link">詳細を見る <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+
+        <!-- カヤック＋シュノーケリング -->
+        <div class="tour-card">
+          <div class="tour-photo">
+            <img src="images/kayak-island2.webp" alt="沖縄の外洋でカヤック" width="1024" height="768" loading="lazy">
+          </div>
+          <div class="tour-foot">
+            <h3 class="tour-name">カヤック＋シュノーケリング</h3>
+            <a href="kayak-snorkel.html" class="tour-link">詳細を見る <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+
+        <!-- ビーチ・ドローン空撮（フル幅） -->
+        <div class="tour-card tour-card-wide">
+          <div class="tour-photo">
+            <img src="images/drone-beach.webp" alt="上空から見た沖縄のビーチと海" width="501" height="1024" loading="lazy" style="object-position:center 35%">
+          </div>
+          <div class="tour-foot">
+            <h3 class="tour-name">ビーチ・ドローン空撮</h3>
+            <a href="drone.html" class="tour-link">詳細を見る <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ========== ツアー一覧・料金 ========== -->
-<section id="tours" class="section section--alt">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-label">Tours &amp; Price</span>
-      <h2 class="section-title">ツアー一覧・料金</h2>
-      <p class="section-lead">すべて税込・1組限定・完全貸切。ガイド料・写真/動画撮影込み。</p>
+<!-- ========== 特別メニュー ========== -->
+<style>
+.spc-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; }
+@media (max-width:640px) { .spc-grid { grid-template-columns:1fr; } }
+.spc-card { background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.10); border-radius:6px; overflow:hidden; display:flex; flex-direction:column; }
+.spc-card-photo { width:100%; aspect-ratio:16/9; overflow:hidden; position:relative; }
+.spc-card-photo img { width:100%; height:100%; object-fit:cover; object-position:center 65%; display:block; }
+.spc-card-photo--sunrise { background:linear-gradient(135deg,#3D1A00,#C47020); }
+.spc-card-photo--sunset  { background:linear-gradient(135deg,#04111E,#7A2040); }
+.spc-card-body { padding:24px 24px 28px; flex:1; display:flex; flex-direction:column; }
+.spc-card-tag-sr { display:inline-flex;align-items:center;gap:5px;background:rgba(212,137,74,.18);border:1px solid rgba(212,137,74,.4);color:#E8B060;font-size:.68rem;font-weight:700;letter-spacing:.14em;padding:4px 10px;border-radius:3px;margin-bottom:14px; }
+.spc-card-tag-ss { display:inline-flex;align-items:center;gap:5px;background:rgba(107,120,200,.18);border:1px solid rgba(107,120,200,.4);color:#A0AEED;font-size:.68rem;font-weight:700;letter-spacing:.14em;padding:4px 10px;border-radius:3px;margin-bottom:14px; }
+.spc-card-title { font-family:'Noto Serif JP',serif; font-size:1.3rem; font-weight:400; color:#fff; letter-spacing:.04em; margin-bottom:4px; line-height:1.3; }
+.spc-card-sub { font-size:.74rem; color:rgba(255,255,255,.42); letter-spacing:.08em; margin-bottom:14px; }
+.spc-card-meta { font-size:.8rem; color:rgba(255,255,255,.6); line-height:1.9; margin-bottom:14px; }
+.spc-card-price { font-size:.78rem; color:rgba(255,255,255,.55); line-height:1.85; margin-bottom:14px; padding:12px 14px; background:rgba(255,255,255,.04); border-radius:4px; }
+.spc-card-price strong { color:rgba(255,255,255,.85); }
+.spc-card-time { font-size:.78rem; color:rgba(255,255,255,.5); padding:10px 14px; background:rgba(255,255,255,.03); border-left:3px solid rgba(201,168,76,.4); margin-bottom:18px; line-height:1.8; }
+.spc-card-btns { margin-top:auto; display:flex; flex-direction:column; gap:10px; }
+.spc-card-btn-line { display:flex;align-items:center;justify-content:center;gap:7px;background:#06C755;color:#fff;padding:13px 20px;border-radius:4px;font-size:.84rem;font-weight:700;letter-spacing:.04em; }
+.spc-card-btn-detail { display:flex;align-items:center;justify-content:center;gap:6px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.15);padding:11px 20px;border-radius:4px;font-size:.82rem;font-weight:500;letter-spacing:.04em;transition:background .15s; }
+.spc-card-btn-detail:hover { background:rgba(255,255,255,.12); }
+</style>
+<section aria-label="特別メニュー" style="background:#04111E; padding:80px 0; position:relative; overflow:hidden;">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 20% 50%,rgba(180,130,30,.12) 0%,transparent 70%),radial-gradient(ellipse 60% 50% at 80% 50%,rgba(26,107,154,.10) 0%,transparent 70%);pointer-events:none;"></div>
+  <div class="container" style="position:relative;">
+    <div class="sec-header" style="margin-bottom:40px;">
+      <span class="sec-label" style="color:#C9A84C;">Special Menu</span>
+      <h2 class="sec-title" style="color:#fff;font-family:'Noto Serif JP',serif;">サンライズ・サンセットツアー</h2>
+      <p class="sec-lead" style="color:rgba(255,255,255,.65);">日の出・日の入りの時間帯に合わせた1組限定の特別体験。SUPまたはカヤックからお選びください。開催時刻は時期・天候により調整します。</p>
     </div>
-    <div class="tours-grid">
+    <div class="spc-grid">
 
-      <!-- SUP -->
-      <div class="tour-card">
-        <div class="tour-card-head">
-          <div class="tour-icon" aria-hidden="true">🏄</div>
-          <h3 class="tour-name">SUP</h3>
-          <p class="tour-time">体験 約120分 ／ 集合〜解散 約180分</p>
+      <!-- サンライズ -->
+      <article class="spc-card">
+        <div class="spc-card-photo spc-card-photo--sunrise">
+          <img src="images/sunrise-sup.webp" alt="沖縄の朝焼けの海でSUPボードに乗る2名（ライフジャケット着用）" loading="lazy">
         </div>
-        <div class="tour-card-body">
-          <div class="tour-meta">
-            <span class="tag">10歳以上（10歳未満は要相談）</span>
-            <span class="tag">最大5名</span>
+        <div class="spc-card-body">
+          <span class="spc-card-tag-sr">🌅 Sunrise</span>
+          <h3 class="spc-card-title">サンライズツアー</h3>
+          <p class="spc-card-sub">Sunrise Tour</p>
+          <p class="spc-card-meta">
+            🕐 体験 約120分 ／ 集合〜解散 約180分<br>
+            👥 1組限定・完全貸切<br>
+            🏄 SUP（10歳以上）またはカヤック（5歳以上）
+          </p>
+          <div class="spc-card-price">
+            <strong>大人1名：16,000円</strong>　大人2〜3名：13,000円/人　大人4名以上：11,000円/人<br>
+            <span style="font-size:.74rem;">18歳以下・大人1名につき3名まで無料 ／ 沖縄県民割あり</span>
           </div>
-          <table class="tour-price-table" aria-label="SUP料金表">
-            <thead><tr><th>参加人数</th><th>大人 1名あたり</th></tr></thead>
-            <tbody>
-              <tr><td>大人1名</td><td class="price-em">15,000円</td></tr>
-              <tr><td>大人2〜3名</td><td class="price-em">12,000円</td></tr>
-              <tr><td>大人4名以上</td><td class="price-em">10,000円</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- 通常カヤック -->
-      <div class="tour-card">
-        <div class="tour-card-head">
-          <div class="tour-icon" aria-hidden="true">🚣</div>
-          <h3 class="tour-name">通常カヤック</h3>
-          <p class="tour-time">体験 約120分 ／ 集合〜解散 約180分</p>
-        </div>
-        <div class="tour-card-body">
-          <div class="tour-meta">
-            <span class="tag">保護者同乗で1歳から</span>
-            <span class="tag">最大8名</span>
-          </div>
-          <p class="tour-desc">12歳未満同士だけで1艇に乗ることはできません。</p>
-          <table class="tour-price-table" aria-label="通常カヤック料金表">
-            <thead><tr><th>参加人数</th><th>大人 1名あたり</th></tr></thead>
-            <tbody>
-              <tr><td>大人1名</td><td class="price-em">15,000円</td></tr>
-              <tr><td>大人2〜3名</td><td class="price-em">12,000円</td></tr>
-              <tr><td>大人4名以上</td><td class="price-em">10,000円</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- クリアカヤック -->
-      <div class="tour-card">
-        <div class="tour-card-head">
-          <div class="tour-icon" aria-hidden="true">🛶</div>
-          <h3 class="tour-name">クリアカヤック</h3>
-          <p class="tour-time">体験 約120分 ／ 集合〜解散 約180分</p>
-        </div>
-        <div class="tour-card-body">
-          <div class="tour-meta">
-            <span class="tag">基本2人乗り</span>
-          </div>
-          <table class="tour-price-table" aria-label="クリアカヤック料金表">
-            <thead><tr><th>参加人数</th><th>料金</th></tr></thead>
-            <tbody>
-              <tr><td>大人1名</td><td class="price-em">15,000円</td></tr>
-              <tr><td>大人2名</td><td class="price-em">合計24,000円</td></tr>
-            </tbody>
-          </table>
-          <div class="notice-box">大人2名＋5歳以下のお子さま1名で3名乗艇できる場合があります（メーカー・安全条件を満たす場合のみ）。必ず3名で乗れることを保証するものではありません。</div>
-        </div>
-      </div>
-
-      <!-- シュノーケリング -->
-      <div class="tour-card">
-        <div class="tour-card-head">
-          <div class="tour-icon" aria-hidden="true">🤿</div>
-          <h3 class="tour-name">シュノーケリング</h3>
-          <p class="tour-time">体験 約90分 ／ 集合〜解散 約150分</p>
-        </div>
-        <div class="tour-card-body">
-          <div class="tour-meta">
-            <span class="tag">基本5歳〜（5歳未満は要相談）</span>
-            <span class="tag">最大6名</span>
-          </div>
-          <p style="font-size:.78rem; color:var(--text-sub); line-height:1.65; margin-bottom:12px;">※5歳未満のお子様は要相談。年齢・体格・水慣れ・健康状態・当日の海況等を確認し、安全に実施できるか個別に判断します。</p>
-          <table class="tour-price-table" aria-label="シュノーケリング料金表">
-            <thead><tr><th>参加人数</th><th>大人 1名あたり</th></tr></thead>
-            <tbody>
-              <tr><td>大人1名</td><td class="price-em">13,000円</td></tr>
-              <tr><td>大人2〜3名</td><td class="price-em">10,000円</td></tr>
-              <tr><td>大人4名以上</td><td class="price-em">8,000円</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- SUP+シュノーケリング -->
-      <div class="tour-card">
-        <div class="tour-card-head">
-          <div class="tour-icon" aria-hidden="true">🏄🤿</div>
-          <h3 class="tour-name">SUP＋シュノーケリング</h3>
-          <p class="tour-time">体験 約150分 ／ 集合〜解散 約210分</p>
-        </div>
-        <div class="tour-card-body">
-          <table class="tour-price-table" aria-label="SUP+シュノーケリング料金表">
-            <thead><tr><th>参加人数</th><th>大人 1名あたり</th></tr></thead>
-            <tbody>
-              <tr><td>大人1名</td><td class="price-em">20,000円</td></tr>
-              <tr><td>大人2〜3名</td><td class="price-em">16,000円</td></tr>
-              <tr><td>大人4名以上</td><td class="price-em">14,000円</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- カヤック+シュノーケリング -->
-      <div class="tour-card">
-        <div class="tour-card-head">
-          <div class="tour-icon" aria-hidden="true">🚣🤿</div>
-          <h3 class="tour-name">カヤック＋シュノーケリング</h3>
-          <p class="tour-time">体験 約150分 ／ 集合〜解散 約210分</p>
-        </div>
-        <div class="tour-card-body">
-          <table class="tour-price-table" aria-label="カヤック+シュノーケリング料金表">
-            <thead><tr><th>参加人数</th><th>大人 1名あたり</th></tr></thead>
-            <tbody>
-              <tr><td>大人1名</td><td class="price-em">20,000円</td></tr>
-              <tr><td>大人2〜3名</td><td class="price-em">16,000円</td></tr>
-              <tr><td>大人4名以上</td><td class="price-em">14,000円</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- ビーチ・ドローン空撮 -->
-      <div class="tour-card">
-        <div class="tour-card-head">
-          <div class="tour-icon" aria-hidden="true">📸</div>
-          <h3 class="tour-name">ビーチ・ドローン空撮</h3>
-          <p class="tour-time">撮影 約30分 ／ 集合〜解散 約60分</p>
-        </div>
-        <div class="tour-card-body">
-          <p class="tour-desc">海に入るツアーではなく、沖縄の砂浜・波打ち際での撮影プランです。写真・動画データ込み。</p>
-          <table class="tour-price-table" aria-label="ドローン空撮料金表">
-            <thead><tr><th>参加人数</th><th>1名あたり</th></tr></thead>
-            <tbody>
-              <tr><td>1名</td><td class="price-em">8,000円</td></tr>
-              <tr><td>2名以上</td><td class="price-em">6,000円</td></tr>
-            </tbody>
-          </table>
-          <div class="notice-box">ドローン飛行は天候・風・飛行場所・法令等の条件により実施できない場合があります。</div>
-        </div>
-      </div>
-
-    </div><!-- /tours-grid -->
-
-    <!-- 支払い方法 -->
-    <div style="margin-top:48px; text-align:center;">
-      <h3 style="font-size:1rem; font-weight:700; color:var(--text-sub); margin-bottom:4px;">お支払い方法</h3>
-      <p style="font-size:.85rem; color:var(--text-sub); margin-bottom:0;">現地・当日決済</p>
-      <div class="payment-list" style="justify-content:center;">
-        <span class="payment-badge">現金</span>
-        <span class="payment-badge">クレジットカード</span>
-        <span class="payment-badge">PayPay</span>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ========== 子ども料金 ========== -->
-<section id="kids" class="section">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-label">Kids Price</span>
-      <h2 class="section-title">子ども料金</h2>
-      <p class="section-lead">子ども＝18歳以下 ／ 大人＝19歳以上</p>
-    </div>
-    <div class="kids-grid">
-
-      <div class="kids-card">
-        <h3 class="kids-card-title">SUP・通常カヤック・セット2種</h3>
-        <p class="kids-card-body">
-          1組につき<strong>子ども3名まで無料</strong>。<br>
-          4人目以降は1名5,000円。<br>
-          無料のお子さまも定員・安全管理上の参加人数には含まれます。
-        </p>
-      </div>
-
-      <div class="kids-card">
-        <h3 class="kids-card-title">シュノーケリング単独</h3>
-        <p class="kids-card-body">
-          子どもは1人目から<strong>1名5,000円</strong>。
-        </p>
-      </div>
-
-      <div class="kids-card">
-        <h3 class="kids-card-title">クリアカヤック</h3>
-        <p class="kids-card-body">
-          大人2名＋5歳以下のお子さま1名の例外3名乗艇が安全条件等を満たして認められる場合、子どもは<strong>無料</strong>。
-        </p>
-      </div>
-
-      <div class="kids-card" style="background:var(--ocean-pale); border:1px solid var(--ocean-light);">
-        <h3 class="kids-card-title" style="color:var(--ocean-deep);">ご注意</h3>
-        <p class="kids-card-body">
-          年齢だけで参加可否を決めず、ツアーごとの参加条件を優先します。
-          不安な点はお気軽に<a href="#contact" style="color:var(--ocean); text-decoration:underline;">お問い合わせ</a>ください。
-        </p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ========== 沖縄県民割 ========== -->
-<section id="okinawa-discount" class="section section--alt">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-label">Local Discount</span>
-      <h2 class="section-title">沖縄県民割</h2>
-    </div>
-    <div class="discount-box">
-      <p class="discount-headline">沖縄県民割</p>
-      <p class="discount-off">大人1名につき 2,000円 OFF</p>
-      <ul class="discount-cond">
-        <li>大人2名以上の参加で適用</li>
-        <li>グループ内に沖縄県在住者が1名以上いれば対象</li>
-        <li>県内在住者が18歳以下のお子さまだけでも対象</li>
-        <li>条件を満たせば、県外在住の大人も含め参加する大人全員が1名2,000円OFF</li>
-        <li>子ども料金は県民割対象外</li>
-        <li>県内在住を確認できる顔写真付き身分証を確認する場合があります</li>
-        <li>全ツアー対象</li>
-      </ul>
-      <p style="margin-top:20px; font-size:.85rem; opacity:.8;">
-        ビーチ・ドローン空撮（2名以上）：<br>
-        通常6,000円 → <strong style="color:#ffe066; font-size:1.1rem;">4,000円 / 人</strong>
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- ========== ガイド紹介 ========== -->
-<section id="guide" class="section">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-label">Guide</span>
-      <h2 class="section-title">海を案内するのは、BEMBA代表 高良 真</h2>
-    </div>
-    <div class="guide-inner">
-      <div class="guide-photo-wrap">
-        <img src="images/guide-photo.webp" alt="BEMBA代表 高良 真がSUPボードの上でパドルを掲げている様子" loading="lazy">
-      </div>
-      <div class="guide-body">
-        <p class="guide-name">高良 真（たから まこと）</p>
-        <p class="guide-role">BEMBA 代表 / produced by 沖縄の次男</p>
-
-        <p class="guide-origin">沖縄生まれ、沖縄育ち。</p>
-        <p class="guide-passion">
-          生まれ育った沖縄の海が大好きだからこそ、ただマリンアクティビティを体験してもらうだけではなく、沖縄の海の美しさや楽しさ、その魅力を全力でお伝えします。<br>
-          初めての方にも「沖縄の海ってこんなに楽しいんだ」と感じてもらえるよう、一組一組のお客様との時間を大切にご案内します。
-        </p>
-
-        <blockquote class="guide-message">
-          「消防の現場、水難救助、そしてマリンガイドとして海に関わってきた経験を生かし、BEMBAでは"楽しさの前に安全がある"ことを大切にしています。初めての方やお子様連れのご家族にも、参加者のペースに合わせてご案内します。」
-        </blockquote>
-
-        <div class="guide-creds" role="list" aria-label="資格・経歴">
-          <span class="cred-item" role="listitem">元消防士（消防勤務16年）</span>
-          <span class="cred-item" role="listitem">水難救助隊経験</span>
-          <span class="cred-item" role="listitem">陸上救助・救急・消防活動経験</span>
-          <span class="cred-item" role="listitem">マリンガイド経験</span>
-          <span class="cred-item" role="listitem">沖縄県カヤック・カヌー協会 公認ガイド（SUP・カヤック）</span>
-          <span class="cred-item" role="listitem">PADI Snorkel Guide</span>
-          <span class="cred-item" role="listitem">潜水士</span>
-          <span class="cred-item" role="listitem">防災士</span>
-          <span class="cred-item" role="listitem">応急手当普及員</span>
-          <span class="cred-item" role="listitem">無人航空機操縦者技能証明 二等</span>
-        </div>
-
-        <div class="guide-sns-block">
-          <p class="guide-sns-label">「沖縄の次男」としてSNSでも沖縄の魅力を発信中！</p>
-          <div class="guide-sns-links">
-            <a href="https://www.instagram.com/okinawanojinan/" class="guide-sns-btn guide-sns-insta" target="_blank" rel="noopener noreferrer" aria-label="沖縄の次男 Instagram @okinawanojinan（外部リンク）">
-              <svg class="guide-sns-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-              <span>Instagram <span class="guide-sns-handle">@okinawanojinan</span></span>
+          <div class="spc-card-time">⏰ 開催時刻は要相談（日付・日の出時刻・天候・海況により調整）</div>
+          <div class="spc-card-btns">
+            <a href="https://lin.ee/ohC64EDT" target="_blank" rel="noopener noreferrer" class="spc-card-btn-line">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.03 2 11c0 3.07 1.64 5.78 4.18 7.5L5 22l4.25-2.24C10.44 20.24 11.21 20.4 12 20.4c5.52 0 10-4.03 10-9s-4.48-9-10-9z"/></svg>
+              LINEで相談する
             </a>
-            <a href="https://www.tiktok.com/@okinawanojinan" class="guide-sns-btn guide-sns-tiktok" target="_blank" rel="noopener noreferrer" aria-label="沖縄の次男 TikTok @okinawanojinan（外部リンク）">
-              <svg class="guide-sns-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.75a4.85 4.85 0 01-1.01-.06z"/></svg>
-              <span>TikTok <span class="guide-sns-handle">@okinawanojinan</span></span>
+            <a href="special-menu.html" class="spc-card-btn-detail">
+              詳細を見る →
             </a>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </article>
 
-<!-- ========== 安全への取り組み ========== -->
-<section id="safety" class="section section--ocean">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-label" style="color:var(--ocean-light);">Safety</span>
-      <h2 class="section-title">安全への取り組み</h2>
-      <p class="section-lead" style="color:rgba(255,255,255,.7);">楽しさの前に、安全があります</p>
-    </div>
-    <div class="safety-groups">
-
-      <div>
-        <p class="safety-group-title">開催前の確認</p>
-        <div class="safety-row">
-          <div class="safety-item safety-item--highlight"><span class="icon" aria-hidden="true">👨‍✈️</span>代表ガイド同行</div>
-          <div class="safety-item safety-item--highlight"><span class="icon" aria-hidden="true">🌤</span>天候・海況確認</div>
-          <div class="safety-item"><span class="icon" aria-hidden="true">🩺</span>参加者の体調確認</div>
-          <div class="safety-item safety-item--highlight"><span class="icon" aria-hidden="true">⚠️</span>開催場所変更・中止判断</div>
+      <!-- サンセット -->
+      <article class="spc-card">
+        <div class="spc-card-photo spc-card-photo--sunset">
+          <img src="images/sunset-kayak.webp" alt="沖縄の夕焼けの海でカヤックを楽しむ2名（ライフジャケット着用）" loading="lazy">
         </div>
-      </div>
-
-      <div>
-        <p class="safety-group-title">安全装備・資機材</p>
-        <div class="safety-row">
-          <div class="safety-item safety-item--highlight"><span class="icon" aria-hidden="true">🦺</span>ライフジャケット等の安全装備</div>
-          <div class="safety-item"><span class="icon" aria-hidden="true">🆘</span>レスキューチューブ</div>
-          <div class="safety-item"><span class="icon" aria-hidden="true">🪢</span>救助ロープ</div>
-          <div class="safety-item"><span class="icon" aria-hidden="true">🚣</span>ガイド用カヤック / SUP等の救助資機材</div>
+        <div class="spc-card-body">
+          <span class="spc-card-tag-ss">🌇 Sunset</span>
+          <h3 class="spc-card-title">サンセットツアー</h3>
+          <p class="spc-card-sub">Sunset Tour</p>
+          <p class="spc-card-meta">
+            🕐 体験 約120分 ／ 集合〜解散 約180分<br>
+            👥 1組限定・完全貸切<br>
+            🏄 SUP（10歳以上）またはカヤック（5歳以上）
+          </p>
+          <div class="spc-card-price">
+            <strong>大人1名：16,000円</strong>　大人2〜3名：13,000円/人　大人4名以上：11,000円/人<br>
+            <span style="font-size:.74rem;">18歳以下・大人1名につき3名まで無料 ／ 沖縄県民割あり</span>
+          </div>
+          <div class="spc-card-time">⏰ 開催時刻は要相談（日付・日の入り時刻・天候・海況により調整）</div>
+          <div class="spc-card-btns">
+            <a href="https://lin.ee/ohC64EDT" target="_blank" rel="noopener noreferrer" class="spc-card-btn-line">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.03 2 11c0 3.07 1.64 5.78 4.18 7.5L5 22l4.25-2.24C10.44 20.24 11.21 20.4 12 20.4c5.52 0 10-4.03 10-9s-4.48-9-10-9z"/></svg>
+              LINEで相談する
+            </a>
+            <a href="special-menu.html" class="spc-card-btn-detail">
+              詳細を見る →
+            </a>
+          </div>
         </div>
-      </div>
-
-      <div>
-        <p class="safety-group-title">緊急対応・管理</p>
-        <div class="safety-row">
-          <div class="safety-item"><span class="icon" aria-hidden="true">🧰</span>救急箱</div>
-          <div class="safety-item"><span class="icon" aria-hidden="true">📱</span>防水ケース入り携帯電話</div>
-          <div class="safety-item"><span class="icon" aria-hidden="true">📋</span>参加者名簿による管理</div>
-          <div class="safety-item"><span class="icon" aria-hidden="true">🚫</span>飲酒・薬物・体調不良者は参加不可</div>
-        </div>
-      </div>
+      </article>
 
     </div>
   </div>
 </section>
 
-<!-- ========== 開催エリア ========== -->
-<section id="area" class="section section--sand">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-label">Area</span>
-      <h2 class="section-title">開催エリア</h2>
-    </div>
-    <div class="area-note">
-      <strong>恩納村・金武町を中心に、当日の海況に合わせて開催します。</strong><br>
-      開催場所は基本的に前日までにご案内します。やむを得ず当日判断となる場合は、催行1時間前までに最終判断する場合があります。
-    </div>
-    <div class="area-list">
-      <div class="area-item">
-        <p class="area-name">🏖 恩納村</p>
-        <p class="area-desc">瀬良垣・瀬良垣海岸周辺</p>
-      </div>
-      <div class="area-item">
-        <p class="area-name">🌊 金武町</p>
-        <p class="area-desc">伊芸・伊芸ビーチ周辺</p>
-      </div>
-      <div class="area-item">
-        <p class="area-name">🌿 名護市</p>
-        <p class="area-desc">天候・海況等によって開催する場合あり</p>
-      </div>
-    </div>
-    <p style="margin-top:20px; font-size:.82rem; color:var(--text-sub); text-align:center;">
-      基本は現地集合・現地解散。開催場所は予約時点で固定とは限りません。
+<!-- ========== BOOKING ========== -->
+<section id="booking" aria-label="ご予約・お問い合わせ">
+  <div class="booking-inner">
+    <span class="booking-label">Reservation &amp; Contact</span>
+    <h2 class="booking-title">ご予約・お問い合わせ</h2>
+    <p class="booking-sub">
+      まずはお気軽にLINEまたは予約フォームからご連絡ください。<br>
+      ご希望のツアー・日程・人数をお知らせいただければ、<br>
+      よんな〜ご案内いたします。
     </p>
-  </div>
-</section>
-
-<!-- ========== 初めての方へ / 持ち物 ========== -->
-<section id="beginners" class="section">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-label">For Beginners</span>
-      <h2 class="section-title">初めての方へ・持ち物</h2>
+    <div class="booking-btns">
+      <a href="https://lin.ee/ohC64EDT" class="btn-line">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.03 2 11c0 3.07 1.64 5.78 4.18 7.5L5 22l4.25-2.24C10.44 20.24 11.21 20.4 12 20.4c5.52 0 10-4.03 10-9s-4.48-9-10-9z"/></svg>
+        LINEで相談する
+      </a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdqf3kmFzZnffRVf_NnlmSQ536_gymBiTUo3nAIwn_LCsQ8hA/viewform" target="_blank" rel="noopener noreferrer" class="btn-form">予約フォームへ</a>
     </div>
-    <div class="beginners-grid">
-
-      <div class="beginners-block">
-        <h3>持ち物</h3>
-        <ul class="beginners-list">
-          <li>着替え</li>
-          <li>タオル</li>
-          <li>サンダル</li>
-          <li>飲み物</li>
-          <li>必要に応じてウェットスーツ貸出あり（要確認）</li>
-        </ul>
-      </div>
-
-      <div class="beginners-block">
-        <h3>設備について</h3>
-        <ul class="beginners-list">
-          <li>直接ビーチに現地集合・現地解散となります</li>
-          <li>更衣室・シャワー設備は基本的にありません</li>
-          <li>トイレは近隣の公共施設等をご案内します</li>
-          <li>ご不明な点は事前にLINEでご相談ください</li>
-        </ul>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ========== 開催判断・キャンセル ========== -->
-<section id="cancel" class="section section--alt">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-label">Cancellation</span>
-      <h2 class="section-title">開催判断・キャンセルについて</h2>
-    </div>
-    <div class="cancel-grid">
-
-      <div class="cancel-card">
-        <h3>開催判断</h3>
-        <ul>
-          <li>基本は前日に判断します</li>
-          <li>降雨のみの場合は原則催行</li>
-          <li>台風・災害・急激な天候・海況悪化等では中止する場合があります</li>
-          <li>やむを得ない場合は当日催行1時間前までに最終判断する場合があります</li>
-        </ul>
-      </div>
-
-      <div class="cancel-card">
-        <h3>ご予約の変更・キャンセルについて</h3>
-        <p style="font-size:.88rem; color:var(--text-sub); margin-bottom:12px; line-height:1.7;">ご予定が変わった場合は、分かった時点でできるだけ早めにご連絡ください。</p>
-        <ul>
-          <li>前日のお客様都合によるキャンセル：ツアー料金の100%</li>
-          <li>当日のお客様都合によるキャンセル：原則ツアー料金の100%</li>
-          <li>BEMBAから開催場所や日程の変更をご提案し、その変更によりキャンセルされる場合：キャンセル料はかかりません</li>
-        </ul>
-      </div>
-
-      <div class="cancel-card">
-        <h3>ツアー開始後の天候・海況悪化</h3>
-        <ul>
-          <li>開始30分未満で中止：全額返金</li>
-        </ul>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ========== FAQ ========== -->
-<section id="faq" class="section">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-label">FAQ</span>
-      <h2 class="section-title">よくあるご質問</h2>
-    </div>
-    <div class="faq-list" role="list">
-
-      <div class="faq-item" role="listitem">
-        <button class="faq-q" aria-expanded="false">
-          <span class="faq-q-text">初心者でも参加できますか？</span>
-          <span class="faq-q-icon" aria-hidden="true">+</span>
-        </button>
-        <div class="faq-a">
-          <div class="faq-a-inner">はい、大丈夫です！ご希望のツアーや不安な点は、事前にLINEでお気軽にご相談ください。当日も参加者のペースに合わせてご案内します。</div>
-        </div>
-      </div>
-
-      <div class="faq-item" role="listitem">
-        <button class="faq-q" aria-expanded="false">
-          <span class="faq-q-text">泳ぎが苦手でも参加できますか？</span>
-          <span class="faq-q-icon" aria-hidden="true">+</span>
-        </button>
-        <div class="faq-a">
-          <div class="faq-a-inner">泳ぎが苦手な方でも、まずはLINEでご相談ください。参加者の状況を確認した上で、安全にご案内できるかどうかをお伝えします。</div>
-        </div>
-      </div>
-
-      <div class="faq-item" role="listitem">
-        <button class="faq-q" aria-expanded="false">
-          <span class="faq-q-text">雨でも開催しますか？</span>
-          <span class="faq-q-icon" aria-hidden="true">+</span>
-        </button>
-        <div class="faq-a">
-          <div class="faq-a-inner">雨のみであれば原則催行しています。台風や急激な天候・海況悪化の場合は中止になることがあります。基本は前日までにご連絡します。</div>
-        </div>
-      </div>
-
-      <div class="faq-item" role="listitem">
-        <button class="faq-q" aria-expanded="false">
-          <span class="faq-q-text">集合場所はどこですか？</span>
-          <span class="faq-q-icon" aria-hidden="true">+</span>
-        </button>
-        <div class="faq-a">
-          <div class="faq-a-inner">当日の海況によって開催場所が変わることがあります。基本は前日までにご案内しますので、ご安心ください。当日判断が必要な場合は、催行1時間前までにお知らせします。</div>
-        </div>
-      </div>
-
-      <div class="faq-item" role="listitem">
-        <button class="faq-q" aria-expanded="false">
-          <span class="faq-q-text">更衣室やシャワーはありますか？</span>
-          <span class="faq-q-icon" aria-hidden="true">+</span>
-        </button>
-        <div class="faq-a">
-          <div class="faq-a-inner">基本的にありません。直接ビーチ集合・解散となります。水着やラッシュガードを着用してお越しいただき、着替えとタオルをご持参いただくとスムーズです。</div>
-        </div>
-      </div>
-
-      <div class="faq-item" role="listitem">
-        <button class="faq-q" aria-expanded="false">
-          <span class="faq-q-text">支払い方法は？</span>
-          <span class="faq-q-icon" aria-hidden="true">+</span>
-        </button>
-        <div class="faq-a">
-          <div class="faq-a-inner">現地・当日払いです。現金・クレジットカード・PayPayに対応しています。料金はすべて税込表示です。</div>
-        </div>
-      </div>
-
-      <div class="faq-item" role="listitem">
-        <button class="faq-q" aria-expanded="false">
-          <span class="faq-q-text">写真や動画は別料金ですか？</span>
-          <span class="faq-q-icon" aria-hidden="true">+</span>
-        </button>
-        <div class="faq-a">
-          <div class="faq-a-inner">いいえ、ツアー中にBEMBAが撮影する写真・動画データは料金に含まれています。追加費用はいただきません。</div>
-        </div>
-      </div>
-
-      <div class="faq-item" role="listitem">
-        <button class="faq-q" aria-expanded="false">
-          <span class="faq-q-text">子どもは参加できますか？</span>
-          <span class="faq-q-icon" aria-hidden="true">+</span>
-        </button>
-        <div class="faq-a">
-          <div class="faq-a-inner">ツアーごとに年齢・安全条件が異なります。各ツアーの参加条件をご確認いただき、ご不安な点はLINEでお気軽にご相談ください。</div>
-        </div>
-      </div>
-
-    </div><!-- /faq-list -->
-  </div>
-</section>
-
-<!-- ========== 予約方法 ========== -->
-<section id="booking" class="section section--alt">
-  <div class="container">
-    <div class="booking-inner">
-      <span class="section-label">Booking</span>
-      <h2 class="section-title">予約方法</h2>
-      <p style="font-size:.95rem; color:var(--text-sub); line-height:1.8;">
-        ご予約はGoogle予約フォームからお申し込みください。<br>
-        ご質問や事前のご相談はBEMBA公式LINEへお気軽にどうぞ。
-      </p>
-      <div class="booking-cta">
-        <a
-          href="https://docs.google.com/forms/d/17V5P6VdJj8zEzVv5ZtRqo62j1RW7gtMK4e3HnNbAmPA/viewform"
-          class="btn btn-primary"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="予約フォームへ（外部リンク）"
-        >
-          📋 予約フォームへ
-        </a>
-        <a
-          href="https://lin.ee/ohC64EDT"
-          class="btn btn-line"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="LINEで相談（外部リンク）"
-        >
-          💬 LINEで相談する
-        </a>
-      </div>
-      <p class="booking-note">
-        ※フォーム送信だけでは予約確定ではありません。内容を確認後、BEMBAからご連絡します。<br>
-        ※ご不明な点は先にLINEでご相談いただくとスムーズです。
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- ========== フォトギャラリー ========== -->
-<section class="section section--alt" aria-label="ツアーフォトギャラリー">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-label">Gallery</span>
-      <h2 class="section-title">沖縄の海、BEMBAのツアー</h2>
-    </div>
-    <div class="photo-gallery">
-<div class="photo-gallery-item">
-        <img src="images/snorkel.webp" alt="沖縄の海中でシュノーケリングを楽しむ様子" loading="lazy" width="1024" height="768">
-      </div>
-      <div class="photo-gallery-item">
-        <img src="images/kayak-island1.webp" alt="沖縄の透明な海でカヤックツアーを楽しむ様子" loading="lazy" width="1024" height="768">
-      </div>
-      <div class="photo-gallery-item">
-        <img src="images/kayak-island2.webp" alt="沖縄の岩礁に囲まれた海でカヤックツアー" loading="lazy" width="1024" height="768">
-      </div>
-      <div class="photo-gallery-item">
-        <img src="images/kayak-ocean.webp" alt="沖縄の大海原をカヤックで進む様子" loading="lazy" width="768" height="1024">
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ========== SNS ========== -->
-<section id="sns" class="section">
-  <div class="container">
-    <div class="sns-inner">
-      <span class="section-label">SNS</span>
-      <h2 class="section-title" style="margin-bottom:16px;">Instagram / TikTok</h2>
-      <p class="sns-desc">沖縄の海、BEMBAのツアー情報、日々の様子を発信しています。</p>
-      <div class="sns-links">
-        <a
-          href="https://www.instagram.com/bemba_okinawa/"
-          class="sns-link sns-link-ig"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="BEMBAのInstagramを開く（外部リンク）"
-        >
-          📷 Instagram @bemba_okinawa
-        </a>
-        <a
-          href="https://www.tiktok.com/@bemba_okinawa"
-          class="sns-link sns-link-tt"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="BEMBAのTikTokを開く（外部リンク）"
-        >
-          🎵 TikTok @bemba_okinawa
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ========== お問い合わせ ========== -->
-<section id="contact" class="section section--alt">
-  <div class="container">
-    <div class="section-header" style="text-align:center;">
-      <span class="section-label">Contact</span>
-      <h2 class="section-title">お問い合わせ</h2>
-      <p class="section-lead" style="margin-inline:auto;">ご質問・ご予約前のご相談はお気軽にどうぞ</p>
-    </div>
-    <div class="contact-grid">
-      <div class="contact-item">
-        <span class="contact-icon" aria-hidden="true">✉️</span>
-        <div>
-          <p class="contact-label">メール</p>
-          <p class="contact-val"><a href="mailto:bemba.okinawa@gmail.com">bemba.okinawa@gmail.com</a></p>
-        </div>
-      </div>
-      <div class="contact-item">
-        <span class="contact-icon" aria-hidden="true">📍</span>
-        <div>
-          <p class="contact-label">所在地</p>
-          <p class="contact-val">沖縄県金武町</p>
-        </div>
-      </div>
-      <div class="contact-item">
-        <span class="contact-icon" aria-hidden="true">💬</span>
-        <div>
-          <p class="contact-label">LINE公式</p>
-          <p class="contact-val">
-            <a href="https://lin.ee/ohC64EDT" target="_blank" rel="noopener noreferrer">
-              友だち追加
-            </a>
-          </p>
-        </div>
-      </div>
-      <div class="contact-item contact-item--call">
-        <span class="contact-icon" aria-hidden="true">📞</span>
-        <div>
-          <p class="contact-label">LINEで無料通話</p>
-          <p class="contact-val">
-            <a href="https://lin.ee/OcIprsq" target="_blank" rel="noopener noreferrer">
-              通話を開始する
-            </a>
-          </p>
-          <p class="contact-note">※LINEアプリが必要です</p>
-        </div>
-      </div>
-    </div>
+    <p class="booking-note">
+      2026年11月1日開業予定<br>
+      お問い合わせ：bemba.okinawa@gmail.com
+    </p>
   </div>
 </section>
 
@@ -861,77 +785,55 @@
 
 <!-- ========== FOOTER ========== -->
 <footer>
-  <div class="container">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <a href="/" class="logo" aria-label="BEMBA トップへ">
-          <img src="images/logo-bemba.webp" alt="BEMBAロゴ" width="36" height="36" loading="lazy">
-          <span>BEMBA</span>
-        </a>
-        <p>1組限定・完全貸切の沖縄マリンツアー。<br>produced by 沖縄の次男</p>
-      </div>
-      <nav class="footer-nav" aria-label="フッターナビゲーション">
-        <h4>Menu</h4>
-        <ul>
-          <li><a href="#features">BEMBAの特徴</a></li>
-          <li><a href="#tours">ツアー・料金</a></li>
-          <li><a href="#kids">子ども料金</a></li>
-          <li><a href="#okinawa-discount">沖縄県民割</a></li>
-          <li><a href="#guide">ガイド紹介</a></li>
-          <li><a href="#safety">安全への取り組み</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="#booking">予約</a></li>
-        </ul>
-      </nav>
-      <div class="footer-nav">
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="mailto:bemba.okinawa@gmail.com">✉️ bemba.okinawa@gmail.com</a></li>
-          <li><a href="https://www.instagram.com/bemba_okinawa/" target="_blank" rel="noopener noreferrer">📷 Instagram</a></li>
-          <li><a href="https://www.tiktok.com/@bemba_okinawa" target="_blank" rel="noopener noreferrer">🎵 TikTok</a></li>
-        </ul>
-      </div>
+  <div class="foot-inner">
+    <div class="foot-logo">
+      <img src="images/logo-bemba-oval.png" alt="BEMBAロゴ" width="32" height="32">
+      <span>BEMBA</span>
     </div>
-    <div class="footer-bottom">
-      <p class="copy">© 2026 BEMBA. All Rights Reserved.</p>
-      <div style="display:flex;gap:16px;font-size:.78rem;">
-        <a href="privacy.html">プライバシーポリシー</a>
-        <a href="tokutei.html">特定商取引法に基づく表記</a>
-      </div>
+    <div class="foot-links">
+      <a href="#tours">ツアー</a>
+      <a href="sup.html">SUP</a>
+      <a href="kayak.html">シーカヤック</a>
+      <a href="clear-kayak.html">クリアカヤック</a>
+      <a href="snorkel.html">シュノーケリング</a>
+      <a href="drone.html">ドローン空撮</a>
+      <a href="index-en.html">English</a>
     </div>
+    <p class="foot-copy">© 2026 BEMBA — 沖縄の貸切マリンツアー</p>
   </div>
 </footer>
 
-<!-- ========== Fixed CTA (スマホ用) ========== -->
-<!-- ========== LINEモーダル（PC用） ========== -->
-<div id="line-modal" class="line-modal" role="dialog" aria-modal="true" aria-labelledby="line-modal-title" hidden>
-  <div class="line-modal-overlay" aria-hidden="true"></div>
-  <div class="line-modal-box">
-    <button class="line-modal-close" aria-label="閉じる">×</button>
-    <p id="line-modal-title" class="line-modal-title">BEMBA公式LINE</p>
-    <p class="line-modal-desc">スマートフォンのLINEでQRコードを読み取ってください</p>
-    <img src="images/line-qr.webp" alt="BEMBA公式LINE QRコード" class="line-modal-qr" width="240" height="240">
-    <a href="https://lin.ee/ohC64EDT" class="line-modal-link" target="_blank" rel="noopener noreferrer">lin.ee/ohC64EDT</a>
-  </div>
-</div>
+<script>
+// Language switcher
+const langToggle = document.getElementById('lang-toggle');
+const langDrop = document.getElementById('lang-drop');
+const langSw = document.getElementById('lang-sw');
+if (langToggle) {
+  langToggle.addEventListener('click', e => {
+    e.stopPropagation();
+    const open = langDrop.classList.toggle('open');
+    langToggle.setAttribute('aria-expanded', open);
+  });
+  document.addEventListener('click', e => {
+    if (!langSw.contains(e.target)) {
+      langDrop.classList.remove('open');
+      langToggle.setAttribute('aria-expanded', false);
+    }
+  });
+}
 
-<div class="fixed-cta" role="navigation" aria-label="クイック予約">
-  <a
-    href="https://docs.google.com/forms/d/17V5P6VdJj8zEzVv5ZtRqo62j1RW7gtMK4e3HnNbAmPA/viewform"
-    class="fixed-cta-booking"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="予約する"
-  >📋 予約する</a>
-  <a
-    href="https://lin.ee/ohC64EDT"
-    class="fixed-cta-line"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="LINEで相談"
-  >💬 LINEで相談</a>
-</div>
-
-<script src="js/main.js"></script>
+const btn = document.getElementById('menu-btn');
+const nav = document.getElementById('nav-sp');
+btn.addEventListener('click', () => {
+  const open = nav.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open);
+});
+nav.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    nav.classList.remove('open');
+    btn.setAttribute('aria-expanded', false);
+  });
+});
+</script>
 </body>
 </html>

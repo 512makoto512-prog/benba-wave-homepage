@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SUP — BEMBA Tour Details</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ===================================================
+   BEMBA SUP Tour Detail — English Preview
+   Design-confirmation only — not for production
+   =================================================== */
+
+:root {
+  --navy:   #0D2B3E;
+  --ocean:  #1A6B9A;
+  --sky:    #7EC8E3;
+  --sand:   #F6F3ED;
+  --white:  #FFFFFF;
+  --text:   #1A1A1A;
+  --sub:    #4A5761;
+  --border: #DDD9D0;
+  --green:  #06C755;
+  --header: 64px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans JP', 'Helvetica Neue', Arial, sans-serif;
+  background: var(--white);
+  color: var(--text);
+  line-height: 1.8;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+
+/* ── PREVIEW BAR ── */
+.preview-bar {
+  position: static;
+  background: rgba(13,43,62,.95);
+  color: rgba(255,255,255,.88);
+  font-size: .72rem; text-align: center;
+  padding: 8px 16px;
+  letter-spacing: .04em;
+}
+
+/* ── HEADER ── */
+#hdr {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: var(--header);
+  background: rgba(255,255,255,.97);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.hdr-inner {
+  max-width: 1080px; margin-inline: auto;
+  padding-inline: 24px; height: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.logo {
+  display: flex; align-items: center; gap: 10px;
+  font-size: .95rem; font-weight: 700;
+  color: var(--navy); letter-spacing: .06em;
+}
+.logo img { width: 36px; height: 36px; object-fit: contain; }
+
+.nav-pc { display: none; gap: 32px; align-items: center; }
+@media (min-width: 768px) { .nav-pc { display: flex; } }
+.nav-pc a { font-size: .82rem; color: var(--sub); letter-spacing: .04em; transition: color .15s; }
+.nav-pc a:hover { color: var(--navy); }
+.nav-cta {
+  background: var(--navy); color: var(--white) !important;
+  padding: 9px 22px; border-radius: 3px;
+  font-size: .82rem !important; font-weight: 700 !important;
+  transition: opacity .15s !important;
+}
+.nav-cta:hover { opacity: .85; }
+
+.hamburger {
+  display: flex; flex-direction: column; justify-content: center;
+  gap: 5px; width: 44px; height: 44px; padding: 8px;
+  background: none; border: none; cursor: pointer;
+}
+.hamburger span { display: block; height: 1.5px; background: var(--navy); border-radius: 1px; }
+@media (min-width: 768px) { .hamburger { display: none; } }
+
+.nav-sp {
+  display: none; position: fixed; top: var(--header); left: 0; right: 0;
+  background: var(--white); border-top: 1px solid var(--border);
+  padding: 16px 24px 24px; z-index: 99;
+  box-shadow: 0 8px 24px rgba(0,0,0,.08);
+}
+.nav-sp.open { display: block; }
+.nav-sp a {
+  display: block; padding: 13px 0; font-size: .92rem; color: var(--text);
+  border-bottom: 1px solid var(--border);
+}
+.nav-sp a:last-child {
+  border: none; margin-top: 8px;
+  background: var(--navy); color: var(--white);
+  text-align: center; border-radius: 3px; padding: 13px; font-weight: 700;
+}
+
+/* ── HERO ── */
+.tour-hero {
+  margin-top: var(--header);
+  position: relative;
+  height: 65vh; min-height: 420px; max-height: 640px;
+  overflow: hidden;
+  background: #1A5E80;
+}
+.tour-hero-photo {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+.tour-hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(5,20,35,.78) 0%, rgba(5,20,35,.42) 45%, rgba(5,20,35,.08) 75%, transparent 100%);
+}
+.tour-hero-content {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 48px 56px;
+  color: var(--white);
+}
+@media (max-width: 767px) {
+  .tour-hero-content { padding: 32px 24px; }
+}
+.tour-hero-eyebrow {
+  font-size: .72rem; font-weight: 500;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: rgba(255,255,255,.7); margin-bottom: 10px;
+}
+.tour-hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  letter-spacing: .06em;
+  line-height: 1.2;
+  margin-bottom: 8px;
+  text-shadow: 0 2px 12px rgba(0,0,0,.55), 0 1px 4px rgba(0,0,0,.4);
+}
+.tour-hero-sub {
+  font-size: .85rem; font-weight: 300;
+  color: rgba(255,255,255,.9); letter-spacing: .04em;
+  text-shadow: 0 1px 6px rgba(0,0,0,.6);
+}
+@media (max-width: 767px) {
+  .tour-hero-sub { font-size: .8rem; font-weight: 400; line-height: 1.7; text-wrap: balance; }
+}
+
+/* ── CONTAINER ── */
+.container {
+  max-width: 840px; margin-inline: auto;
+  padding-inline: 24px;
+}
+
+/* ── SECTION BASE ── */
+.sec { padding: 72px 0; }
+@media (max-width: 600px) { .sec { padding: 56px 0; } }
+@media (min-width: 768px) { .sec { padding: 88px 0; } }
+.sec--alt { background: var(--sand); }
+.sec-label {
+  display: block; font-size: .68rem; font-weight: 500;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--ocean); margin-bottom: 8px;
+}
+.sec-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--navy); letter-spacing: .04em;
+  margin-bottom: 6px;
+}
+.sec-lead {
+  font-size: .9rem; color: var(--sub);
+  font-weight: 400; line-height: 1.8;
+}
+
+/* ── INTRO ── */
+.intro-body {
+  font-size: clamp(.9rem, 1.6vw, 1rem);
+  line-height: 2; color: var(--text);
+  font-weight: 400;
+  margin-top: 32px;
+}
+
+/* ── HIGHLIGHTS ── */
+.highlights {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px; margin-top: 48px;
+}
+@media (max-width: 720px) { .highlights { grid-template-columns: 1fr; gap: 16px; } }
+.hl-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 28px 24px;
+}
+.hl-num {
+  font-size: .68rem; font-weight: 500; letter-spacing: .14em;
+  color: var(--ocean); margin-bottom: 8px;
+}
+.hl-title {
+  font-size: 1rem; font-weight: 700; color: var(--navy);
+  margin-bottom: 8px; letter-spacing: .02em;
+}
+.hl-body {
+  font-size: .94rem; color: #4a5560; line-height: 1.85; font-weight: 400;
+}
+
+/* ── TIMELINE ── */
+.timeline { margin-top: 48px; }
+.tl-title {
+  font-size: .9rem; font-weight: 700;
+  color: var(--navy); margin-bottom: 20px;
+  letter-spacing: .04em;
+}
+.tl-list { position: relative; padding-left: 24px; }
+.tl-list::before {
+  content: ''; position: absolute;
+  left: 7px; top: 8px; bottom: 8px;
+  width: 1px; background: var(--border);
+}
+.tl-item {
+  position: relative; padding: 0 0 24px 20px;
+  font-size: .95rem; display: flex; align-items: flex-start;
+}
+.tl-item:last-child { padding-bottom: 0; }
+.tl-item::before {
+  content: ''; position: absolute;
+  left: 0; top: 6px;
+  width: 8px; height: 8px;
+  border-radius: 50%; background: var(--ocean);
+  border: 2px solid var(--white);
+  box-shadow: 0 0 0 1px var(--ocean);
+}
+.tl-time { font-weight: 700; font-size: 1rem; color: var(--ocean); flex-shrink: 0; min-width: 4.6em; padding-right: 8px; }
+.tl-desc { flex: 1; }
+.tl-sub { font-size: .88rem; color: #4a5560; margin-top: 2px; font-weight: 400; line-height: 1.8; }
+
+/* ── PRICE ── */
+.price-section { max-width: 720px; margin: 0; }
+.price-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 32px;
+  font-size: .88rem;
+}
+.price-table th {
+  background: var(--navy); color: var(--white);
+  padding: 14px 20px; text-align: left;
+  font-weight: 500; letter-spacing: .04em;
+  font-size: .82rem;
+}
+.price-table td {
+  padding: 18px 20px; font-size: .95rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+.price-table tr:last-child td { border-bottom: none; }
+.price-em {
+  font-weight: 700; color: var(--navy);
+  font-size: 1.3rem; letter-spacing: .02em;
+}
+.price-note {
+  font-size: .88rem; color: #4a5560; margin-top: 14px;
+  line-height: 1.8; font-weight: 400;
+}
+
+/* ── BENEFIT ── */
+.benefit-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px; margin-top: 32px;
+  align-items: start;
+}
+@media (max-width: 600px) { .benefit-grid { grid-template-columns: 1fr; } }
+.benefit-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 4px; padding: 28px 24px;
+}
+.benefit-card--accent {
+  border-color: var(--ocean);
+  background: #F0F8FF;
+}
+.benefit-label {
+  font-size: .65rem; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--ocean); margin-bottom: 8px;
+}
+.benefit-headline {
+  font-size: 1.2rem; font-weight: 700; color: var(--navy);
+  margin-bottom: 10px; letter-spacing: .02em; line-height: 1.5;
+}
+.benefit-body {
+  font-size: .94rem; color: #4a5560;
+  line-height: 1.85; font-weight: 400;
+}
+
+/* ── INFO LIST ── */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px; margin-top: 40px;
+}
+@media (max-width: 600px) { .info-grid { grid-template-columns: 1fr; gap: 24px; } }
+.info-block h3 {
+  font-size: .78rem; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--ocean); border-bottom: 1px solid var(--border);
+  padding-bottom: 8px; margin-bottom: 14px;
+}
+.info-list li {
+  font-size: .9rem; color: var(--text);
+  padding: 12px 0; line-height: 1.7;
+  border-bottom: 1px solid var(--border);
+  font-weight: 400;
+  display: flex; gap: 8px;
+}
+.info-list li::before {
+  content: '—'; color: var(--sub); flex-shrink: 0;
+}
+
+/* ── CANCEL ── */
+.cancel-box {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 4px; padding: 28px 32px;
+  margin-top: 32px;
+}
+@media (max-width: 600px) { .cancel-box { padding: 20px 18px; } }
+.cancel-box p {
+  font-size: .94rem; color: #4a5560;
+  line-height: 1.85; font-weight: 400;
+  margin-bottom: 8px;
+}
+@media (max-width: 600px) { .cancel-box p { font-size: .95rem; line-height: 1.9; } }
+.cancel-box p:last-child { margin-bottom: 0; }
+.cancel-box p + p { padding-top: 8px; border-top: 1px dashed var(--border); }
+.cancel-box strong {
+  color: var(--navy); font-weight: 700;
+  display: inline-block; font-size: .9rem; margin-top: 4px;
+}
+
+/* ── BOOKING CTA ── */
+#booking { background: var(--navy); padding: 80px 0 72px; }
+.booking-inner {
+  max-width: 600px; margin-inline: auto;
+  text-align: center; padding-inline: 24px;
+}
+.booking-label {
+  display: block; font-size: .68rem; font-weight: 500;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: #8FA3B5; margin-bottom: 10px;
+}
+.booking-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 400; color: var(--white);
+  letter-spacing: .04em; margin-bottom: 12px;
+}
+.booking-sub {
+  font-size: .84rem; color: rgba(255,255,255,.78);
+  font-weight: 300; line-height: 1.9; margin-bottom: 36px;
+}
+.booking-btns {
+  display: flex; flex-wrap: wrap;
+  gap: 12px; justify-content: center; margin-bottom: 28px;
+}
+.btn-line {
+  background: var(--green); color: var(--white);
+  padding: 15px 36px; border-radius: 3px;
+  font-size: .9rem; font-weight: 700; letter-spacing: .04em;
+  display: inline-flex; align-items: center; gap: 7px;
+  transition: opacity .15s;
+}
+.btn-line:hover { opacity: .88; }
+.btn-form {
+  border: 1.5px solid rgba(255,255,255,.6);
+  color: #fff;
+  padding: 15px 36px; border-radius: 3px;
+  font-size: .9rem; font-weight: 500; letter-spacing: .04em;
+  transition: border-color .15s;
+}
+.btn-form:hover { border-color: rgba(255,255,255,.7); }
+@media (max-width: 600px) {
+  .booking-btns { flex-direction: column; align-items: stretch; }
+  .btn-line, .btn-form { justify-content: center; text-align: center; min-height: 52px; }
+}
+.booking-note {
+  font-size: .74rem; color: rgba(255,255,255,.55);
+  line-height: 2.1;
+  border-top: 1px solid rgba(255,255,255,.07);
+  padding-top: 20px;
+}
+
+/* ── BREADCRUMB ── */
+.breadcrumb {
+  background: var(--sand);
+  padding: 4px 0;
+  border-bottom: 1px solid var(--border);
+}
+.breadcrumb-inner {
+  max-width: 1080px; margin-inline: auto;
+  padding-inline: 24px;
+  display: flex; flex-wrap: wrap; gap: 6px; align-items: center;
+  font-size: .78rem; color: var(--sub);
+}
+.breadcrumb-inner a {
+  color: var(--ocean);
+  display: inline-flex; align-items: center;
+  min-height: 44px; padding-inline: 4px;
+}
+.breadcrumb-inner span { color: var(--sub); }
+.breadcrumb-inner > :last-child { color: var(--text); }
+
+/* ── FOOTER ── */
+footer {
+  background: #071422; padding: 32px 24px; text-align: center;
+}
+.foot-inner { max-width: 640px; margin-inline: auto; }
+.foot-logo {
+  display: flex; align-items: center; justify-content: center;
+  gap: 10px; margin-bottom: 12px;
+}
+.foot-logo img { width: 28px; height: 28px; object-fit: contain; opacity: .7; }
+.foot-logo span { font-size: .85rem; font-weight: 700; color: rgba(255,255,255,.75); letter-spacing: .1em; }
+.foot-links { display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: center; margin-bottom: 14px; }
+.foot-links a { font-size: .8rem; line-height: 1.8; color: #C9D3DE; }
+.foot-links a:hover, .foot-links a:focus-visible { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+.foot-copy { font-size: .8125rem; line-height: 1.8; color: #A9B6C4; letter-spacing: .06em; }
+
+/* ── DIVIDER ── */
+.divider { height: 1px; background: var(--border); margin: 0; }
+</style>
+</head>
+<body>
+
+<!-- PREVIEW NOTICE -->
+<div class="preview-bar">
+  ⚠️ Design preview (English) — Not the live site. No production files changed.
+</div>
+
+<!-- ========== HEADER ========== -->
+<header id="hdr">
+  <div class="hdr-inner">
+    <a href="index-en.html" class="logo" aria-label="BEMBA top page">
+      <img src="images/logo-bemba-oval.png" alt="BEMBA logo" width="36" height="36">
+      <span>BEMBA</span>
+    </a>
+    <nav class="nav-pc" aria-label="Main navigation">
+      <a href="index-en.html#tours">Tours</a>
+      <a href="about-en.html">About</a>
+      <a href="guide-en.html">Info</a>
+      <div class="lang-sw" id="lang-sw">
+        <button class="lang-btn" id="lang-toggle" aria-haspopup="true" aria-expanded="false" aria-label="Switch language">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          EN
+        </button>
+        <div class="lang-drop" id="lang-drop">
+          <a href="sup.html">🇯🇵 日本語</a>
+          <a href="#" class="active">🇺🇸 English</a>
+        </div>
+      </div>
+      <a href="#booking" class="nav-cta">Book Now</a>
+    </nav>
+    <button class="hamburger" id="menu-btn" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<nav class="nav-sp" id="nav-sp" aria-label="Mobile navigation">
+  <a href="index-en.html#tours">Tours</a>
+  <a href="about-en.html">About</a>
+  <a href="guide-en.html">Info</a>
+  <a href="#booking">Book Now</a>
+</nav>
+
+<main>
+
+<!-- ========== BREADCRUMB ========== -->
+<nav class="breadcrumb" style="margin-top:var(--header);" aria-label="Breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="index-en.html">TOP</a>
+    <span>›</span>
+    <a href="index-en.html#tours">Tours</a>
+    <span>›</span>
+    <span>Stand-Up Paddleboarding</span>
+  </div>
+</nav>
+
+<!-- ========== HERO ========== -->
+<section class="tour-hero" aria-label="SUP tour main visual">
+  <img
+    src="images/guide-photo.webp"
+    alt="BEMBA guide standing on a SUP board"
+    class="tour-hero-photo"
+    width="734" height="979"
+    loading="eager"
+    fetchpriority="high"
+    style="object-position: center 10%;"
+  >
+  <div class="tour-hero-overlay" aria-hidden="true"></div>
+  <div class="tour-hero-content">
+    <p class="tour-hero-eyebrow">Marine Tour</p>
+    <h1 class="tour-hero-title">Stand-Up Paddleboarding</h1>
+    <p class="tour-hero-sub">Activity ~120 min &nbsp;／&nbsp; Meeting to farewell ~180 min &nbsp;／&nbsp; <span style="white-space:nowrap">Ages 10+ (under 10 by consultation)</span> &nbsp;／&nbsp; Max 5</p>
+  </div>
+</section>
+
+<!-- ========== INTRO ========== -->
+<section class="sec" aria-label="About SUP">
+  <div class="container">
+    <span class="sec-label">About SUP</span>
+    <h2 class="sec-title">Stand on the water.<br>Glide through Okinawa's ocean.</h2>
+    <p class="intro-body">
+      Stand-Up Paddleboarding (SUP) means standing on a wide board and paddling through the sea. In the calm, sheltered bays of Okinawa, it's easy to pick up even for first-timers. Because you're elevated above the waterline, the view of the crystal-clear water below is even more vivid.<br><br>
+      Every BEMBA tour is fully private — just your group and your guide. Your guide will teach you everything from scratch, so there's nothing to worry about. Photos and video footage taken during the tour are included in the price, so you can focus entirely on enjoying the ocean.
+    </p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ========== EXPERIENCE ========== -->
+<section class="sec sec--alt" aria-label="Experience">
+  <div class="container">
+    <span class="sec-label">Experience</span>
+    <h2 class="sec-title">What's included</h2>
+
+    <div class="highlights">
+      <div class="hl-card">
+        <p class="hl-num">01</p>
+        <h3 class="hl-title">Thorough land lesson</h3>
+        <p class="hl-body">Before entering the water, your guide will walk you through balance and paddling on land. Perfect for complete beginners.</p>
+      </div>
+      <div class="hl-card">
+        <p class="hl-num">02</p>
+        <h3 class="hl-title">Paddle Okinawa's clear water</h3>
+        <p class="hl-body">About 120 minutes gliding over transparent water at your own pace. Look down and watch the ocean floor pass beneath you.</p>
+      </div>
+      <div class="hl-card">
+        <p class="hl-num">03</p>
+        <h3 class="hl-title">Photos &amp; video included</h3>
+        <p class="hl-body">Your guide captures photos and video throughout the tour. All files are sent to you — no extra charge.</p>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="timeline">
+      <p class="tl-title">How the day flows (approximate)</p>
+      <ul class="tl-list">
+        <li class="tl-item">
+          <span class="tl-time">Meeting point</span>
+
+          <div class="tl-desc">Greeted by your guide
+
+            <p class="tl-sub">Exact meeting location sent via LINE the day before</p>
+
+          </div>
+        </li>
+        <li class="tl-item">
+          <span class="tl-time">~15 min</span>
+
+          <div class="tl-desc">Equipment check, life jacket fitting, land lesson</div>
+        </li>
+        <li class="tl-item">
+          <span class="tl-time">~120 min</span>
+
+          <div class="tl-desc">SUP on the ocean
+
+            <p class="tl-sub">Guide paddles alongside and photographs you throughout</p>
+
+          </div>
+        </li>
+        <li class="tl-item">
+          <span class="tl-time">~45 min</span>
+
+          <div class="tl-desc">Pack-up, photo &amp; video handover, farewell</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ========== PRICE ========== -->
+<section class="sec" aria-label="Pricing">
+  <div class="container">
+    <span class="sec-label">Price</span>
+    <h2 class="sec-title">Pricing</h2>
+    <p class="sec-lead">All prices include tax. Fully private — your group only. Guide, photos &amp; video included.</p>
+
+    <div class="price-section">
+      <table class="price-table" aria-label="SUP pricing table">
+        <thead>
+          <tr><th>Number of adults</th><th>Per adult</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1 adult</td>
+            <td class="price-em">¥15,000</td>
+          </tr>
+          <tr>
+            <td>2–3 adults</td>
+            <td class="price-em">¥12,000</td>
+          </tr>
+          <tr>
+            <td>4 or more adults</td>
+            <td class="price-em">¥10,000</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="price-note">
+        * Adult = age 19 or older &nbsp;/&nbsp; Child = age 18 or younger<br>
+        * Maximum 5 participants per booking (adults and children combined)<br>
+        * Minimum age: 10 (under 10 available on request)
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ========== KIDS + DISCOUNT ========== -->
+<section class="sec sec--alt" aria-label="Discounts">
+  <div class="container">
+    <span class="sec-label">Discount</span>
+    <h2 class="sec-title">Children &amp; Okinawa Resident Discount</h2>
+
+    <div class="benefit-grid">
+
+      <div class="benefit-card benefit-card--accent">
+        <p class="benefit-label">Kids</p>
+        <h3 class="benefit-headline">Up to 3 children (18 &amp; under) free</h3>
+        <p class="benefit-body">
+          Per booking, up to <strong style="color:var(--navy)">3 children (age 18 or younger) join free</strong>.<br>
+          A 4th child or beyond is ¥5,000 per child (tax incl.).<br>
+          Free-of-charge children are still counted in the overall group size for safety purposes.
+        </p>
+      </div>
+
+      <div class="benefit-card">
+        <p class="benefit-label">Okinawa Resident</p>
+        <h3 class="benefit-headline">Okinawa Resident Discount<br>¥2,000 off per adult</h3>
+        <p class="benefit-body">
+          Applies when <strong style="color:var(--navy)">2 or more adults</strong> are booking and at least 1 person in the group is an Okinawa resident — even if that resident is a child (18 &amp; under).<br>
+          When the condition is met, every adult in the group receives ¥2,000 off.<br>
+          Children's fees are not discounted.<br>
+          ID confirming Okinawa residency may be requested.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ========== INFO ========== -->
+<section class="sec" aria-label="What to bring and notes">
+  <div class="container">
+    <span class="sec-label">Info</span>
+    <h2 class="sec-title">What to bring &amp; good to know</h2>
+
+    <div class="info-grid">
+
+      <div class="info-block">
+        <h3>What to bring</h3>
+        <ul class="info-list">
+          <li>Change of clothes</li>
+          <li>Towel</li>
+          <li>Sandals</li>
+          <li>Water / drinks</li>
+          <li>Wetsuit rental available on request</li>
+        </ul>
+      </div>
+
+      <div class="info-block">
+        <h3>Meeting point</h3>
+        <ul class="info-list">
+          <li>Meet and part ways directly at the beach</li>
+          <li>Exact location sent via LINE the day before</li>
+          <li>If conditions require a last-minute change, you'll be notified at least 1 hour before the tour</li>
+          <li>No changing room or shower on site</li>
+          <li>Nearest public restroom pointed out on the day</li>
+        </ul>
+      </div>
+
+      <div class="info-block">
+        <h3>Safety equipment</h3>
+        <ul class="info-list">
+          <li>Life jacket (provided)</li>
+          <li>Rescue tube</li>
+          <li>Rescue rope</li>
+          <li>Guide accompanies the group throughout</li>
+        </ul>
+      </div>
+
+      <div class="info-block">
+        <h3>Notes</h3>
+        <ul class="info-list">
+          <li>Please arrive in swimwear or a rash guard</li>
+          <li>Minimum age 10 (under 10 available on request)</li>
+          <li>Maximum group size: 5</li>
+          <li>Location may change depending on sea and weather conditions</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ========== CANCELLATION ========== -->
+<section class="sec sec--alt" aria-label="Cancellation policy">
+  <div class="container">
+    <span class="sec-label">Cancellation</span>
+    <h2 class="sec-title">Cancellation &amp; weather policy</h2>
+    <div class="cancel-box">
+      <p><strong>Go / No-go decision</strong><br>
+        Decision is made the day before, as a rule. Tours run in light rain. In case of typhoon, disaster, or sudden severe conditions, the tour may be cancelled.<br>
+        In unavoidable circumstances, a final decision may be made up to 1 hour before the tour starts.
+      </p>
+      <p><strong>Cancellation by guest — day before:</strong> 100% of the tour fee</p>
+      <p><strong>Cancellation by guest — same day:</strong> 100% of the tour fee (as a rule)</p>
+      <p><strong>Tour cancelled mid-activity (under 30 min elapsed):</strong> Full refund</p>
+      <p><strong>Tour cancelled mid-activity (30 min or more elapsed):</strong> No refund</p>
+      <p>If BEMBA proposes a change of location or date and you choose to cancel as a result, no cancellation fee applies.</p>
+      <p style="margin-top:14px; padding-top:14px; border-top:1px solid var(--border);">
+        If your plans change, please let us know as soon as possible.<br>
+        Feel free to contact us on LINE for any questions.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== BOOKING CTA ========== -->
+<section id="booking" aria-label="Reservation and contact">
+  <div class="booking-inner">
+    <span class="booking-label">Reservation &amp; Contact</span>
+    <h2 class="booking-title">Book Your Tour</h2>
+    <p class="booking-sub">
+      Message us on LINE — feel free to write in English.<br>
+      Tell us your tour, preferred date, and group size.<br>
+      We use translation apps and will guide you through the booking process.
+    </p>
+    <div class="booking-btns">
+      <a href="https://lin.ee/ohC64EDT" target="_blank" rel="noopener noreferrer" class="btn-line">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.03 2 11c0 3.07 1.64 5.78 4.18 7.5L5 22l4.25-2.24C10.44 20.24 11.21 20.4 12 20.4c5.52 0 10-4.03 10-9s-4.48-9-10-9z"/></svg>
+        Message us on LINE
+      </a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSf0P_825mY5j3x9UxUeuRWD2Tj17UdquTOCDbmxp2jqGLvv4g/viewform" target="_blank" rel="noopener noreferrer" class="btn-form">Booking form</a>
+    </div>
+    <p class="booking-note">
+      Opening November 1, 2026<br>
+      Enquiries: bemba.okinawa@gmail.com
+    </p>
+  </div>
+</section>
+
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-logo">
+      <img src="images/logo-bemba-oval.png" alt="BEMBA logo" width="28" height="28">
+      <span>BEMBA</span>
+    </div>
+    <div class="foot-links">
+      <a href="index-en.html#tours">Tours</a>
+      <a href="about-en.html">About</a>
+      <a href="guide-en.html">Info</a>
+      <a href="guide-en.html#faq">FAQ</a>
+      <a href="privacy-en.html">Privacy Policy</a>
+    </div>
+    <p class="foot-copy">© 2026 BEMBA — Private Marine Tours in Okinawa</p>
+  </div>
+</footer>
+
+<script>
+// Language switcher
+const _lt = document.getElementById('lang-toggle');
+const _ld = document.getElementById('lang-drop');
+const _ls = document.getElementById('lang-sw');
+if (_lt && _ld) {
+  _lt.addEventListener('click', e => {
+    e.stopPropagation();
+    const open = _ld.classList.toggle('open');
+    _lt.setAttribute('aria-expanded', open);
+  });
+  document.addEventListener('click', e => {
+    if (_ls && !_ls.contains(e.target)) {
+      _ld.classList.remove('open');
+      _lt.setAttribute('aria-expanded', false);
+    }
+  });
+}
+
+const btn = document.getElementById('menu-btn');
+const nav = document.getElementById('nav-sp');
+btn.addEventListener('click', () => {
+  const open = nav.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open);
+});
+nav.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    nav.classList.remove('open');
+    btn.setAttribute('aria-expanded', false);
+  });
+});
+</script>
+</body>
+</html>

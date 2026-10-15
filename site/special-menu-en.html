@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Special Tours (Sunrise &amp; Sunset) | BEMBA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:   #0D2B3E;
+  --ocean:  #1A6B9A;
+  --sand:   #F6F3ED;
+  --white:  #FFFFFF;
+  --text:   #1A1A1A;
+  --sub:    #4A5761;
+  --border: #DDD9D0;
+  --green:  #06C755;
+  --header: 64px;
+  --gold:   #C9A84C;
+  --page-bg:#04111E;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;
+  background: var(--page-bg);
+  color: var(--white);
+  line-height: 1.8;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+
+/* HEADER */
+#hdr {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: var(--header);
+  background: rgba(4,17,30,.97);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,.1);
+}
+.hdr-inner {
+  max-width: 1080px; margin-inline: auto;
+  padding-inline: 24px; height: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.logo {
+  display: flex; align-items: center; gap: 10px;
+  font-size: .95rem; font-weight: 700;
+  color: var(--white); letter-spacing: .06em;
+}
+.logo img { width: 36px; height: 36px; object-fit: contain; }
+.logo-yomi { font-size: .6em; font-weight: 400; color: rgba(255,255,255,.55); margin-left: 2px; }
+.nav-pc { display: none; gap: 32px; align-items: center; }
+@media (min-width: 768px) { .nav-pc { display: flex; } }
+.nav-pc a { font-size: .82rem; color: rgba(255,255,255,.65); letter-spacing: .04em; transition: color .15s; }
+.nav-pc a:hover { color: var(--white); }
+.nav-cta {
+  background: var(--green); color: var(--white) !important;
+  padding: 9px 22px; border-radius: 3px;
+  font-size: .82rem !important; font-weight: 700 !important;
+}
+.hamburger {
+  display: flex; flex-direction: column; justify-content: center;
+  gap: 5px; width: 44px; height: 44px; padding: 8px;
+  background: none; border: none; cursor: pointer;
+}
+.hamburger span { display: block; height: 1.5px; background: var(--white); border-radius: 1px; }
+@media (min-width: 768px) { .hamburger { display: none; } }
+.nav-sp {
+  display: none; position: fixed; top: var(--header); left: 0; right: 0;
+  background: #04111E; border-top: 1px solid rgba(255,255,255,.1);
+  padding: 16px 24px 24px; z-index: 99;
+  box-shadow: 0 8px 24px rgba(0,0,0,.3);
+}
+.nav-sp.open { display: block; }
+.nav-sp a {
+  display: block; padding: 13px 0; font-size: .92rem; color: rgba(255,255,255,.8);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.nav-sp a:last-child {
+  border: none; margin-top: 8px;
+  background: var(--green); color: var(--white);
+  text-align: center; border-radius: 3px; padding: 13px; font-weight: 700;
+}
+
+/* BREADCRUMB */
+.breadcrumb {
+  margin-top: var(--header);
+  background: rgba(255,255,255,.04);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  padding: 4px 0;
+}
+.breadcrumb-inner {
+  max-width: 1080px; margin-inline: auto; padding-inline: 24px;
+  display: flex; flex-wrap: wrap; gap: 6px; align-items: center;
+  font-size: .78rem; color: rgba(255,255,255,.45);
+  min-height: 44px;
+}
+.breadcrumb-inner a { color: rgba(255,255,255,.55); transition: color .15s; }
+.breadcrumb-inner a:hover { color: var(--white); }
+
+/* LANG SWITCH */
+.lang-switch {
+  text-align: right; max-width: 1040px; margin-inline: auto;
+  padding: 10px 24px 0; font-size: .78rem;
+}
+.lang-switch a {
+  color: rgba(255,255,255,.5); padding: 4px 8px; border-radius: 3px;
+  border: 1px solid rgba(255,255,255,.12); transition: all .15s;
+}
+.lang-switch a:hover { color: var(--white); border-color: rgba(255,255,255,.3); }
+.lang-switch a.active { color: var(--white); border-color: rgba(255,255,255,.35); background: rgba(255,255,255,.06); }
+
+/* PAGE HERO */
+.page-hero {
+  padding: 52px 24px 48px;
+  text-align: center;
+  position: relative;
+}
+.page-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 20% 50%, rgba(201,168,76,.08) 0%, transparent 65%),
+    radial-gradient(ellipse 70% 60% at 80% 50%, rgba(107,120,200,.08) 0%, transparent 65%);
+  pointer-events: none;
+}
+.page-hero-content { position: relative; }
+.page-hero-label {
+  display: block; font-size: .7rem; font-weight: 500;
+  letter-spacing: .28em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 14px;
+}
+.page-hero-title {
+  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+  font-weight: 600; color: var(--white);
+  letter-spacing: .02em; line-height: 1.3;
+  margin-bottom: 16px;
+}
+.page-hero-lead {
+  font-size: .95rem; color: rgba(255,255,255,.65);
+  line-height: 2; font-weight: 300;
+  max-width: 560px; margin-inline: auto;
+}
+
+/* CARDS GRID */
+.cards-wrap {
+  padding: 8px 24px 80px;
+  max-width: 1040px; margin-inline: auto;
+}
+.special-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+@media (max-width: 680px) {
+  .special-cards { grid-template-columns: 1fr; gap: 32px; }
+}
+
+/* SINGLE CARD */
+.spec-card {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* CARD PHOTO */
+.card-photo {
+  width: 100%; aspect-ratio: 16/9;
+  position: relative; overflow: hidden;
+}
+.card-photo img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center 65%;
+  display: block;
+}
+.card-photo--sunrise { background: linear-gradient(135deg, #1A0A00 0%, #3D1A00 25%, #7A3C0A 50%, #C47020 75%, #E8A830 100%); }
+.card-photo--sunset  { background: linear-gradient(135deg, #04111E 0%, #0D2B4A 25%, #1A4A7A 55%, #4A3080 75%, #7A2040 100%); }
+.card-photo-overlay {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: rgba(0,0,0,.18);
+}
+.card-photo-note {
+  background: rgba(0,0,0,.55);
+  color: rgba(255,255,255,.7);
+  font-size: .7rem; padding: 6px 12px; border-radius: 3px;
+  letter-spacing: .06em;
+}
+
+/* CARD BODY */
+.card-body { padding: 28px 28px 32px; }
+@media (max-width: 480px) { .card-body { padding: 22px 20px 28px; } }
+
+.card-type-tag {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: .68rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  padding: 4px 10px; border-radius: 3px; margin-bottom: 16px;
+}
+.card-type-tag--sunrise {
+  background: rgba(212,137,74,.18); border: 1px solid rgba(212,137,74,.4);
+  color: #E8B060;
+}
+.card-type-tag--sunset {
+  background: rgba(107,120,200,.18); border: 1px solid rgba(107,120,200,.4);
+  color: #A0AEED;
+}
+
+.card-title {
+  font-size: 1.5rem; font-weight: 600;
+  color: var(--white); letter-spacing: .01em;
+  line-height: 1.25; margin-bottom: 5px;
+}
+.card-title-ja {
+  font-size: .8rem; color: rgba(255,255,255,.4);
+  letter-spacing: .08em; margin-bottom: 18px; font-weight: 300;
+}
+
+.card-meta {
+  display: flex; flex-wrap: wrap; gap: 6px 16px;
+  margin-bottom: 20px;
+}
+.card-meta-item {
+  font-size: .8rem; color: rgba(255,255,255,.6);
+  display: flex; align-items: center; gap: 5px;
+}
+.card-meta-item svg { flex-shrink: 0; opacity: .7; }
+
+.card-desc {
+  font-size: .9rem; color: rgba(255,255,255,.72);
+  line-height: 1.9; font-weight: 300; margin-bottom: 22px;
+}
+
+.card-divider {
+  border: none; border-top: 1px solid rgba(255,255,255,.08);
+  margin: 22px 0;
+}
+
+/* ACTIVITY SELECTOR */
+.activity-selector {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 22px;
+}
+.activity-opt {
+  background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.1);
+  border-radius: 4px; padding: 12px 10px; text-align: center;
+  font-size: .82rem; color: rgba(255,255,255,.75); line-height: 1.6;
+}
+.activity-opt strong { color: var(--white); font-size: .9rem; display: block; margin-bottom: 2px; }
+.activity-opt .age-tag { font-size: .72rem; color: rgba(255,255,255,.5); }
+
+/* PRICE TABLE */
+.price-section-title {
+  font-size: .72rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+  color: rgba(255,255,255,.45); margin-bottom: 12px;
+}
+.spc-price-table {
+  width: 100%; border-collapse: collapse; font-size: .88rem;
+}
+.spc-price-table th {
+  background: rgba(255,255,255,.08); color: rgba(255,255,255,.65);
+  padding: 10px 14px; text-align: left;
+  font-size: .77rem; font-weight: 500; letter-spacing: .06em;
+}
+.spc-price-table td {
+  padding: 14px 14px; border-bottom: 1px solid rgba(255,255,255,.06);
+  color: rgba(255,255,255,.82); vertical-align: middle;
+}
+.spc-price-table tr:last-child td { border-bottom: none; }
+.price-em { font-weight: 700; color: var(--white); font-size: 1.15rem; }
+.price-formula { font-size: .75rem; color: rgba(255,255,255,.45); display: block; margin-top: 1px; }
+
+.price-note-block {
+  margin-top: 14px; font-size: .8rem;
+  color: rgba(255,255,255,.5); line-height: 1.85;
+}
+
+/* TIME NOTE */
+.time-note {
+  margin-top: 18px; padding: 13px 16px;
+  background: rgba(255,255,255,.04);
+  border-left: 3px solid rgba(201,168,76,.5);
+  font-size: .82rem; color: rgba(255,255,255,.62);
+  line-height: 1.85;
+}
+
+/* LINE CTA */
+.card-cta {
+  margin-top: 24px; width: 100%;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  background: var(--green); color: var(--white);
+  padding: 15px 24px; border-radius: 4px;
+  font-size: .92rem; font-weight: 700; letter-spacing: .04em;
+  transition: opacity .15s; border: none; cursor: pointer;
+}
+.card-cta:hover { opacity: .88; }
+/* Form CTA */
+.card-cta-form {
+  margin-top: 10px; width: 100%;
+  display: flex; align-items: center; justify-content: center;
+  border: 1.5px solid rgba(255,255,255,.45); color: rgba(255,255,255,.85);
+  padding: 14px 24px; border-radius: 4px;
+  font-size: .92rem; font-weight: 500; letter-spacing: .04em;
+  transition: border-color .15s;
+}
+.card-cta-form:hover { border-color: rgba(255,255,255,.75); }
+
+/* PHOTO NOTE FOOTER */
+.photo-notice {
+  margin-top: 40px; padding: 16px 20px;
+  background: rgba(255,255,255,.04);
+  border: 1px dashed rgba(255,255,255,.12);
+  border-radius: 4px;
+  font-size: .8rem; color: rgba(255,255,255,.42); line-height: 1.9;
+}
+
+/* FOOTER */
+footer { background: #040E18; padding: 32px 24px; text-align: center; border-top: 1px solid rgba(255,255,255,.06); }
+.foot-inner { max-width: 640px; margin-inline: auto; }
+.foot-logo { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 12px; }
+.foot-logo img { width: 28px; height: 28px; object-fit: contain; opacity: .7; }
+.foot-logo span { font-size: .85rem; font-weight: 700; color: rgba(255,255,255,.65); letter-spacing: .1em; }
+.foot-links { display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: center; margin-bottom: 14px; }
+.foot-links a { font-size: .8rem; line-height: 1.8; color: rgba(255,255,255,.5); }
+.foot-links a:hover { color: rgba(255,255,255,.9); text-decoration: underline; text-underline-offset: 3px; }
+.foot-copy { font-size: .8rem; color: rgba(255,255,255,.35); letter-spacing: .06em; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="hdr">
+  <div class="hdr-inner">
+    <a href="index-en.html" class="logo" aria-label="BEMBA top page">
+      <img src="images/logo-bemba-oval.png" alt="BEMBA logo" width="36" height="36">
+      <span>BEMBA<span class="logo-yomi">（ベンバ）</span></span>
+    </a>
+    <nav class="nav-pc" aria-label="Main navigation">
+      <a href="index-en.html#tours">Tours</a>
+      <a href="about-en.html">About BEMBA</a>
+      <a href="guide-en.html">Guide & FAQ</a>
+      <a href="https://lin.ee/ohC64EDT" class="nav-cta">Book Now</a>
+    </nav>
+    <button class="hamburger" id="menu-btn" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<nav class="nav-sp" id="nav-sp" aria-label="Mobile navigation">
+  <a href="index-en.html#tours">Tours</a>
+  <a href="about-en.html">About BEMBA</a>
+  <a href="guide-en.html">Guide & FAQ</a>
+  <a href="https://lin.ee/ohC64EDT">Book Now</a>
+</nav>
+
+<main>
+
+<!-- BREADCRUMB -->
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="index-en.html">TOP</a>
+    <span>›</span>
+    <span>Special Tours (Sunrise &amp; Sunset)</span>
+  </div>
+</nav>
+
+<!-- LANG SWITCH -->
+<div class="lang-switch">
+  <a href="special-menu.html">日本語</a>
+  &nbsp;
+  <a href="special-menu-en.html" class="active">English</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero" aria-label="Special Tours page header">
+  <div class="page-hero-content">
+    <span class="page-hero-label">Special Menu</span>
+    <h1 class="page-hero-title">Sunrise &amp; Sunset Tours</h1>
+    <p class="page-hero-lead">
+      A private ocean experience timed to Okinawa's most breathtaking light.<br>
+      Choose SUP or kayak — your guide, your ocean, your moment.<br>
+      Start times are arranged by date, season, and conditions. Contact us via LINE to plan yours.
+    </p>
+  </div>
+</section>
+
+<!-- CARDS -->
+<div class="cards-wrap">
+  <div class="special-cards">
+
+    <!-- ─── Sunrise ─── -->
+    <article class="spec-card" aria-label="Sunrise Tour">
+
+      <!-- Photo area -->
+      <div class="card-photo card-photo--sunrise">
+        <img src="images/sunrise-sup.webp" alt="Two guests on SUP boards on Okinawa's calm morning sea at sunrise, wearing lifejackets" loading="lazy">
+      </div>
+
+      <div class="card-body">
+        <span class="card-type-tag card-type-tag--sunrise">🌅 Sunrise</span>
+        <h2 class="card-title">Sunrise Tour</h2>
+        <p class="card-title-ja">サンライズツアー</p>
+
+        <div class="card-meta">
+          <span class="card-meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Experience approx. 120 min ／ Total approx. 180 min
+          </span>
+          <span class="card-meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            Fully private — your group only
+          </span>
+        </div>
+
+        <p class="card-desc">
+          Launch before dawn and watch the sun rise over the horizon from the open ocean.
+          Your guide accompanies you throughout, and all photos and video are included.
+        </p>
+
+        <hr class="card-divider">
+
+        <!-- Activity choice -->
+        <p class="price-section-title">Choose Your Activity</p>
+        <div class="activity-selector">
+          <div class="activity-opt">
+            <strong>SUP</strong>
+            Stand-Up Paddleboard
+            <span class="age-tag">Ages 10+ (under 10: consult)</span>
+            <span class="age-tag">Max 5 guests</span>
+          </div>
+          <div class="activity-opt">
+            <strong>Sea Kayak</strong>
+            Standard kayak
+            <span class="age-tag">Ages 5+ (under 5: consult)</span>
+            <span class="age-tag">Max 8 guests</span>
+          </div>
+        </div>
+
+        <hr class="card-divider">
+
+        <!-- Pricing -->
+        <p class="price-section-title">Pricing (tax included)</p>
+        <table class="spc-price-table" aria-label="Sunrise Tour pricing">
+          <thead>
+            <tr>
+              <th>Adult participants</th>
+              <th>Per adult</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1 adult</td>
+              <td>
+                <span class="price-em">¥16,000</span>
+                <span class="price-formula">(standard ¥15,000 + special ¥1,000)</span>
+              </td>
+            </tr>
+            <tr>
+              <td>2–3 adults</td>
+              <td>
+                <span class="price-em">¥13,000</span>
+                <span class="price-formula">(standard ¥12,000 + special ¥1,000)</span>
+              </td>
+            </tr>
+            <tr>
+              <td>4+ adults</td>
+              <td>
+                <span class="price-em">¥11,000</span>
+                <span class="price-formula">(standard ¥10,000 + special ¥1,000)</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="price-note-block">
+          ※ Adult = age 19+. Child = age 18 and under.<br>
+          ※ Up to 3 children (18 and under) per adult are free. No special fee for free children.<br>
+          ※ Okinawa resident discount: ¥2,000 off per adult (2+ adults; 1+ Okinawa resident in group).<br>
+          ※ The ¥1,000 special surcharge applies per paying participant only.
+        </p>
+
+        <!-- Time note -->
+        <div class="time-note">
+          ⏰ <strong style="color:rgba(255,255,255,.85)">Start time by consultation</strong><br>
+          Meeting and start times are arranged based on the date, sunrise time, weather, sea conditions, and safety.
+          Cancellation may occur on the day due to weather or sea conditions.
+        </div>
+
+        <!-- LINE CTA -->
+        <a href="https://lin.ee/ohC64EDT" target="_blank" rel="noopener noreferrer" class="card-cta">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.03 2 11c0 3.07 1.64 5.78 4.18 7.5L5 22l4.25-2.24C10.44 20.24 11.21 20.4 12 20.4c5.52 0 10-4.03 10-9s-4.48-9-10-9z"/></svg>
+          Chat on LINE about Sunrise
+        </a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSf0P_825mY5j3x9UxUeuRWD2Tj17UdquTOCDbmxp2jqGLvv4g/viewform" target="_blank" rel="noopener noreferrer" class="card-cta-form">
+          Book Now
+        </a>
+      </div>
+    </article>
+
+    <!-- ─── Sunset ─── -->
+    <article class="spec-card" aria-label="Sunset Tour">
+
+      <!-- Photo area -->
+      <div class="card-photo card-photo--sunset">
+        <img src="images/sunset-kayak.webp" alt="Guests kayaking on Okinawa's ocean at sunset, wearing lifejackets" loading="lazy">
+      </div>
+
+      <div class="card-body">
+        <span class="card-type-tag card-type-tag--sunset">🌇 Sunset</span>
+        <h2 class="card-title">Sunset Tour</h2>
+        <p class="card-title-ja">サンセットツアー</p>
+
+        <div class="card-meta">
+          <span class="card-meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Experience approx. 120 min ／ Total approx. 180 min
+          </span>
+          <span class="card-meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            Fully private — your group only
+          </span>
+        </div>
+
+        <p class="card-desc">
+          Paddle out in the late afternoon and watch the sun melt into the horizon from the water.
+          Your guide accompanies you throughout, and all photos and video are included.
+        </p>
+
+        <hr class="card-divider">
+
+        <!-- Activity choice -->
+        <p class="price-section-title">Choose Your Activity</p>
+        <div class="activity-selector">
+          <div class="activity-opt">
+            <strong>SUP</strong>
+            Stand-Up Paddleboard
+            <span class="age-tag">Ages 10+ (under 10: consult)</span>
+            <span class="age-tag">Max 5 guests</span>
+          </div>
+          <div class="activity-opt">
+            <strong>Sea Kayak</strong>
+            Standard kayak
+            <span class="age-tag">Ages 5+ (under 5: consult)</span>
+            <span class="age-tag">Max 8 guests</span>
+          </div>
+        </div>
+
+        <hr class="card-divider">
+
+        <!-- Pricing -->
+        <p class="price-section-title">Pricing (tax included)</p>
+        <table class="spc-price-table" aria-label="Sunset Tour pricing">
+          <thead>
+            <tr>
+              <th>Adult participants</th>
+              <th>Per adult</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1 adult</td>
+              <td>
+                <span class="price-em">¥16,000</span>
+                <span class="price-formula">(standard ¥15,000 + special ¥1,000)</span>
+              </td>
+            </tr>
+            <tr>
+              <td>2–3 adults</td>
+              <td>
+                <span class="price-em">¥13,000</span>
+                <span class="price-formula">(standard ¥12,000 + special ¥1,000)</span>
+              </td>
+            </tr>
+            <tr>
+              <td>4+ adults</td>
+              <td>
+                <span class="price-em">¥11,000</span>
+                <span class="price-formula">(standard ¥10,000 + special ¥1,000)</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="price-note-block">
+          ※ Adult = age 19+. Child = age 18 and under.<br>
+          ※ Up to 3 children (18 and under) per adult are free. No special fee for free children.<br>
+          ※ Okinawa resident discount: ¥2,000 off per adult (2+ adults; 1+ Okinawa resident in group).<br>
+          ※ The ¥1,000 special surcharge applies per paying participant only.
+        </p>
+
+        <!-- Time note -->
+        <div class="time-note">
+          ⏰ <strong style="color:rgba(255,255,255,.85)">Start time by consultation</strong><br>
+          Meeting and start times are arranged based on the date, sunset time, weather, sea conditions, and safety.
+          Cancellation may occur on the day due to weather or sea conditions.
+        </div>
+
+        <!-- LINE CTA -->
+        <a href="https://lin.ee/ohC64EDT" target="_blank" rel="noopener noreferrer" class="card-cta">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.03 2 11c0 3.07 1.64 5.78 4.18 7.5L5 22l4.25-2.24C10.44 20.24 11.21 20.4 12 20.4c5.52 0 10-4.03 10-9s-4.48-9-10-9z"/></svg>
+          Chat on LINE about Sunset
+        </a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSf0P_825mY5j3x9UxUeuRWD2Tj17UdquTOCDbmxp2jqGLvv4g/viewform" target="_blank" rel="noopener noreferrer" class="card-cta-form">
+          Book Now
+        </a>
+      </div>
+    </article>
+
+  </div><!-- /special-cards -->
+
+
+</div><!-- /cards-wrap -->
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-logo">
+      <img src="images/logo-bemba-oval.png" alt="BEMBA logo" width="28" height="28">
+      <span>BEMBA</span>
+    </div>
+    <div class="foot-links">
+      <a href="index-en.html#tours">Tours</a>
+      <a href="about-en.html">About BEMBA</a>
+      <a href="guide-en.html">Guide &amp; FAQ</a>
+      <a href="privacy-en.html">Privacy Policy</a>
+    </div>
+    <p class="foot-copy">© 2026 BEMBA — Private Marine Tours in Okinawa</p>
+  </div>
+</footer>
+
+<script>
+const btn = document.getElementById('menu-btn');
+const nav = document.getElementById('nav-sp');
+btn.addEventListener('click', () => {
+  const open = nav.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open);
+});
+nav.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    nav.classList.remove('open');
+    btn.setAttribute('aria-expanded', false);
+  });
+});
+</script>
+</body>
+</html>

@@ -116,6 +116,13 @@ footer { background: #071422; padding: 32px 24px; text-align: center; }
 .foot-links a { font-size: .8rem; line-height: 1.8; color: #C9D3DE; }
 .foot-links a:hover { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
 .foot-copy { font-size: .8125rem; line-height: 1.8; color: #A9B6C4; letter-spacing: .06em; }
+
+/* ── MOBILE LANGUAGE SWITCHER ── */
+.hdr-right { display: flex; align-items: center; gap: 8px; }
+.lang-sw-sp { display: none; }
+.lang-sw .lang-drop, .lang-sw-sp .lang-drop { display: none; }
+.lang-sw .lang-drop.open, .lang-sw-sp .lang-drop.open { display: block; }
+@media (max-width: 767px) { .lang-sw-sp { display: flex; } }
 </style>
 </head>
 <body>
@@ -128,6 +135,7 @@ footer { background: #071422; padding: 32px 24px; text-align: center; }
       <img src="images/logo-bemba-oval.png" alt="BEMBA logo" width="36" height="36">
       <span>BEMBA（ベンバ）</span>
     </a>
+    <div class="hdr-right">
     <nav class="nav-pc" aria-label="メインナビゲーション">
       <a href="index.html#tours">ツアー</a>
       <a href="about.html">BEMBAについて</a>
@@ -143,9 +151,21 @@ footer { background: #071422; padding: 32px 24px; text-align: center; }
       </div>
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSdqf3kmFzZnffRVf_NnlmSQ536_gymBiTUo3nAIwn_LCsQ8hA/viewform" target="_blank" rel="noopener" class="nav-cta">ご予約</a>
     </nav>
+    <!-- Mobile language switcher (SP only) -->
+    <div class="lang-sw lang-sw-sp" id="lang-sw-sp">
+      <button class="lang-btn" id="lang-toggle-sp" aria-haspopup="true" aria-expanded="false" aria-label="言語切替">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        日本語
+      </button>
+      <div class="lang-drop" id="lang-drop-sp">
+        <a href="#" class="active">🇯🇵 日本語</a>
+        <a href="guide-en.html">🇺🇸 English</a>
+      </div>
+    </div>
     <button class="hamburger" id="menu-btn" aria-label="メニューを開く" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
+    </div><!-- /.hdr-right -->
   </div>
 </header>
 
@@ -405,6 +425,24 @@ document.querySelectorAll('.faq-q').forEach(btn => {
     btn.setAttribute('aria-expanded', isOpen);
   });
 });
+
+// Mobile language switcher (SP)
+const _lts = document.getElementById('lang-toggle-sp');
+const _lds = document.getElementById('lang-drop-sp');
+const _lss = document.getElementById('lang-sw-sp');
+if (_lts && _lds) {
+  _lts.addEventListener('click', e => {
+    e.stopPropagation();
+    const open = _lds.classList.toggle('open');
+    _lts.setAttribute('aria-expanded', open);
+  });
+  document.addEventListener('click', e => {
+    if (_lss && !_lss.contains(e.target)) {
+      _lds.classList.remove('open');
+      _lts.setAttribute('aria-expanded', false);
+    }
+  });
+}
 </script>
 </body>
 </html>

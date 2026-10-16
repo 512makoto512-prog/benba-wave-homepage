@@ -374,6 +374,13 @@ footer { background: #071422; padding: 32px 24px; text-align: center; }
   font-size: .88rem; color: #1A4A6A; line-height: 1.8;
   margin-top: 20px;
 }
+
+/* ── MOBILE LANGUAGE SWITCHER ── */
+.hdr-right { display: flex; align-items: center; gap: 8px; }
+.lang-sw-sp { display: none; }
+.lang-sw .lang-drop, .lang-sw-sp .lang-drop { display: none; }
+.lang-sw .lang-drop.open, .lang-sw-sp .lang-drop.open { display: block; }
+@media (max-width: 767px) { .lang-sw-sp { display: flex; } }
 </style>
 </head>
 <body>
@@ -390,6 +397,7 @@ footer { background: #071422; padding: 32px 24px; text-align: center; }
       <img src="images/logo-bemba-oval.png" alt="BEMBA logo" width="36" height="36">
       <span>BEMBA</span>
     </a>
+    <div class="hdr-right">
     <nav class="nav-pc" aria-label="Main navigation">
       <a href="index-en.html#tours">Tours</a>
       <a href="about-en.html">About</a>
@@ -406,9 +414,21 @@ footer { background: #071422; padding: 32px 24px; text-align: center; }
       </div>
       <a href="#booking" class="nav-cta">Book Now</a>
     </nav>
+    <!-- Mobile language switcher (SP only) -->
+    <div class="lang-sw lang-sw-sp" id="lang-sw-sp">
+      <button class="lang-btn" id="lang-toggle-sp" aria-haspopup="true" aria-expanded="false" aria-label="Language">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        EN
+      </button>
+      <div class="lang-drop" id="lang-drop-sp">
+        <a href="kayak.html">🇯🇵 日本語</a>
+        <a href="#" class="active">🇺🇸 English</a>
+      </div>
+    </div>
     <button class="hamburger" id="menu-btn" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
+    </div><!-- /.hdr-right -->
   </div>
 </header>
 <nav class="nav-sp" id="nav-sp" aria-label="Mobile navigation">
@@ -745,6 +765,24 @@ nav.querySelectorAll('a').forEach(a => {
     btn.setAttribute('aria-expanded', false);
   });
 });
+
+// Mobile language switcher (SP)
+const _lts = document.getElementById('lang-toggle-sp');
+const _lds = document.getElementById('lang-drop-sp');
+const _lss = document.getElementById('lang-sw-sp');
+if (_lts && _lds) {
+  _lts.addEventListener('click', e => {
+    e.stopPropagation();
+    const open = _lds.classList.toggle('open');
+    _lts.setAttribute('aria-expanded', open);
+  });
+  document.addEventListener('click', e => {
+    if (_lss && !_lss.contains(e.target)) {
+      _lds.classList.remove('open');
+      _lts.setAttribute('aria-expanded', false);
+    }
+  });
+}
 </script>
 </body>
 </html>

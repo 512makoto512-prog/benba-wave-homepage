@@ -17,7 +17,14 @@
     .not-found img { width: 100px; height: 100px; border-radius: 50%; margin-bottom: 24px; }
     .not-found h1 { font-size: 5rem; font-weight: 900; opacity: .4; margin-bottom: 8px; }
     .not-found p { font-size: 1rem; opacity: .8; margin-bottom: 32px; }
-  </style>
+  
+/* ── MOBILE LANGUAGE SWITCHER ── */
+.hdr-right { display: flex; align-items: center; gap: 8px; }
+.lang-sw-sp { display: none; }
+.lang-sw .lang-drop, .lang-sw-sp .lang-drop { display: none; }
+.lang-sw .lang-drop.open, .lang-sw-sp .lang-drop.open { display: block; }
+@media (max-width: 767px) { .lang-sw-sp { display: flex; } }
+</style>
 </head>
 <body>
   <div class="not-found">

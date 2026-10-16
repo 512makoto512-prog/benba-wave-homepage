@@ -53,7 +53,14 @@
     /* Footer */
     footer { background: var(--navy); color: rgba(255,255,255,.7); text-align: center; padding: 32px 20px; font-size: .78rem; }
     footer a { color: rgba(255,255,255,.7); text-decoration: underline; }
-  </style>
+  
+/* ── MOBILE LANGUAGE SWITCHER ── */
+.hdr-right { display: flex; align-items: center; gap: 8px; }
+.lang-sw-sp { display: none; }
+.lang-sw .lang-drop, .lang-sw-sp .lang-drop { display: none; }
+.lang-sw .lang-drop.open, .lang-sw-sp .lang-drop.open { display: block; }
+@media (max-width: 767px) { .lang-sw-sp { display: flex; } }
+</style>
 </head>
 <body>
 

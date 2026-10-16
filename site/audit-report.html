@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BEMBA デザイン監査レポート | 2026-10-13</title>
+<style>
+:root{--navy:#0D2B3E;--ocean:#1A6B9A;--sand:#F6F3ED;--red:#C0392B;--yellow:#E67E22;--green:#27AE60;--border:#DDD8CF;--white:#fff;--text:#1A1A1A;--sub:#4A5761;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Noto Sans JP',sans-serif;background:var(--sand);color:var(--text);line-height:1.7;}
+header{background:var(--navy);color:#fff;padding:32px 24px;}
+header h1{font-size:1.4rem;font-weight:900;margin-bottom:4px;}
+header p{font-size:.82rem;opacity:.7;}
+.container{max-width:960px;margin-inline:auto;padding:40px 24px 80px;}
+.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:40px;}
+.summary-card{background:var(--white);border-radius:8px;padding:20px 24px;text-align:center;border-top:4px solid var(--border);}
+.summary-card.red{border-top-color:var(--red);}
+.summary-card.yellow{border-top-color:var(--yellow);}
+.summary-card.green{border-top-color:var(--green);}
+.summary-card .num{font-size:2.4rem;font-weight:900;color:var(--navy);}
+.summary-card .label{font-size:.8rem;color:var(--sub);}
+.section{margin-bottom:48px;}
+.section h2{font-size:1.1rem;font-weight:900;color:var(--navy);border-left:4px solid var(--ocean);padding-left:12px;margin-bottom:20px;}
+.finding{background:var(--white);border-radius:8px;padding:20px 24px;margin-bottom:16px;border-left:4px solid var(--border);}
+.finding.high{border-left-color:var(--red);}
+.finding.mid{border-left-color:var(--yellow);}
+.finding.low{border-left-color:var(--green);}
+.finding-header{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap;}
+.badge{font-size:.7rem;font-weight:700;padding:3px 8px;border-radius:3px;white-space:nowrap;}
+.badge.high{background:#FDECEA;color:var(--red);}
+.badge.mid{background:#FEF3E5;color:var(--yellow);}
+.badge.low{background:#E8F8EE;color:var(--green);}
+.finding-page{font-size:.78rem;color:var(--sub);font-weight:700;}
+.finding h3{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.finding p,.finding li{font-size:.85rem;color:var(--sub);line-height:1.8;}
+.finding ul{padding-left:1.2em;margin-top:4px;}
+.finding li{list-style:disc;margin-bottom:2px;}
+.fix{background:var(--sand);border-radius:4px;padding:10px 14px;margin-top:10px;font-size:.82rem;color:var(--navy);}
+.fix::before{content:"💡 改善案: ";font-weight:700;}
+.screenshots{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;}
+.screenshots img{width:100%;border-radius:4px;border:1px solid var(--border);}
+.screenshots .cap{font-size:.72rem;color:var(--sub);text-align:center;margin-top:4px;}
+.pass-list{background:var(--white);border-radius:8px;padding:20px 24px;}
+.pass-list li{font-size:.85rem;color:var(--sub);padding:4px 0;border-bottom:1px solid var(--border);list-style:none;}
+.pass-list li::before{content:"✅ ";margin-right:4px;}
+.pass-list li:last-child{border-bottom:none;}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:12px;}
+.compare-box{background:var(--sand);border-radius:4px;padding:10px 14px;}
+.compare-box h4{font-size:.78rem;font-weight:700;color:var(--navy);margin-bottom:4px;}
+.compare-box p{font-size:.8rem;color:var(--sub);}
+@media(max-width:600px){.summary{grid-template-columns:1fr 1fr;}.screenshots,.compare{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<header>
+  <h1>BEMBA — デザイン・写真 最終監査レポート</h1>
+  <p>実施日: 2026年10月13日　｜　対象: release-candidate 全ページ　｜　参考: sunwavekayaks.com</p>
+</header>
+
+<div class="container">
+
+<!-- サマリー -->
+<div class="summary">
+  <div class="summary-card red">
+    <div class="num">1</div>
+    <div class="label">高優先度（High）</div>
+  </div>
+  <div class="summary-card yellow">
+    <div class="num">4</div>
+    <div class="label">中優先度（Mid）</div>
+  </div>
+  <div class="summary-card green">
+    <div class="num">3</div>
+    <div class="label">低優先度（Low）</div>
+  </div>
+</div>
+
+<!-- 高 -->
+<div class="section">
+  <h2>High 優先度 — 公開前に対応を推奨</h2>
+
+  <div class="finding high">
+    <div class="finding-header">
+      <span class="badge high">HIGH</span>
+      <span class="finding-page">sup.html — PC表示</span>
+    </div>
+    <h3>SUPヒーロー: PC表示で人物の頭が切れる</h3>
+    <p>PCデスクトップ幅では、ヒーロー画像（<code>object-position: center 18%</code>）のトリミングにより、ガイドの帽子・頭部の上が欠けています。スマートフォンでは全身が収まっており問題ありません。</p>
+    <ul>
+      <li>PC: 頭が欠ける（18% → もう少し上に引き上げが必要）</li>
+      <li>スマホ: 全身表示 ✅</li>
+    </ul>
+    <div class="fix"><code>object-position: center 10%</code> に変更するとPC・スマホ両方で頭が収まる可能性が高い。変更後、両解像度でスクリーンショット確認を推奨。</div>
+  </div>
+</div>
+
+<!-- 中 -->
+<div class="section">
+  <h2>Mid 優先度 — 公開後の早期対応を推奨</h2>
+
+  <div class="finding mid">
+    <div class="finding-header">
+      <span class="badge mid">MID</span>
+      <span class="finding-page">about.html / about-en.html</span>
+    </div>
+    <h3>BEMBAについてページ: 本文に写真がゼロ</h3>
+    <p>ヒーローはグラデーション背景のみで写真なし。スクロールするとテキストとカードが続くが、視覚的なアクセントが不足しています。特に「代表ガイド紹介」セクションはプロフィール文のみで、ガイドの顔写真・活動写真がありません。参考サイト（Sunwave Kayaks）はガイドプロフィールページに写真を掲載し、信頼感を演出しています。</p>
+    <ul>
+      <li>代表ガイドセクション: ガイドの写真なし</li>
+      <li>ヒーロー: 写真なし（グラデーションのみ）</li>
+    </ul>
+    <div class="fix">既存の <code>guide-photo.webp</code>（734×979・未使用）を「代表ガイド紹介」セクションに追加。縦長なので円形トリミング（border-radius: 50%）でプロフィール写真スタイルにするか、ヒーローに <code>kayak-island1.webp</code> を追加する。</div>
+  </div>
+
+  <div class="finding mid">
+    <div class="finding-header">
+      <span class="badge mid">MID</span>
+      <span class="finding-page">special-menu.html</span>
+    </div>
+    <h3>特別メニューページ: 「デザイン確認用」告知バナーが残存</h3>
+    <p>ページ上部に「このページは『特別メニュー』セクションのデザイン案です。実際のホームページでは〜」という内部向けの注釈テキストが表示されています。このテキストは公開用ページに残してはいけません。</p>
+    <div class="fix">該当の注釈ブロック（class=preview-noteまたは同等）をrelease-candidate/special-menu.html から削除する。</div>
+  </div>
+
+  <div class="finding mid">
+    <div class="finding-header">
+      <span class="badge mid">MID</span>
+      <span class="finding-page">index.html（トップ） — ツアーグリッド</span>
+    </div>
+    <h3>ツアーカードの写真: 縦長画像が上部で不自然にトリミング</h3>
+    <p>SUP・カヤック・シュノーケリング等のツアーカードに使用されている縦長写真（503〜507px幅 × 1024px高）が横長のカード枠にfit-coverされており、人物の頭や被写体の主要部分が切れているケースがあります。</p>
+    <div class="fix">各ツアーカードのCSSに <code>object-position: center 20%</code> 程度を指定し、上半身・被写体が中心に来るよう調整する。またはツアーページのヒーロー画像（横長）をサムネイルにも流用する。</div>
+  </div>
+
+  <div class="finding mid">
+    <div class="finding-header">
+      <span class="badge mid">MID</span>
+      <span class="finding-page">index.html / index-en.html — タイトルタグ</span>
+    </div>
+    <h3>ページタイトルに「新トップページ プレビュー」が残存</h3>
+    <p>ブラウザのタブに「BEMBA — 新トップページ プレビュー」と表示されます。<code>[プレビュー]</code> は除去済みですが「新トップページ」という文言が残っています。</p>
+    <div class="fix"><code>&lt;title&gt;</code> を「BEMBA（ベンバ）— 沖縄・恩納村の完全貸切マリンツアー」等の正式タイトルに変更する。</div>
+  </div>
+</div>
+
+<!-- 低 -->
+<div class="section">
+  <h2>Low 優先度 — 開業後に対応可</h2>
+
+  <div class="finding low">
+    <div class="finding-header">
+      <span class="badge low">LOW</span>
+      <span class="finding-page">guide.html / guide-en.html</span>
+    </div>
+    <h3>ご利用案内: ページ全体がテキスト中心で写真なし（本文部分）</h3>
+    <p>ヒーロー写真（kayak-island2.webp）はあるが、本文はすべてテキスト・リスト・テーブル・FAQアコーディオンで構成されています。実用的な情報ページとしては問題ありませんが、最下部のbooking-CTAセクション上部に小さめの写真を1枚入れると温かみが増します。</p>
+    <div class="fix">任意: booking-CTAセクション直前にSUPまたはシュノーケリングの横長写真を小さく配置する。優先度は低い。</div>
+  </div>
+
+  <div class="finding low">
+    <div class="finding-header">
+      <span class="badge low">LOW</span>
+      <span class="finding-page">全ページ</span>
+    </div>
+    <h3>フッターに特別メニューへの導線がない</h3>
+    <p>フッターのナビリンクにspecial-menu.htmlへのリンクがありません。現在はトップページからのみアクセスできる構成です。</p>
+    <div class="fix">フッターに「サンライズ・サンセットツアー」リンクを追加するか、トップページのツアーグリッドに特別メニューカードを組み込む。開業後の運営状況を見て判断可。</div>
+  </div>
+
+  <div class="finding low">
+    <div class="finding-header">
+      <span class="badge low">LOW</span>
+      <span class="finding-page">index-en.html / index.html</span>
+    </div>
+    <h3>開業前告知の表示タイミング</h3>
+    <p>「2026年11月1日開業予定」「Bookings open from November 1, 2026」の表記が予約セクションに残っています。開業後は速やかに更新が必要です。</p>
+    <div class="fix">開業日（2026年11月1日）直後に当該テキストを「受付中」「Now Accepting Bookings」等に変更する。カレンダーリマインダーを設定しておくことを推奨。</div>
+  </div>
+</div>
+
+<!-- 参考サイト比較 -->
+<div class="section">
+  <h2>Sunwave Kayaks との比較評価</h2>
+  <div class="compare">
+    <div class="compare-box">
+      <h4>Sunwave Kayaks（参考）</h4>
+      <p>・横長グローバルナビ（HOME / ABOUT / TOUR…）<br>・写真は大きいが解像度が低いものも混在<br>・Wix製でレイアウトの自由度に限界あり<br>・モバイル対応は標準的<br>・全体的にシンプルだが情報密度は低い</p>
+    </div>
+    <div class="compare-box">
+      <h4>BEMBA（現状評価）</h4>
+      <p>・sticky header + 言語切り替えでモダン<br>・写真の解像度・鮮明さが高い<br>・カードグリッドと余白のバランスが良い<br>・モバイル: ヒーロー・CTAとも問題なし<br>・情報量が豊富（料金・条件・FAQまで網羅）</p>
+    </div>
+  </div>
+  <p style="margin-top:14px;font-size:.85rem;color:var(--sub);">総合評価: BEMBAのデザインは参考サイトを上回るモダンさと情報密度を持っています。主要な改善点は上記High/Mid項目に集約されます。</p>
+</div>
+
+<!-- 合格項目 -->
+<div class="section">
+  <h2>確認済み合格項目</h2>
+  <ul class="pass-list">
+    <li>ロゴ（logo-bemba.webp）: 全ページで正常表示</li>
+    <li>ヒーロー画像（カヤック・シュノーケル・クリアカヤック等）: 正常表示・不自然なトリミングなし</li>
+    <li>ガイドページ（guide.html）ヒーロー: kayak-island2.webp 正常表示</li>
+    <li>カヤックヒーロー: kayak-island1.webp 横長構図、人物・カヤック完全表示</li>
+    <li>スマートフォン（375px）: ハンバーガーナビ・CTAボタン・テキスト 正常</li>
+    <li>日本語⇔英語の切り替えリンク: 全ページ正常動作</li>
+    <li>予約フォーム（Google Forms）リンク: 正常</li>
+    <li>公式LINE（lin.ee/ohC64EDT）リンク: 正常</li>
+    <li>内部リンク切れ: 0件（自動チェック済み）</li>
+    <li>禁止ワード・禁止URL: 0件（自動チェック済み）</li>
+    <li>色・フォント・ボタンの統一感: 全ページで --navy / --ocean / --sand を一貫して使用</li>
+    <li>プライバシーポリシー: 日本語版（10項目）・英語版ともに正常表示</li>
+    <li>フッターフォント・コピーライト表記: 全ページ統一</li>
+  </ul>
+</div>
+
+<p style="font-size:.78rem;color:var(--sub);text-align:center;margin-top:40px;">
+  このレポートはrelease-candidate/audit-report.html として保存されています。<br>
+  本番公開・GitHub push・Netlifyデプロイは実施していません。
+</p>
+
+</div>
+</body>
+</html>

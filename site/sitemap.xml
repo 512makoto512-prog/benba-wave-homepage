@@ -43,10 +43,22 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://bemba-okinawa.netlify.app/sup-en.html</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://bemba-okinawa.netlify.app/kayak.html</loc>
     <lastmod>2026-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bemba-okinawa.netlify.app/kayak-en.html</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://bemba-okinawa.netlify.app/snorkel.html</loc>
@@ -55,10 +67,22 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://bemba-okinawa.netlify.app/snorkel-en.html</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://bemba-okinawa.netlify.app/clear-kayak.html</loc>
     <lastmod>2026-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bemba-okinawa.netlify.app/clear-kayak-en.html</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://bemba-okinawa.netlify.app/sup-snorkel.html</loc>
@@ -67,10 +91,22 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://bemba-okinawa.netlify.app/sup-snorkel-en.html</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://bemba-okinawa.netlify.app/kayak-snorkel.html</loc>
     <lastmod>2026-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bemba-okinawa.netlify.app/kayak-snorkel-en.html</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://bemba-okinawa.netlify.app/drone.html</loc>
@@ -79,10 +115,22 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://bemba-okinawa.netlify.app/drone-en.html</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://bemba-okinawa.netlify.app/special-menu.html</loc>
     <lastmod>2026-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bemba-okinawa.netlify.app/special-menu-en.html</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://bemba-okinawa.netlify.app/privacy.html</loc>

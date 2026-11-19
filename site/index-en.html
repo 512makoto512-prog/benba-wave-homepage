@@ -259,6 +259,13 @@ footer { background: #071422; padding: 32px 24px; text-align: center; }
 .hdr-right { display: flex; align-items: center; gap: 8px; }
 .lang-sw-sp { display: none; }
 @media (max-width: 767px) { .lang-sw-sp { display: flex; } }
+
+/* ── MANGROVE TOURS (added) ── */
+.mangrove-head { margin: 48px 0 20px; }
+.mangrove-head .mangrove-title { font-size: 1rem; font-weight: 700; color: var(--navy); letter-spacing: .04em; margin-top: 4px; }
+.mangrove-head .mangrove-area { font-size: .82rem; color: var(--sub); line-height: 1.7; margin-top: 4px; }
+.tours-grid--pair { grid-template-columns: repeat(2, 1fr) !important; }
+.img-note { position: absolute; top: 8px; right: 8px; z-index: 2; background: rgba(5,20,35,.62); color: #fff; font-size: .68rem; line-height: 1.5; letter-spacing: .04em; padding: 2px 8px; border-radius: 3px; white-space: nowrap; }
 </style>
 </head>
 <body>
@@ -352,7 +359,7 @@ footer { background: #071422; padding: 32px 24px; text-align: center; }
   <div class="container">
     <div class="sec-header">
       <span class="sec-label">Tours</span>
-      <h2 class="sec-title">Seven Ways to Experience Okinawa's Ocean</h2>
+      <h2 class="sec-title">Nine Ways to Experience Okinawa's Ocean &amp; Nature</h2>
       <p class="sec-lead">Every tour is fully private — your group, your guide, the ocean all to yourselves. Photos &amp; video included.</p>
     </div>
 
@@ -434,6 +441,40 @@ footer { background: #071422; padding: 32px 24px; text-align: center; }
           <a href="drone-en.html" class="tour-link">See details →</a>
         </div>
       </div>
+
+    </div>
+
+    <!-- Mangrove Tours (Kin Town, Okukubi River) -->
+    <div class="sec-header mangrove-head">
+      <span class="sec-label">Mangrove Tours</span>
+      <p class="mangrove-title">Mangrove Tours</p>
+      <p class="mangrove-area">Location: Okukubi River, Kin Town, Okinawa (mangrove area around Nature Mirai-kan)<br>* Tour times vary with the tide, weather and river conditions. After we receive your preferred date and time, we will let you know the available meeting time.</p>
+    </div>
+    <div class="tours-grid tours-grid--pair">
+
+      <!-- Mangrove SUP -->
+        <div class="tour-card">
+          <div class="tour-photo">
+            <img src="images/mangrove-sup.webp" alt="Image of a family paddleboarding on a mangrove river" width="1536" height="1024" loading="lazy">
+            <span class="img-note">* Illustrative image</span>
+          </div>
+          <div class="tour-foot">
+            <h3 class="tour-name">Mangrove SUP Tour</h3>
+            <a href="mangrove-sup-en.html" class="tour-link">See details →</a>
+          </div>
+        </div>
+
+      <!-- Mangrove Kayak -->
+        <div class="tour-card">
+          <div class="tour-photo">
+            <img src="images/mangrove-kayak.webp" alt="Image of a family kayaking on a mangrove river" width="1600" height="900" loading="lazy">
+            <span class="img-note">* Illustrative image</span>
+          </div>
+          <div class="tour-foot">
+            <h3 class="tour-name">Mangrove Kayak Tour</h3>
+            <a href="mangrove-kayak-en.html" class="tour-link">See details →</a>
+          </div>
+        </div>
 
     </div>
   </div>

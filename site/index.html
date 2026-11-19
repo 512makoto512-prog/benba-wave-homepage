@@ -488,6 +488,13 @@ footer {
 .hdr-right { display: flex; align-items: center; gap: 8px; }
 .lang-sw-sp { display: none; }
 @media (max-width: 767px) { .lang-sw-sp { display: flex; } }
+
+/* ── MANGROVE TOURS (added) ── */
+.mangrove-head { margin: 48px 0 20px; }
+.mangrove-head .mangrove-title { font-size: 1rem; font-weight: 700; color: var(--navy); letter-spacing: .04em; margin-top: 4px; }
+.mangrove-head .mangrove-area { font-size: .82rem; color: var(--sub); line-height: 1.7; margin-top: 4px; }
+.tours-grid--pair { grid-template-columns: repeat(2, 1fr) !important; }
+.img-note { position: absolute; top: 8px; right: 8px; z-index: 2; background: rgba(5,20,35,.62); color: #fff; font-size: .68rem; line-height: 1.5; letter-spacing: .04em; padding: 2px 8px; border-radius: 3px; white-space: nowrap; }
 </style>
 </head>
 <body>
@@ -579,7 +586,7 @@ footer {
     <div class="container">
       <div class="sec-header">
         <span class="sec-label">Tours</span>
-        <h2 class="sec-title">沖縄の海を楽しむ、7つのツアー</h2>
+        <h2 class="sec-title">沖縄の海と自然を楽しむ、9つのツアー</h2>
         <p class="sec-lead">全ツアー1組限定・完全貸切。写真・動画撮影込み。</p>
       </div>
 
@@ -659,6 +666,40 @@ footer {
           <div class="tour-foot">
             <h3 class="tour-name">ビーチ・ドローン空撮</h3>
             <a href="drone.html" class="tour-link">詳細を見る <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- マングローブツアー（金武町・億首川） -->
+      <div class="sec-header mangrove-head">
+        <span class="sec-label">Mangrove Tours</span>
+        <p class="mangrove-title">マングローブツアー</p>
+        <p class="mangrove-area">開催場所：沖縄県金武町・億首川（ネイチャーみらい館周辺のマングローブエリア）<br>※潮位・天候・河川状況により開催時間が変動します。ご希望日時を確認後、開催可能な集合時間をご案内いたします。</p>
+      </div>
+      <div class="tours-grid tours-grid--pair">
+
+        <!-- マングローブSUP -->
+        <div class="tour-card">
+          <div class="tour-photo">
+            <img src="images/mangrove-sup.webp" alt="マングローブの川でSUPを楽しむ親子のイメージ画像" width="1536" height="1024" loading="lazy">
+            <span class="img-note">※画像はイメージです</span>
+          </div>
+          <div class="tour-foot">
+            <h3 class="tour-name">マングローブSUP</h3>
+            <a href="mangrove-sup.html" class="tour-link">詳細を見る <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+
+        <!-- マングローブカヤック -->
+        <div class="tour-card">
+          <div class="tour-photo">
+            <img src="images/mangrove-kayak.webp" alt="マングローブの川でカヤックを楽しむ親子のイメージ画像" width="1600" height="900" loading="lazy">
+            <span class="img-note">※画像はイメージです</span>
+          </div>
+          <div class="tour-foot">
+            <h3 class="tour-name">マングローブカヤック</h3>
+            <a href="mangrove-kayak.html" class="tour-link">詳細を見る <span aria-hidden="true">→</span></a>
           </div>
         </div>
 
@@ -806,6 +847,8 @@ footer {
       <a href="clear-kayak.html">クリアカヤック</a>
       <a href="snorkel.html">シュノーケリング</a>
       <a href="drone.html">ドローン空撮</a>
+      <a href="mangrove-sup.html">マングローブSUP</a>
+      <a href="mangrove-kayak.html">マングローブカヤック</a>
       <a href="index-en.html">English</a>
     </div>
     <p class="foot-copy">© 2026 BEMBA — 沖縄の貸切マリンツアー</p>

@@ -373,6 +373,27 @@ footer { background: #071422; padding: 32px 24px; text-align: center; }
 .lang-sw .lang-drop, .lang-sw-sp .lang-drop { display: none; }
 .lang-sw .lang-drop.open, .lang-sw-sp .lang-drop.open { display: block; }
 @media (max-width: 767px) { .lang-sw-sp { display: flex; } }
+
+/* ===== RENEWAL 2026-11: mobile sticky booking bar ===== */
+.sp-cta { display: none; }
+@media (max-width: 767px) {
+  .sp-cta {
+    display: flex; gap: 8px;
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 90;
+    padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
+    background: rgba(255,255,255,.97); border-top: 1px solid #DDD9D0;
+    box-shadow: 0 -4px 16px rgba(0,0,0,.08);
+    transition: transform .25s ease;
+  }
+  .sp-cta.is-hidden { transform: translateY(110%); }
+  .sp-cta a {
+    flex: 1; min-height: 48px; display: flex; align-items: center; justify-content: center; gap: 6px;
+    border-radius: 4px; font-size: .9rem; font-weight: 700; letter-spacing: .02em; text-align: center;
+  }
+  .sp-cta-line { background: #06C755; color: #fff !important; }
+  .sp-cta-book { background: #0D2B3E; color: #fff !important; }
+  body { padding-bottom: calc(64px + env(safe-area-inset-bottom)); }
+}
 </style>
 </head>
 <body>
@@ -792,6 +813,22 @@ if (_lts && _lds) {
     }
   });
 }
+</script>
+
+<!-- ===== RENEWAL 2026-11: mobile sticky booking bar ===== -->
+<div class="sp-cta" id="sp-cta" role="region" aria-label="ご予約・お問い合わせ">
+  <a href="https://lin.ee/ohC64EDT" target="_blank" rel="noopener noreferrer" class="sp-cta-line"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.03 2 11c0 3.07 1.64 5.78 4.18 7.5L5 22l4.25-2.24C10.44 20.24 11.21 20.4 12 20.4c5.52 0 10-4.03 10-9s-4.48-9-10-9z"/></svg>LINEで相談・予約</a>
+  <a href="#booking" class="sp-cta-book">ご予約はこちら</a>
+</div>
+<script>
+(function () {
+  var bar = document.getElementById('sp-cta');
+  var target = document.getElementById('booking');
+  if (!bar || !target || !('IntersectionObserver' in window)) return;
+  new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { bar.classList.toggle('is-hidden', e.isIntersecting); });
+  }).observe(target);
+})();
 </script>
 </body>
 </html>

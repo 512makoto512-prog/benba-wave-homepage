@@ -102,11 +102,21 @@ git push origin main
 - Google Analytics 4、Googleタグ（gtag.js / GTM）、Search Console の確認用メタタグ・HTMLファイル、クリック計測、UTM 処理：リポジトリにも本番HTMLにもなし。
 - SNS リンクは `about.html` / `about-en.html` の Instagram・TikTok のみ。
 
-## 7. 既知の課題（未対応）
+## 7. 追加対応（2026-11-24 第3弾：予約案内）
 
-- 予約フォームにマングローブSUP・カヤックの選択肢があるか未確認。ご利用案内の「予約はGoogleフォームから」との表現の整合
-- 予約欄の「2026年11月1日開業予定」「Bookings open from November 1, 2026」が開業後も残っている
+- 予約欄の「2026年11月1日開業予定」「Opening November 1, 2026」「Bookings open from November 1, 2026」を日英16ページから削除（開業済みのため）。プライバシーポリシーの「制定日」はそのまま。
+- マングローブSUP・マングローブカヤックは **公式LINEでのみ受付**（潮位で開催時間が変わるため）。次の箇所に明記した（日英）：
+  - トップのマングローブツアー欄、トップの予約欄
+  - ご利用案内の「予約方法」
+  - ご利用案内のFAQ「マングローブツアーはどうやって予約しますか？」を追加
+- Googleフォーム・予約管理システムは変更していない。
+- アクセス解析（GA4・Search Console・UTM・プライバシーポリシー追記案）は `docs/ANALYTICS_SETUP.md` に準備。本番には未導入。
+
+## 8. 既知の課題（未対応）
+
+- 予約フォームにマングローブSUP・カヤックの選択肢があるかは未確認（現在はLINE受付と明記して対応）
+- Search Console の確認用メタタグ（2026-10-07追加）が 10-16 のリニューアルで消えている。`docs/ANALYTICS_SETUP.md` 3章を参照
 - マングローブSUPの実写真がない（AI生成画像を使用中）
 - 公開済みの過去コミット `ee92447` は GitHub 上で閲覧可能なまま（オーナーの判断で対応不要）
-- アクセス解析は未導入（導入案はオーナーへの報告を参照）
+- アクセス解析は未導入（`docs/ANALYTICS_SETUP.md` で準備済み。オーナーの測定ID待ち）
 - 作業用のクラウド環境「benba-wave-homepage」は今後の保守用に維持する（接続許可：`bemba-okinawa.netlify.app`）

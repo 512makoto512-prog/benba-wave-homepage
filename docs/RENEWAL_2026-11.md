@@ -112,11 +112,17 @@ git push origin main
 - Googleフォーム・予約管理システムは変更していない。
 - アクセス解析（GA4・Search Console・UTM・プライバシーポリシー追記案）は `docs/ANALYTICS_SETUP.md` に準備。本番には未導入。
 
-## 8. 既知の課題（未対応）
+## 8. GA4 導入（2026-11-24 第4弾）
+
+- 測定ID `G-R58EK2MPC1` を全30ページに設置（`site/js/bemba-analytics.js`、詳細は `docs/ANALYTICS_SETUP.md`）。
+- プライバシーポリシー（日英）の「7. Cookieの利用状況」を「7. Cookieとアクセス解析ツールの利用」に改訂し、「4. 外部サービス」に Googleアナリティクスを追加。最終改定日を 2026-11-24 に更新。
+- 取り外す場合：全ページの `bemba-analytics.js` の `<script>` 行を削除し、プライバシーポリシーの記述を戻す。
+
+## 9. 既知の課題（未対応）
 
 - 予約フォームにマングローブSUP・カヤックの選択肢があるかは未確認（現在はLINE受付と明記して対応）
 - Search Console の確認用メタタグ（2026-10-07追加）が 10-16 のリニューアルで消えている。`docs/ANALYTICS_SETUP.md` 3章を参照
 - マングローブSUPの実写真がない（AI生成画像を使用中）
 - 公開済みの過去コミット `ee92447` は GitHub 上で閲覧可能なまま（オーナーの判断で対応不要）
-- アクセス解析は未導入（`docs/ANALYTICS_SETUP.md` で準備済み。オーナーの測定ID待ち）
+- GA4 の管理画面での設定（`docs/ANALYTICS_SETUP.md` 2章）はオーナーの作業
 - 作業用のクラウド環境「benba-wave-homepage」は今後の保守用に維持する（接続許可：`bemba-okinawa.netlify.app`）

@@ -480,6 +480,11 @@ footer {
   .sp-cta-book { background: #0D2B3E; color: #fff !important; }
   body { padding-bottom: calc(64px + env(safe-area-inset-bottom)); }
 }
+@media (max-width: 360px) {
+  .sp-cta { gap: 6px; padding-left: 8px; padding-right: 8px; }
+  .sp-cta a { font-size: .8rem; white-space: nowrap; letter-spacing: 0; }
+  .sp-cta a svg { display: none; }
+}
 </style>
 </head>
 <body>

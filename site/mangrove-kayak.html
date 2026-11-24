@@ -382,6 +382,14 @@ footer { background: #071422; padding: 32px 24px; text-align: center; }
   font-size: .9rem; line-height: 1.8; color: var(--navy);
 }
 
+
+/* ===== RENEWAL 2026-11: photo location note ===== */
+.photo-note {
+  position: absolute; top: 12px; right: 12px; z-index: 2;
+  background: rgba(5,20,35,.62); color: #fff; white-space: nowrap;
+  font-size: .72rem; line-height: 1.5; letter-spacing: .04em; padding: 4px 10px; border-radius: 3px;
+}
+
 /* ===== RENEWAL 2026-11: mobile sticky booking bar ===== */
 .sp-cta { display: none; }
 @media (max-width: 767px) {
@@ -401,6 +409,11 @@ footer { background: #071422; padding: 32px 24px; text-align: center; }
   .sp-cta-line { background: #06C755; color: #fff !important; }
   .sp-cta-book { background: #0D2B3E; color: #fff !important; }
   body { padding-bottom: calc(64px + env(safe-area-inset-bottom)); }
+}
+@media (max-width: 360px) {
+  .sp-cta { gap: 6px; padding-left: 8px; padding-right: 8px; }
+  .sp-cta a { font-size: .8rem; white-space: nowrap; letter-spacing: 0; }
+  .sp-cta a svg { display: none; }
 }
 </style>
 </head>
@@ -473,7 +486,7 @@ footer { background: #071422; padding: 32px 24px; text-align: center; }
     src="images/photos/mangrove-kayak-real-1380.webp"
     srcset="images/photos/mangrove-kayak-real-640.webp 640w, images/photos/mangrove-kayak-real-1024.webp 1024w, images/photos/mangrove-kayak-real-1380.webp 1380w"
     sizes="100vw"
-    alt="マングローブの林に沿ってカヤックを漕ぐ親子"
+    alt="金武町・億首川のマングローブに沿ってカヤックを漕ぐ親子"
     class="tour-hero-photo"
     width="1380" height="1035"
     loading="eager"
@@ -482,6 +495,7 @@ footer { background: #071422; padding: 32px 24px; text-align: center; }
     style="object-position: center 92%;"
   >
   <div class="tour-hero-overlay" aria-hidden="true"></div>
+  <p class="photo-note">撮影地：沖縄県金武町・億首川</p>
 
   <div class="tour-hero-content">
     <p class="tour-hero-eyebrow">Mangrove Tour</p>

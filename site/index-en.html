@@ -363,6 +363,16 @@ footer { background: #071422; padding: 32px 24px; text-align: center; }
   font-size: .68rem; line-height: 1.5; letter-spacing: .04em; padding: 2px 8px; border-radius: 3px;
 }
 
+
+/* ===== A11Y 2026-11: text contrast (WCAG AA 4.5:1). Same hues, lighter only ===== */
+.booking-label { color: rgba(255,255,255,.75); }
+.booking-note-sm { color: rgba(255,255,255,.75); }
+.booking-footer { color: rgba(255,255,255,.72); }
+.foot-lang a { color: rgba(255,255,255,.72); border-color: rgba(255,255,255,.25); }
+.foot-lang a.active { color: #fff; }
+.foot-links a { color: #C9D3DE; }
+.foot-copy { color: #A9B6C4; }
+
 /* ===== RENEWAL 2026-11: mobile sticky booking bar ===== */
 .sp-cta { display: none; }
 @media (max-width: 767px) {
@@ -640,7 +650,6 @@ footer { background: #071422; padding: 32px 24px; text-align: center; }
         <div class="tour-card">
           <div class="tour-photo">
             <img src="images/mangrove-sup.webp" alt="Image of a family paddleboarding on a mangrove river" width="1125" height="750" loading="lazy">
-            <span class="img-note">* Illustrative image</span>
           </div>
           <div class="tour-foot">
             <h3 class="tour-name">Mangrove SUP Tour</h3>

@@ -8,6 +8,7 @@
 <link rel="alternate" hreflang="en" href="https://bemba-okinawa.netlify.app/index-en.html">
 <link rel="alternate" hreflang="x-default" href="https://bemba-okinawa.netlify.app/">
 <title>BEMBA（ベンバ）— 沖縄・恩納村の完全貸切マリンツアー</title>
+<meta name="description" content="沖縄県恩納村・金武町で完全貸切のSUP・カヤック・シュノーケリング・マングローブツアー・ドローン空撮を開催。元消防士・水難救助経験のあるガイドがご案内。写真・動画無料、対象プランは18歳以下3名まで無料。沖縄県民割あり。">
 <link rel="preload" as="image" media="(max-width: 767px)" imagesrcset="images/photos/kayak-family-clear-640.webp 640w, images/photos/kayak-family-clear-818.webp 818w" imagesizes="100vw" fetchpriority="high">
 <link rel="preload" as="image" media="(min-width: 768px)" imagesrcset="images/photos/kayak-family-trio-640.webp 640w, images/photos/kayak-family-trio-1024.webp 1024w, images/photos/kayak-family-trio-1600.webp 1600w" imagesizes="100vw" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -590,6 +591,17 @@ footer {
   font-size: .68rem; line-height: 1.5; letter-spacing: .04em; padding: 2px 8px; border-radius: 3px;
 }
 
+
+/* ===== A11Y 2026-11: text contrast (WCAG AA 4.5:1). Same hues, deeper/lighter only ===== */
+:root { --ocean-ink: #1E766C; }
+.sec-label, .why-num, .guide-intro-label, .guide-intro-link, .tour-link { color: var(--ocean-ink); }
+.sec-label::before { background: var(--ocean-ink); }
+.nav-cta { background: var(--ocean-ink) !important; }
+.booking-label { color: rgba(255,255,255,.75); }
+.booking-note { color: rgba(255,255,255,.72); }
+.foot-links a { color: #C9D3DE; }
+.foot-copy { color: #A9B6C4; }
+
 /* ===== RENEWAL 2026-11: mobile sticky booking bar ===== */
 .sp-cta { display: none; }
 @media (max-width: 767px) {
@@ -864,7 +876,6 @@ footer {
         <div class="tour-card">
           <div class="tour-photo">
             <img src="images/mangrove-sup.webp" alt="マングローブの川でSUPを楽しむ親子のイメージ画像" width="1125" height="750" loading="lazy">
-            <span class="img-note">※画像はイメージです</span>
           </div>
           <div class="tour-foot">
             <h3 class="tour-name">マングローブSUP</h3>

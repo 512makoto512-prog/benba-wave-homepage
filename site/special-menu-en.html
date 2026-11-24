@@ -339,6 +339,13 @@ footer { background: #040E18; padding: 32px 24px; text-align: center; border-top
 .lang-sw .lang-drop, .lang-sw-sp .lang-drop { display: none; }
 .lang-sw .lang-drop.open, .lang-sw-sp .lang-drop.open { display: block; }
 @media (max-width: 767px) { .lang-sw-sp { display: flex; } }
+
+/* ===== A11Y 2026-11: text contrast on dark background (lighter only) ===== */
+.breadcrumb-inner, .breadcrumb-inner span { color: rgba(255,255,255,.72); }
+.breadcrumb-inner a { color: rgba(255,255,255,.78); }
+.card-title-ja, .card-title-en, .price-section-title { color: rgba(255,255,255,.72); }
+.price-formula { color: rgba(255,255,255,.7); }
+.foot-copy { color: #A9B6C4; }
 </style>
 </head>
 <body>

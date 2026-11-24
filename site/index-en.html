@@ -331,7 +331,8 @@ footer { background: #071422; padding: 32px 24px; text-align: center; }
   .gal-item--wide { grid-column: 1 / -1; aspect-ratio: 4 / 3; }
 }
 @media (min-width: 901px) {
-  .gal-item--wide { aspect-ratio: 4 / 5; }
+  .gal-item--wide { grid-column: span 2; aspect-ratio: auto; }
+  .gal-item--wide img { position: absolute; inset: 0; }
 }
 .gal-cta { margin-top: 28px; text-align: center; }
 .gal-cta a {
@@ -673,7 +674,7 @@ footer { background: #071422; padding: 32px 24px; text-align: center; }
     </div>
     <div class="gal-grid">
       <figure class="gal-item gal-item--wide">
-        <img src="images/photos/kayak-group-eight-640.webp" srcset="images/photos/kayak-group-eight-640.webp 640w, images/photos/kayak-group-eight-1024.webp 1024w, images/photos/kayak-group-eight-1243.webp 1243w" sizes="(max-width: 900px) 100vw, 260px" alt="A group of guests in three kayaks making peace signs" width="640" height="853" loading="lazy" decoding="async" style="object-position:center 42%">
+        <img src="images/photos/kayak-group-eight-640.webp" srcset="images/photos/kayak-group-eight-640.webp 640w, images/photos/kayak-group-eight-1024.webp 1024w, images/photos/kayak-group-eight-1243.webp 1243w" sizes="(max-width: 900px) 100vw, 540px" alt="A group of guests in three kayaks making peace signs" width="640" height="853" loading="lazy" decoding="async" style="object-position:center 42%">
         <figcaption>Sea Kayak</figcaption>
       </figure>
       <figure class="gal-item">
@@ -714,10 +715,6 @@ footer { background: #071422; padding: 32px 24px; text-align: center; }
       </figure>
       <figure class="gal-item">
         <img src="images/photos/sup-kid-family-640.webp" srcset="images/photos/sup-kid-family-640.webp 640w, images/photos/sup-kid-family-1024.webp 1024w, images/photos/sup-kid-family-1160.webp 1160w" sizes="(max-width: 900px) 50vw, 260px" alt="A parent and child smiling on a SUP board" width="640" height="1130" loading="lazy" decoding="async" style="object-position:center 50%">
-        <figcaption>SUP</figcaption>
-      </figure>
-      <figure class="gal-item gal-item--wide">
-        <img src="images/photos/sup-boards-beach-640.webp" srcset="images/photos/sup-boards-beach-640.webp 640w, images/photos/sup-boards-beach-1024.webp 1024w, images/photos/sup-boards-beach-1535.webp 1535w" sizes="(max-width: 900px) 100vw, 260px" alt="SUP boards lined up on the beach with guests ready to go" width="640" height="854" loading="lazy" decoding="async" style="object-position:center 62%">
         <figcaption>SUP</figcaption>
       </figure>
     </div>

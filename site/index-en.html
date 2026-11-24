@@ -11,7 +11,7 @@
 <meta name="description" content="BEMBA offers fully private marine tours in Okinawa — SUP, kayak, snorkeling, and more. One group at a time, fully exclusive.">
 
 <link rel="preload" as="image" media="(max-width: 767px)" imagesrcset="images/photos/kayak-family-clear-640.webp 640w, images/photos/kayak-family-clear-818.webp 818w" imagesizes="100vw" fetchpriority="high">
-<link rel="preload" as="image" media="(min-width: 768px)" imagesrcset="images/photos/kayak-family-bay-640.webp 640w, images/photos/kayak-family-bay-1024.webp 1024w, images/photos/kayak-family-bay-1600.webp 1600w" imagesizes="100vw" fetchpriority="high">
+<link rel="preload" as="image" media="(min-width: 768px)" imagesrcset="images/photos/kayak-family-trio-640.webp 640w, images/photos/kayak-family-trio-1024.webp 1024w, images/photos/kayak-family-trio-1600.webp 1600w" imagesizes="100vw" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -318,7 +318,7 @@ footer { background: #071422; padding: 32px 24px; text-align: center; }
 /* gallery */
 #gallery { background: var(--white); padding: 72px 0; }
 @media (max-width: 600px) { #gallery { padding: 56px 0; } }
-.gal-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-top: 32px; }
+.gal-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 32px; }
 .gal-item { position: relative; margin: 0; border-radius: 6px; overflow: hidden; aspect-ratio: 4 / 5; background: #0A3A5C; }
 .gal-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .gal-item figcaption {
@@ -330,10 +330,36 @@ footer { background: #071422; padding: 32px 24px; text-align: center; }
   .gal-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
   .gal-item--wide { grid-column: 1 / -1; aspect-ratio: 4 / 3; }
 }
+@media (min-width: 901px) {
+  .gal-item--wide { aspect-ratio: 4 / 5; }
+}
 .gal-cta { margin-top: 28px; text-align: center; }
 .gal-cta a {
   display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 48px;
   padding: 12px 28px; border-radius: 3px; background: #06C755; color: #fff; font-weight: 700; font-size: .9rem;
+}
+
+
+/* ===== RENEWAL 2026-11 (pass 2): guide intro / AI image note ===== */
+.guide-intro {
+  display: grid; grid-template-columns: 150px 1fr; gap: 24px; align-items: center;
+  margin-top: 28px; padding: 22px; background: var(--sand); border-radius: 6px;
+}
+.guide-intro img { width: 150px; height: 150px; object-fit: cover; object-position: center center; border-radius: 50%; border: 3px solid var(--ocean); }
+.guide-intro-label { font-size: .72rem; font-weight: 700; letter-spacing: .14em; color: var(--ocean); text-transform: uppercase; }
+.guide-intro-name { font-size: 1.05rem; font-weight: 700; color: var(--navy); margin: 2px 0 8px; }
+.guide-intro-creds { list-style: none; padding: 0; margin: 0 0 8px; display: flex; flex-wrap: wrap; gap: 6px; }
+.guide-intro-creds li { font-size: .76rem; background: #fff; border: 1px solid var(--border); border-radius: 999px; padding: 3px 10px; color: var(--navy); }
+.guide-intro-body { font-size: .86rem; color: var(--sub); line-height: 1.8; }
+.guide-intro-link { display: inline-flex; align-items: center; min-height: 44px; font-size: .84rem; color: var(--ocean); font-weight: 700; }
+@media (max-width: 640px) {
+  .guide-intro { grid-template-columns: 88px 1fr; gap: 14px; padding: 16px; align-items: start; }
+  .guide-intro img { width: 88px; height: 88px; }
+}
+.img-note {
+  position: absolute; top: 8px; right: 8px; z-index: 2;
+  background: rgba(5,20,35,.62); color: #fff; white-space: nowrap;
+  font-size: .68rem; line-height: 1.5; letter-spacing: .04em; padding: 2px 8px; border-radius: 3px;
 }
 
 /* ===== RENEWAL 2026-11: mobile sticky booking bar ===== */
@@ -421,12 +447,12 @@ footer { background: #071422; padding: 32px 24px; text-align: center; }
   <picture>
     <source media="(max-width: 767px)" srcset="images/photos/kayak-family-clear-640.webp 640w, images/photos/kayak-family-clear-818.webp 818w" sizes="100vw" width="818" height="1444">
     <img
-      src="images/photos/kayak-family-bay-1600.webp"
-      srcset="images/photos/kayak-family-bay-640.webp 640w, images/photos/kayak-family-bay-1024.webp 1024w, images/photos/kayak-family-bay-1600.webp 1600w"
+      src="images/photos/kayak-family-trio-1600.webp"
+      srcset="images/photos/kayak-family-trio-640.webp 640w, images/photos/kayak-family-trio-1024.webp 1024w, images/photos/kayak-family-trio-1600.webp 1600w"
       sizes="100vw"
       alt="A family enjoying a BEMBA kayak tour on Okinawa's ocean"
       class="hero-photo"
-      width="1600" height="1200"
+      width="1600" height="1201"
       loading="eager"
       fetchpriority="high"
       decoding="async"
@@ -488,6 +514,20 @@ footer { background: #071422; padding: 32px 24px; text-align: center; }
         <p class="why-body">¥2,000 off per adult when at least one Okinawa resident is in your group (conditions apply).</p>
       </li>
     </ul>
+    <div class="guide-intro">
+      <img src="images/photos/guide-portrait-320.webp" alt="BEMBA Guide Makoto Takara" width="320" height="320" loading="lazy" decoding="async">
+      <div>
+        <p class="guide-intro-label">Guide</p>
+        <h3 class="guide-intro-name">Makoto Takara — Lead Guide</h3>
+        <ul class="guide-intro-creds">
+          <li>Former firefighter (16 years of service)</li>
+          <li>Water rescue unit experience</li>
+          <li>Land rescue, emergency medical &amp; fire suppression experience</li>
+        </ul>
+        <p class="guide-intro-body">Safety comes before fun. Whether you're a first-timer or bringing young children, Makoto guides you so you can enjoy Okinawa's ocean with peace of mind.</p>
+        <a href="about-en.html" class="guide-intro-link">Read more about your guide →</a>
+      </div>
+    </div>
     <p class="why-note">* See each tour page for eligible tours and conditions for the kids' free rule and the resident discount.</p>
   </div>
 </section>
@@ -506,7 +546,7 @@ footer { background: #071422; padding: 32px 24px; text-align: center; }
       <!-- SUP -->
       <div class="tour-card">
         <div class="tour-photo">
-          <img src="images/photos/sup-sea-duo-640.webp" srcset="images/photos/sup-sea-duo-640.webp 640w, images/photos/sup-sea-duo-1024.webp 1024w, images/photos/sup-sea-duo-1600.webp 1600w" sizes="(max-width: 900px) 50vw, 340px" alt="Guests standing on SUP boards and raising their paddles on Okinawa's blue sea" width="640" height="683" loading="lazy" decoding="async" style="object-position:center 48%">
+          <img src="images/photos/sup-clear-island-640.webp" srcset="images/photos/sup-clear-island-640.webp 640w, images/photos/sup-clear-island-1024.webp 1024w, images/photos/sup-clear-island-1536.webp 1536w" sizes="(max-width: 900px) 50vw, 340px" alt="A guest standing on a SUP board with arms raised over crystal-clear water" width="640" height="853" loading="lazy" decoding="async" style="object-position:center 60%">
         </div>
         <div class="tour-foot">
           <h3 class="tour-name">Stand-Up Paddleboarding</h3>
@@ -594,6 +634,7 @@ footer { background: #071422; padding: 32px 24px; text-align: center; }
         <div class="tour-card">
           <div class="tour-photo">
             <img src="images/mangrove-sup.webp" alt="Image of a family paddleboarding on a mangrove river" width="1125" height="750" loading="lazy">
+            <span class="img-note">* Illustrative image</span>
           </div>
           <div class="tour-foot">
             <h3 class="tour-name">Mangrove SUP Tour</h3>
@@ -627,24 +668,52 @@ footer { background: #071422; padding: 32px 24px; text-align: center; }
     </div>
     <div class="gal-grid">
       <figure class="gal-item gal-item--wide">
-        <img src="images/photos/kayak-family-bay-640.webp" srcset="images/photos/kayak-family-bay-640.webp 640w, images/photos/kayak-family-bay-1024.webp 1024w, images/photos/kayak-family-bay-1600.webp 1600w" sizes="(max-width: 900px) 100vw, 220px" alt="A family waving and smiling from a kayak on Okinawa's ocean" width="640" height="480" loading="lazy" decoding="async" style="object-position:center 55%">
+        <img src="images/photos/kayak-group-eight-640.webp" srcset="images/photos/kayak-group-eight-640.webp 640w, images/photos/kayak-group-eight-1024.webp 1024w, images/photos/kayak-group-eight-1243.webp 1243w" sizes="(max-width: 900px) 100vw, 260px" alt="A group of guests in three kayaks making peace signs" width="640" height="853" loading="lazy" decoding="async" style="object-position:center 42%">
         <figcaption>Sea Kayak</figcaption>
       </figure>
       <figure class="gal-item">
-        <img src="images/photos/kayak-family-clear-640.webp" srcset="images/photos/kayak-family-clear-640.webp 640w, images/photos/kayak-family-clear-818.webp 818w" sizes="(max-width: 900px) 50vw, 220px" alt="A family kayaking over Okinawa's crystal-clear water" width="640" height="1130" loading="lazy" decoding="async" style="object-position:center 55%">
-        <figcaption>Sea Kayak</figcaption>
-      </figure>
-      <figure class="gal-item">
-        <img src="images/photos/clear-kayak-kids-640.webp" srcset="images/photos/clear-kayak-kids-640.webp 640w, images/photos/clear-kayak-kids-1024.webp 1024w, images/photos/clear-kayak-kids-1500.webp 1500w" sizes="(max-width: 900px) 50vw, 220px" alt="Children and a parent making peace signs in a clear kayak" width="640" height="853" loading="lazy" decoding="async" style="object-position:center 55%">
-        <figcaption>Clear Kayak</figcaption>
-      </figure>
-      <figure class="gal-item">
-        <img src="images/photos/sup-sea-duo-640.webp" srcset="images/photos/sup-sea-duo-640.webp 640w, images/photos/sup-sea-duo-1024.webp 1024w, images/photos/sup-sea-duo-1600.webp 1600w" sizes="(max-width: 900px) 50vw, 220px" alt="Guests standing on SUP boards and raising their paddles on Okinawa's blue sea" width="640" height="683" loading="lazy" decoding="async" style="object-position:62% center">
+        <img src="images/photos/sup-clear-island-640.webp" srcset="images/photos/sup-clear-island-640.webp 640w, images/photos/sup-clear-island-1024.webp 1024w, images/photos/sup-clear-island-1536.webp 1536w" sizes="(max-width: 900px) 50vw, 260px" alt="A guest standing on a SUP board with arms raised over crystal-clear water" width="640" height="853" loading="lazy" decoding="async" style="object-position:center 58%">
         <figcaption>SUP</figcaption>
       </figure>
       <figure class="gal-item">
-        <img src="images/photos/mangrove-kayak-real-640.webp" srcset="images/photos/mangrove-kayak-real-640.webp 640w, images/photos/mangrove-kayak-real-1024.webp 1024w, images/photos/mangrove-kayak-real-1380.webp 1380w" sizes="(max-width: 900px) 50vw, 220px" alt="A parent and child paddling a kayak along a mangrove forest" width="640" height="480" loading="lazy" decoding="async" style="object-position:62% center">
+        <img src="images/photos/kayak-family-bay-640.webp" srcset="images/photos/kayak-family-bay-640.webp 640w, images/photos/kayak-family-bay-1024.webp 1024w, images/photos/kayak-family-bay-1600.webp 1600w" sizes="(max-width: 900px) 50vw, 260px" alt="A family waving and smiling from a kayak on Okinawa's ocean" width="640" height="480" loading="lazy" decoding="async" style="object-position:center 55%">
+        <figcaption>Sea Kayak</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="images/photos/clear-kayak-kids-640.webp" srcset="images/photos/clear-kayak-kids-640.webp 640w, images/photos/clear-kayak-kids-1024.webp 1024w, images/photos/clear-kayak-kids-1500.webp 1500w" sizes="(max-width: 900px) 50vw, 260px" alt="Children and a parent making peace signs in a clear kayak" width="640" height="853" loading="lazy" decoding="async" style="object-position:center 55%">
+        <figcaption>Clear Kayak</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="images/photos/mangrove-kayak-real-640.webp" srcset="images/photos/mangrove-kayak-real-640.webp 640w, images/photos/mangrove-kayak-real-1024.webp 1024w, images/photos/mangrove-kayak-real-1380.webp 1380w" sizes="(max-width: 900px) 50vw, 260px" alt="A parent and child paddling a kayak along a mangrove forest" width="640" height="480" loading="lazy" decoding="async" style="object-position:65% center">
         <figcaption>Mangrove Kayak</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="images/photos/sup-duo-sitting-640.webp" srcset="images/photos/sup-duo-sitting-640.webp 640w, images/photos/sup-duo-sitting-1024.webp 1024w, images/photos/sup-duo-sitting-1536.webp 1536w" sizes="(max-width: 900px) 50vw, 260px" alt="Two guests sitting on SUP boards and waving" width="640" height="853" loading="lazy" decoding="async" style="object-position:center 55%">
+        <figcaption>SUP</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="images/photos/kayak-family-clear-640.webp" srcset="images/photos/kayak-family-clear-640.webp 640w, images/photos/kayak-family-clear-818.webp 818w" sizes="(max-width: 900px) 50vw, 260px" alt="A family kayaking over Okinawa's crystal-clear water" width="640" height="1130" loading="lazy" decoding="async" style="object-position:center 55%">
+        <figcaption>Sea Kayak</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="images/photos/beach-group-paddles-640.webp" srcset="images/photos/beach-group-paddles-640.webp 640w, images/photos/beach-group-paddles-1024.webp 1024w, images/photos/beach-group-paddles-1536.webp 1536w" sizes="(max-width: 900px) 50vw, 260px" alt="A group of guests holding paddles for a photo before the tour" width="640" height="853" loading="lazy" decoding="async" style="object-position:center 55%">
+        <figcaption>Sea Kayak</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="images/photos/mangrove-kayak-red-640.webp" srcset="images/photos/mangrove-kayak-red-640.webp 640w, images/photos/mangrove-kayak-red-1024.webp 1024w, images/photos/mangrove-kayak-red-1600.webp 1600w" sizes="(max-width: 900px) 50vw, 260px" alt="A guest paddling a kayak past a mangrove forest" width="640" height="480" loading="lazy" decoding="async" style="object-position:30% center">
+        <figcaption>Mangrove Kayak</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="images/photos/kayak-family-trio-640.webp" srcset="images/photos/kayak-family-trio-640.webp 640w, images/photos/kayak-family-trio-1024.webp 1024w, images/photos/kayak-family-trio-1600.webp 1600w" sizes="(max-width: 900px) 50vw, 260px" alt="A family making peace signs from a kayak" width="640" height="480" loading="lazy" decoding="async" style="object-position:38% center">
+        <figcaption>Sea Kayak</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="images/photos/sup-kid-family-640.webp" srcset="images/photos/sup-kid-family-640.webp 640w, images/photos/sup-kid-family-1024.webp 1024w, images/photos/sup-kid-family-1160.webp 1160w" sizes="(max-width: 900px) 50vw, 260px" alt="A parent and child smiling on a SUP board" width="640" height="1130" loading="lazy" decoding="async" style="object-position:center 50%">
+        <figcaption>SUP</figcaption>
+      </figure>
+      <figure class="gal-item gal-item--wide">
+        <img src="images/photos/sup-boards-beach-640.webp" srcset="images/photos/sup-boards-beach-640.webp 640w, images/photos/sup-boards-beach-1024.webp 1024w, images/photos/sup-boards-beach-1535.webp 1535w" sizes="(max-width: 900px) 100vw, 260px" alt="SUP boards lined up on the beach with guests ready to go" width="640" height="854" loading="lazy" decoding="async" style="object-position:center 62%">
+        <figcaption>SUP</figcaption>
       </figure>
     </div>
     <div class="gal-cta">

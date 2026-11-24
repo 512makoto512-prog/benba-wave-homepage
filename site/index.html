@@ -9,7 +9,7 @@
 <link rel="alternate" hreflang="x-default" href="https://bemba-okinawa.netlify.app/">
 <title>BEMBA（ベンバ）— 沖縄・恩納村の完全貸切マリンツアー</title>
 <link rel="preload" as="image" media="(max-width: 767px)" imagesrcset="images/photos/kayak-family-clear-640.webp 640w, images/photos/kayak-family-clear-818.webp 818w" imagesizes="100vw" fetchpriority="high">
-<link rel="preload" as="image" media="(min-width: 768px)" imagesrcset="images/photos/kayak-family-bay-640.webp 640w, images/photos/kayak-family-bay-1024.webp 1024w, images/photos/kayak-family-bay-1600.webp 1600w" imagesizes="100vw" fetchpriority="high">
+<link rel="preload" as="image" media="(min-width: 768px)" imagesrcset="images/photos/kayak-family-trio-640.webp 640w, images/photos/kayak-family-trio-1024.webp 1024w, images/photos/kayak-family-trio-1600.webp 1600w" imagesizes="100vw" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
@@ -545,7 +545,7 @@ footer {
 /* gallery */
 #gallery { background: var(--white); padding: 72px 0; }
 @media (max-width: 600px) { #gallery { padding: 56px 0; } }
-.gal-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-top: 32px; }
+.gal-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 32px; }
 .gal-item { position: relative; margin: 0; border-radius: 6px; overflow: hidden; aspect-ratio: 4 / 5; background: #0A3A5C; }
 .gal-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .gal-item figcaption {
@@ -557,10 +557,36 @@ footer {
   .gal-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
   .gal-item--wide { grid-column: 1 / -1; aspect-ratio: 4 / 3; }
 }
+@media (min-width: 901px) {
+  .gal-item--wide { aspect-ratio: 4 / 5; }
+}
 .gal-cta { margin-top: 28px; text-align: center; }
 .gal-cta a {
   display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 48px;
   padding: 12px 28px; border-radius: 3px; background: #06C755; color: #fff; font-weight: 700; font-size: .9rem;
+}
+
+
+/* ===== RENEWAL 2026-11 (pass 2): guide intro / AI image note ===== */
+.guide-intro {
+  display: grid; grid-template-columns: 150px 1fr; gap: 24px; align-items: center;
+  margin-top: 28px; padding: 22px; background: var(--sand); border-radius: 6px;
+}
+.guide-intro img { width: 150px; height: 150px; object-fit: cover; object-position: center center; border-radius: 50%; border: 3px solid var(--ocean); }
+.guide-intro-label { font-size: .72rem; font-weight: 700; letter-spacing: .14em; color: var(--ocean); text-transform: uppercase; }
+.guide-intro-name { font-size: 1.05rem; font-weight: 700; color: var(--navy); margin: 2px 0 8px; }
+.guide-intro-creds { list-style: none; padding: 0; margin: 0 0 8px; display: flex; flex-wrap: wrap; gap: 6px; }
+.guide-intro-creds li { font-size: .76rem; background: #fff; border: 1px solid var(--border); border-radius: 999px; padding: 3px 10px; color: var(--navy); }
+.guide-intro-body { font-size: .86rem; color: var(--sub); line-height: 1.8; }
+.guide-intro-link { display: inline-flex; align-items: center; min-height: 44px; font-size: .84rem; color: var(--ocean); font-weight: 700; }
+@media (max-width: 640px) {
+  .guide-intro { grid-template-columns: 88px 1fr; gap: 14px; padding: 16px; align-items: start; }
+  .guide-intro img { width: 88px; height: 88px; }
+}
+.img-note {
+  position: absolute; top: 8px; right: 8px; z-index: 2;
+  background: rgba(5,20,35,.62); color: #fff; white-space: nowrap;
+  font-size: .68rem; line-height: 1.5; letter-spacing: .04em; padding: 2px 8px; border-radius: 3px;
 }
 
 /* ===== RENEWAL 2026-11: mobile sticky booking bar ===== */
@@ -643,12 +669,12 @@ footer {
   <picture>
     <source media="(max-width: 767px)" srcset="images/photos/kayak-family-clear-640.webp 640w, images/photos/kayak-family-clear-818.webp 818w" sizes="100vw" width="818" height="1444">
     <img
-      src="images/photos/kayak-family-bay-1600.webp"
-      srcset="images/photos/kayak-family-bay-640.webp 640w, images/photos/kayak-family-bay-1024.webp 1024w, images/photos/kayak-family-bay-1600.webp 1600w"
+      src="images/photos/kayak-family-trio-1600.webp"
+      srcset="images/photos/kayak-family-trio-640.webp 640w, images/photos/kayak-family-trio-1024.webp 1024w, images/photos/kayak-family-trio-1600.webp 1600w"
       sizes="100vw"
       alt="BEMBAのカヤックツアーで沖縄の海を楽しむご家族"
       class="hero-photo"
-      width="1600" height="1200"
+      width="1600" height="1201"
       loading="eager"
       fetchpriority="high"
       decoding="async"
@@ -711,6 +737,20 @@ footer {
         <p class="why-body">グループ内に沖縄県在住の方が1名以上いれば、大人1名につき2,000円OFF（条件あり）。</p>
       </li>
     </ul>
+    <div class="guide-intro">
+      <img src="images/photos/guide-portrait-320.webp" alt="BEMBA代表ガイド 高良真" width="320" height="320" loading="lazy" decoding="async">
+      <div>
+        <p class="guide-intro-label">Guide</p>
+        <h3 class="guide-intro-name">代表ガイド　高良 真</h3>
+        <ul class="guide-intro-creds">
+          <li>元消防士（消防勤務16年）</li>
+          <li>水難救助隊経験</li>
+          <li>陸上救助・救急・消防活動経験</li>
+        </ul>
+        <p class="guide-intro-body">「楽しさの前に安全がある」ことを大切に、初めての方やお子様連れのご家族にも安心して沖縄の海を楽しんでいただけるようご案内します。</p>
+        <a href="about.html" class="guide-intro-link">ガイド紹介を詳しく見る →</a>
+      </div>
+    </div>
     <p class="why-note">※ 子ども無料・県民割の対象プランと条件は、各ツアーページでご確認ください。</p>
   </div>
 </section>
@@ -730,7 +770,7 @@ footer {
         <!-- SUP -->
         <div class="tour-card">
           <div class="tour-photo">
-            <img src="images/photos/sup-sea-duo-640.webp" srcset="images/photos/sup-sea-duo-640.webp 640w, images/photos/sup-sea-duo-1024.webp 1024w, images/photos/sup-sea-duo-1600.webp 1600w" sizes="(max-width: 900px) 50vw, 340px" alt="沖縄の青い海でSUPボードに立ち、パドルを掲げて笑顔を見せるお客様" width="640" height="683" loading="lazy" decoding="async" style="object-position:center 48%">
+            <img src="images/photos/sup-clear-island-640.webp" srcset="images/photos/sup-clear-island-640.webp 640w, images/photos/sup-clear-island-1024.webp 1024w, images/photos/sup-clear-island-1536.webp 1536w" sizes="(max-width: 900px) 50vw, 340px" alt="透明な海の上でSUPボードに立ち、両手を広げて笑顔を見せるお客様" width="640" height="853" loading="lazy" decoding="async" style="object-position:center 60%">
           </div>
           <div class="tour-foot">
             <h3 class="tour-name">SUP</h3>
@@ -818,6 +858,7 @@ footer {
         <div class="tour-card">
           <div class="tour-photo">
             <img src="images/mangrove-sup.webp" alt="マングローブの川でSUPを楽しむ親子のイメージ画像" width="1125" height="750" loading="lazy">
+            <span class="img-note">※画像はイメージです</span>
           </div>
           <div class="tour-foot">
             <h3 class="tour-name">マングローブSUP</h3>
@@ -852,24 +893,52 @@ footer {
     </div>
     <div class="gal-grid">
       <figure class="gal-item gal-item--wide">
-        <img src="images/photos/kayak-family-bay-640.webp" srcset="images/photos/kayak-family-bay-640.webp 640w, images/photos/kayak-family-bay-1024.webp 1024w, images/photos/kayak-family-bay-1600.webp 1600w" sizes="(max-width: 900px) 100vw, 220px" alt="沖縄の海でカヤックに乗り、笑顔で手を振るご家族" width="640" height="480" loading="lazy" decoding="async" style="object-position:center 55%">
+        <img src="images/photos/kayak-group-eight-640.webp" srcset="images/photos/kayak-group-eight-640.webp 640w, images/photos/kayak-group-eight-1024.webp 1024w, images/photos/kayak-group-eight-1243.webp 1243w" sizes="(max-width: 900px) 100vw, 260px" alt="3艇のカヤックに分かれて乗り、ピースサインをするグループのお客様" width="640" height="853" loading="lazy" decoding="async" style="object-position:center 42%">
         <figcaption>カヤック</figcaption>
       </figure>
       <figure class="gal-item">
-        <img src="images/photos/kayak-family-clear-640.webp" srcset="images/photos/kayak-family-clear-640.webp 640w, images/photos/kayak-family-clear-818.webp 818w" sizes="(max-width: 900px) 50vw, 220px" alt="透明度の高い沖縄の海でカヤックを楽しむご家族" width="640" height="1130" loading="lazy" decoding="async" style="object-position:center 55%">
-        <figcaption>カヤック</figcaption>
-      </figure>
-      <figure class="gal-item">
-        <img src="images/photos/clear-kayak-kids-640.webp" srcset="images/photos/clear-kayak-kids-640.webp 640w, images/photos/clear-kayak-kids-1024.webp 1024w, images/photos/clear-kayak-kids-1500.webp 1500w" sizes="(max-width: 900px) 50vw, 220px" alt="透明なクリアカヤックに乗り、ピースサインをするお子さまと保護者" width="640" height="853" loading="lazy" decoding="async" style="object-position:center 55%">
-        <figcaption>クリアカヤック</figcaption>
-      </figure>
-      <figure class="gal-item">
-        <img src="images/photos/sup-sea-duo-640.webp" srcset="images/photos/sup-sea-duo-640.webp 640w, images/photos/sup-sea-duo-1024.webp 1024w, images/photos/sup-sea-duo-1600.webp 1600w" sizes="(max-width: 900px) 50vw, 220px" alt="沖縄の青い海でSUPボードに立ち、パドルを掲げて笑顔を見せるお客様" width="640" height="683" loading="lazy" decoding="async" style="object-position:62% center">
+        <img src="images/photos/sup-clear-island-640.webp" srcset="images/photos/sup-clear-island-640.webp 640w, images/photos/sup-clear-island-1024.webp 1024w, images/photos/sup-clear-island-1536.webp 1536w" sizes="(max-width: 900px) 50vw, 260px" alt="透明な海の上でSUPボードに立ち、両手を広げて笑顔を見せるお客様" width="640" height="853" loading="lazy" decoding="async" style="object-position:center 58%">
         <figcaption>SUP</figcaption>
       </figure>
       <figure class="gal-item">
-        <img src="images/photos/mangrove-kayak-real-640.webp" srcset="images/photos/mangrove-kayak-real-640.webp 640w, images/photos/mangrove-kayak-real-1024.webp 1024w, images/photos/mangrove-kayak-real-1380.webp 1380w" sizes="(max-width: 900px) 50vw, 220px" alt="マングローブの林に沿ってカヤックを漕ぐ親子" width="640" height="480" loading="lazy" decoding="async" style="object-position:62% center">
+        <img src="images/photos/kayak-family-bay-640.webp" srcset="images/photos/kayak-family-bay-640.webp 640w, images/photos/kayak-family-bay-1024.webp 1024w, images/photos/kayak-family-bay-1600.webp 1600w" sizes="(max-width: 900px) 50vw, 260px" alt="沖縄の海でカヤックに乗り、笑顔で手を振るご家族" width="640" height="480" loading="lazy" decoding="async" style="object-position:center 55%">
+        <figcaption>カヤック</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="images/photos/clear-kayak-kids-640.webp" srcset="images/photos/clear-kayak-kids-640.webp 640w, images/photos/clear-kayak-kids-1024.webp 1024w, images/photos/clear-kayak-kids-1500.webp 1500w" sizes="(max-width: 900px) 50vw, 260px" alt="透明なクリアカヤックに乗り、ピースサインをするお子さまと保護者" width="640" height="853" loading="lazy" decoding="async" style="object-position:center 55%">
+        <figcaption>クリアカヤック</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="images/photos/mangrove-kayak-real-640.webp" srcset="images/photos/mangrove-kayak-real-640.webp 640w, images/photos/mangrove-kayak-real-1024.webp 1024w, images/photos/mangrove-kayak-real-1380.webp 1380w" sizes="(max-width: 900px) 50vw, 260px" alt="マングローブの林に沿ってカヤックを漕ぐ親子" width="640" height="480" loading="lazy" decoding="async" style="object-position:65% center">
         <figcaption>マングローブカヤック</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="images/photos/sup-duo-sitting-640.webp" srcset="images/photos/sup-duo-sitting-640.webp 640w, images/photos/sup-duo-sitting-1024.webp 1024w, images/photos/sup-duo-sitting-1536.webp 1536w" sizes="(max-width: 900px) 50vw, 260px" alt="SUPボードに座って手を振る2人のお客様" width="640" height="853" loading="lazy" decoding="async" style="object-position:center 55%">
+        <figcaption>SUP</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="images/photos/kayak-family-clear-640.webp" srcset="images/photos/kayak-family-clear-640.webp 640w, images/photos/kayak-family-clear-818.webp 818w" sizes="(max-width: 900px) 50vw, 260px" alt="透明度の高い沖縄の海でカヤックを楽しむご家族" width="640" height="1130" loading="lazy" decoding="async" style="object-position:center 55%">
+        <figcaption>カヤック</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="images/photos/beach-group-paddles-640.webp" srcset="images/photos/beach-group-paddles-640.webp 640w, images/photos/beach-group-paddles-1024.webp 1024w, images/photos/beach-group-paddles-1536.webp 1536w" sizes="(max-width: 900px) 50vw, 260px" alt="ツアー前にパドルを持って記念撮影をするグループのお客様" width="640" height="853" loading="lazy" decoding="async" style="object-position:center 55%">
+        <figcaption>カヤック</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="images/photos/mangrove-kayak-red-640.webp" srcset="images/photos/mangrove-kayak-red-640.webp 640w, images/photos/mangrove-kayak-red-1024.webp 1024w, images/photos/mangrove-kayak-red-1600.webp 1600w" sizes="(max-width: 900px) 50vw, 260px" alt="マングローブの林の前をカヤックで進むお客様" width="640" height="480" loading="lazy" decoding="async" style="object-position:30% center">
+        <figcaption>マングローブカヤック</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="images/photos/kayak-family-trio-640.webp" srcset="images/photos/kayak-family-trio-640.webp 640w, images/photos/kayak-family-trio-1024.webp 1024w, images/photos/kayak-family-trio-1600.webp 1600w" sizes="(max-width: 900px) 50vw, 260px" alt="カヤックに乗ってピースサインをするご家族" width="640" height="480" loading="lazy" decoding="async" style="object-position:38% center">
+        <figcaption>カヤック</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="images/photos/sup-kid-family-640.webp" srcset="images/photos/sup-kid-family-640.webp 640w, images/photos/sup-kid-family-1024.webp 1024w, images/photos/sup-kid-family-1160.webp 1160w" sizes="(max-width: 900px) 50vw, 260px" alt="SUPボードに座って笑顔を見せる親子" width="640" height="1130" loading="lazy" decoding="async" style="object-position:center 50%">
+        <figcaption>SUP</figcaption>
+      </figure>
+      <figure class="gal-item gal-item--wide">
+        <img src="images/photos/sup-boards-beach-640.webp" srcset="images/photos/sup-boards-beach-640.webp 640w, images/photos/sup-boards-beach-1024.webp 1024w, images/photos/sup-boards-beach-1535.webp 1535w" sizes="(max-width: 900px) 100vw, 260px" alt="ビーチに並んだSUPボードと出発前のお客様" width="640" height="854" loading="lazy" decoding="async" style="object-position:center 62%">
+        <figcaption>SUP</figcaption>
       </figure>
     </div>
     <div class="gal-cta">

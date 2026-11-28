@@ -59,7 +59,9 @@
       if (/^utm_(source|medium|campaign|content|term)$/.test(k)) keep.set(k, v.slice(0, 100));
     });
     var q = keep.toString();
-    return location.origin + location.pathname + (q ? '?' + q : '');
+    // /sup と /sup.html を同じページとして記録する（表記揺れの防止）
+    var p = location.pathname.replace(/\/index(\.html)?$/, '/').replace(/\.html$/, '');
+    return location.origin + p + (q ? '?' + q : '');
   }
   function cleanReferrer() {
     if (!document.referrer) return '';
@@ -87,12 +89,17 @@
   if (internal) shared.traffic_type = 'internal';
   window.gtag('set', shared);
   window.gtag('js', new Date());
+  // 共通パラメータは config にも入れる（gtag('set') だけでは自動送信の page_view に付かないことを GA4 の実データで確認）
   var config = {
+    page_type: pageType,
+    tour_name: tour,
+    site_language: lang,
     page_location: cleanLocation(),
     page_referrer: cleanReferrer(),
     allow_google_signals: false,
     allow_ad_personalization_signals: false
   };
+  if (internal) config.traffic_type = 'internal';
   if (debug) config.debug_mode = true;
   window.gtag('config', MEASUREMENT_ID, config);
 
